@@ -11,11 +11,12 @@
 /******/
 /******/ 	// eslint-disable-next-line no-unused-vars
 /******/ 	function hotDownloadUpdateChunk(chunkId) {
+/******/ 		var head = document.getElementsByTagName("head")[0];
 /******/ 		var script = document.createElement("script");
 /******/ 		script.charset = "utf-8";
 /******/ 		script.src = __webpack_require__.p + "" + chunkId + "." + hotCurrentHash + ".hot-update.js";
-/******/ 		if (null) script.crossOrigin = null;
-/******/ 		document.head.appendChild(script);
+/******/ 		;
+/******/ 		head.appendChild(script);
 /******/ 	}
 /******/
 /******/ 	// eslint-disable-next-line no-unused-vars
@@ -63,7 +64,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "b8ce666eb6e9274f386e";
+/******/ 	var hotCurrentHash = "8e6f7b55afe021d3a749";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -805,7 +806,7 @@ exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/li
 
 
 // module
-exports.push([module.i, ".app {\r\n  margin: 1rem;\r\n  font-family: Arial, Helvetica, sans-serif;\r\n}", ""]);
+exports.push([module.i, ".app {\n  margin: 1rem;\n  font-family: Arial, Helvetica, sans-serif;\n}", ""]);
 
 // exports
 
@@ -8624,7 +8625,7 @@ function setInitialDOMProperties(tag, domElement, rootContainerElement, nextProp
       // on server rendering (but we *do* want to emit it in SSR).
     } else if (registrationNameModules.hasOwnProperty(propKey)) {
       if (nextProp != null) {
-        if ( true && typeof nextProp !== 'function') {
+        if (true && typeof nextProp !== 'function') {
           warnForInvalidEventListener(propKey, nextProp);
         }
         ensureListeningTo(rootContainerElement, propKey);
@@ -8969,7 +8970,7 @@ function diffProperties(domElement, tag, lastRawProps, nextRawProps, rootContain
     } else if (registrationNameModules.hasOwnProperty(propKey)) {
       if (nextProp != null) {
         // We eagerly listen to this even though we haven't committed yet.
-        if ( true && typeof nextProp !== 'function') {
+        if (true && typeof nextProp !== 'function') {
           warnForInvalidEventListener(propKey, nextProp);
         }
         ensureListeningTo(rootContainerElement, propKey);
@@ -9151,14 +9152,14 @@ function diffHydratedProperties(domElement, tag, rawProps, parentNamespace, root
       // TODO: Should we use domElement.firstChild.nodeValue to compare?
       if (typeof nextProp === 'string') {
         if (domElement.textContent !== nextProp) {
-          if ( true && !suppressHydrationWarning) {
+          if (true && !suppressHydrationWarning) {
             warnForTextDifference(domElement.textContent, nextProp);
           }
           updatePayload = [CHILDREN, nextProp];
         }
       } else if (typeof nextProp === 'number') {
         if (domElement.textContent !== '' + nextProp) {
-          if ( true && !suppressHydrationWarning) {
+          if (true && !suppressHydrationWarning) {
             warnForTextDifference(domElement.textContent, nextProp);
           }
           updatePayload = [CHILDREN, '' + nextProp];
@@ -9166,12 +9167,12 @@ function diffHydratedProperties(domElement, tag, rawProps, parentNamespace, root
       }
     } else if (registrationNameModules.hasOwnProperty(propKey)) {
       if (nextProp != null) {
-        if ( true && typeof nextProp !== 'function') {
+        if (true && typeof nextProp !== 'function') {
           warnForInvalidEventListener(propKey, nextProp);
         }
         ensureListeningTo(rootContainerElement, propKey);
       }
-    } else if ( true &&
+    } else if (true &&
     // Convince Flow we've calculated it (it's DEV-only in this method.)
     typeof isCustomComponentTag === 'boolean') {
       // Validate that the properties correspond to their expected values.
@@ -9962,7 +9963,7 @@ function didNotMatchHydratedContainerTextInstance(parentContainer, textInstance,
 }
 
 function didNotMatchHydratedTextInstance(parentType, parentProps, parentInstance, textInstance, text) {
-  if ( true && parentProps[SUPPRESS_HYDRATION_WARNING] !== true) {
+  if (true && parentProps[SUPPRESS_HYDRATION_WARNING] !== true) {
     warnForUnmatchedText(textInstance, text);
   }
 }
@@ -9978,7 +9979,7 @@ function didNotHydrateContainerInstance(parentContainer, instance) {
 }
 
 function didNotHydrateInstance(parentType, parentProps, parentInstance, instance) {
-  if ( true && parentProps[SUPPRESS_HYDRATION_WARNING] !== true) {
+  if (true && parentProps[SUPPRESS_HYDRATION_WARNING] !== true) {
     if (instance.nodeType === ELEMENT_NODE) {
       warnForDeletedHydratableElement(parentInstance, instance);
     } else {
@@ -10000,13 +10001,13 @@ function didNotFindHydratableContainerTextInstance(parentContainer, text) {
 }
 
 function didNotFindHydratableInstance(parentType, parentProps, parentInstance, type, props) {
-  if ( true && parentProps[SUPPRESS_HYDRATION_WARNING] !== true) {
+  if (true && parentProps[SUPPRESS_HYDRATION_WARNING] !== true) {
     warnForInsertedHydratedElement(parentInstance, type, props);
   }
 }
 
 function didNotFindHydratableTextInstance(parentType, parentProps, parentInstance, text) {
-  if ( true && parentProps[SUPPRESS_HYDRATION_WARNING] !== true) {
+  if (true && parentProps[SUPPRESS_HYDRATION_WARNING] !== true) {
     warnForInsertedHydratedText(parentInstance, text);
   }
 }
@@ -10726,7 +10727,7 @@ function catchErrors(fn) {
     try {
       return fn(arg);
     } catch (err) {
-      if ( true && !hasLoggedError) {
+      if (true && !hasLoggedError) {
         hasLoggedError = true;
         warningWithoutStack$1(false, 'React DevTools encountered an error: %s', err);
       }
@@ -16837,7 +16838,7 @@ var replayUnitOfWork = void 0;
 var isReplayingFailedUnitOfWork = void 0;
 var originalReplayError = void 0;
 var rethrowOriginalError = void 0;
-if ( true && replayFailedUnitOfWorkWithInvokeGuardedCallback) {
+if (true && replayFailedUnitOfWorkWithInvokeGuardedCallback) {
   stashedWorkInProgressProperties = null;
   isReplayingFailedUnitOfWork = false;
   originalReplayError = null;
@@ -17241,7 +17242,7 @@ function commitRoot(root, finishedWork) {
   stopCommitLifeCyclesTimer();
   stopCommitTimer();
   onCommitRoot(finishedWork.stateNode);
-  if ( true && ReactFiberInstrumentation_1.debugTool) {
+  if (true && ReactFiberInstrumentation_1.debugTool) {
     ReactFiberInstrumentation_1.debugTool.onCommitWork(finishedWork);
   }
 
@@ -17403,7 +17404,7 @@ function completeUnitOfWork(workInProgress) {
 
       if (next !== null) {
         stopWorkTimer(workInProgress);
-        if ( true && ReactFiberInstrumentation_1.debugTool) {
+        if (true && ReactFiberInstrumentation_1.debugTool) {
           ReactFiberInstrumentation_1.debugTool.onCompleteWork(workInProgress);
         }
         // If completing this work spawned new work, do that next. We'll come
@@ -17446,7 +17447,7 @@ function completeUnitOfWork(workInProgress) {
         }
       }
 
-      if ( true && ReactFiberInstrumentation_1.debugTool) {
+      if (true && ReactFiberInstrumentation_1.debugTool) {
         ReactFiberInstrumentation_1.debugTool.onCompleteWork(workInProgress);
       }
 
@@ -17485,7 +17486,7 @@ function completeUnitOfWork(workInProgress) {
 
       if (_next !== null) {
         stopWorkTimer(workInProgress);
-        if ( true && ReactFiberInstrumentation_1.debugTool) {
+        if (true && ReactFiberInstrumentation_1.debugTool) {
           ReactFiberInstrumentation_1.debugTool.onCompleteWork(workInProgress);
         }
 
@@ -17516,7 +17517,7 @@ function completeUnitOfWork(workInProgress) {
         returnFiber.effectTag |= Incomplete;
       }
 
-      if ( true && ReactFiberInstrumentation_1.debugTool) {
+      if (true && ReactFiberInstrumentation_1.debugTool) {
         ReactFiberInstrumentation_1.debugTool.onCompleteWork(workInProgress);
       }
 
@@ -17552,7 +17553,7 @@ function performUnitOfWork(workInProgress) {
     setCurrentFiber(workInProgress);
   }
 
-  if ( true && replayFailedUnitOfWorkWithInvokeGuardedCallback) {
+  if (true && replayFailedUnitOfWorkWithInvokeGuardedCallback) {
     stashedWorkInProgressProperties = assignFiberPropertiesInDEV(stashedWorkInProgressProperties, workInProgress);
   }
 
@@ -17582,7 +17583,7 @@ function performUnitOfWork(workInProgress) {
       rethrowOriginalError();
     }
   }
-  if ( true && ReactFiberInstrumentation_1.debugTool) {
+  if (true && ReactFiberInstrumentation_1.debugTool) {
     ReactFiberInstrumentation_1.debugTool.onBeginWork(workInProgress);
   }
 
@@ -17693,7 +17694,7 @@ function renderRoot(root, isYieldy, isExpired) {
         }
 
         var failedUnitOfWork = nextUnitOfWork;
-        if ( true && replayFailedUnitOfWorkWithInvokeGuardedCallback) {
+        if (true && replayFailedUnitOfWorkWithInvokeGuardedCallback) {
           replayUnitOfWork(failedUnitOfWork, thrownValue, isYieldy);
         }
 
@@ -18072,7 +18073,7 @@ function scheduleWork(fiber, expirationTime) {
 
   var root = scheduleWorkToRoot(fiber, expirationTime);
   if (root === null) {
-    if ( true && (fiber.tag === ClassComponent || fiber.tag === ClassComponentLazy)) {
+    if (true && (fiber.tag === ClassComponent || fiber.tag === ClassComponentLazy)) {
       warnAboutUpdateOnUnmounted(fiber);
     }
     return;
@@ -22683,11 +22684,13 @@ if(true) {
 /*!****************!*\
   !*** ./app.js ***!
   \****************/
-/*! exports provided: default */
+/*! exports provided: App, Component3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Component3", function() { return Component3; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _app_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.css */ "./app.css");
@@ -22713,30 +22716,84 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var App =
+function Component1(props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Hello ", props.name, "!");
+}
+
+var Component2 =
 /*#__PURE__*/
-function (_Component) {
-  _inherits(App, _Component);
+function (_React$Component) {
+  _inherits(Component2, _React$Component);
 
-  function App() {
-    _classCallCheck(this, App);
+  function Component2() {
+    _classCallCheck(this, Component2);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(App).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(Component2).apply(this, arguments));
   }
 
-  _createClass(App, [{
+  _createClass(Component2, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "app"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, " Hello, World! "));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Hello ", this.props.name, "!");
     }
   }]);
 
-  return App;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+  return Component2;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (App);
+var Component3 =
+/*#__PURE__*/
+function (_React$Component2) {
+  _inherits(Component3, _React$Component2);
+
+  function Component3() {
+    _classCallCheck(this, Component3);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Component3).apply(this, arguments));
+  }
+
+  _createClass(Component3, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('h1', null, "Hello ".concat(this.props.name, "!"));
+    }
+  }]);
+
+  return Component3;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+var Component4 =
+/*#__PURE__*/
+function (_React$PureComponent) {
+  _inherits(Component4, _React$PureComponent);
+
+  function Component4() {
+    _classCallCheck(this, Component4);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Component4).apply(this, arguments));
+  }
+
+  _createClass(Component4, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Hello ", this.props.name, "!");
+    }
+  }]);
+
+  return Component4;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.PureComponent);
+
+function App() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component1, {
+    name: "functional component"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component2, {
+    name: "React.Component"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component4, {
+    name: "PureComponent"
+  }));
+}
+
+
 
 /***/ }),
 
@@ -22757,7 +22814,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_app_js__WEBPACK_IMPORTED_MODULE_2__["default"], null), document.getElementById("root"));
+react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_app_js__WEBPACK_IMPORTED_MODULE_2__["App"], null), document.getElementById('root1'));
+react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_app_js__WEBPACK_IMPORTED_MODULE_2__["Component3"], {
+  name: 'React.createElement'
+}, null), document.getElementById('root2'));
 
 /***/ })
 
