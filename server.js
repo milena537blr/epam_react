@@ -1,15 +1,14 @@
-const express = require('express');
-const bodyParser = require('body-parser')
+const webpack = require("webpack");
+const middleware = require('webpack-dev-middleware');
 const path = require('path');
+import config from 'webpack.config.js';
+
+const compiler = webpack(config);
+const express = require('express');
 const app = express();
-app.use(express.static(path.join(__dirname, 'dist')));
 
-app.get('/ping', function (req, res) {
- return res.send('pong');
-});
+app.use(
+  middleware(compiler)
+);
 
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, '/', 'index.html'));
-});
-
-app.listen(process.env.PORT || 8080);
+app.listen(3000, () => console.log('Example app listening on port 3000!'));

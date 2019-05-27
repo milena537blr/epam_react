@@ -29,12 +29,12 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
   },
 
-  devServer: {
+  /* devServer: {
     contentBase: path.join(__dirname, "dist/"),
     port: 3000,
     publicPath: "http://localhost:3000/dist/",
     hotOnly: true
-  },
+  }, */
 
   plugins: [new webpack.HotModuleReplacementPlugin()]
 }
