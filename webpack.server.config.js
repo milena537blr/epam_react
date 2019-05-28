@@ -17,6 +17,7 @@ module.exports = (env, argv) => {
       publicPath: '/',
       filename: '[name].js'
     },
+    name: 'server',
     target: 'node',
     node: {
       __dirname: false, 

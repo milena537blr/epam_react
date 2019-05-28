@@ -4,7 +4,7 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: {
-    main: ['webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000', './src/index.js']
+    main: ['webpack-hot-middleware/client', './src/index.js']
   },
   output: {
     path: path.join(__dirname, 'dist'),
@@ -12,6 +12,7 @@ module.exports = {
     filename: '[name].js'
   },
   mode: 'development',
+  name: 'client',
   target: 'web',
   devtool: 'source-map',
   resolve: { extensions: ["*", ".js", ".jsx"] },
@@ -49,7 +50,6 @@ module.exports = {
       filename: "./index.html",
       excludeChunks: [ 'server' ]
     }),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin()
+    new webpack.HotModuleReplacementPlugin()
   ]
 }
