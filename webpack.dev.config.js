@@ -1,29 +1,17 @@
-const path = require('path');
+const merge = require('webpack-merge');
+const common = require('./webpack.common.config.js');
 const webpack = require("webpack");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
-module.exports = {
+module.exports = merge(common, {
   entry: {
     main: ['webpack-hot-middleware/client', './src/index.js']
-  },
-  output: {
-    path: path.join(__dirname, 'dist'),
-    publicPath: '/',
-    filename: '[name].js'
   },
   mode: 'development',
   name: 'client',
   target: 'web',
-  devtool: 'source-map',
-  resolve: { extensions: ["*", ".js", ".jsx"] },
   module: {
     rules: [
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /(node_modules)/,
-        loader: "babel-loader",
-        options: { presets: ["@babel/env"] }
-      },
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"]
@@ -34,7 +22,6 @@ module.exports = {
         test: /\.html$/,
         use: [{
           loader: "html-loader",
-          //options: { minimize: true }
         }]
       },
       {
@@ -52,4 +39,4 @@ module.exports = {
     }),
     new webpack.HotModuleReplacementPlugin()
   ]
-}
+});

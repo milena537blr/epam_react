@@ -1,9 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { App, Component3 } from "./app.js";
-import logMessage from './logger.js';
-
-logMessage('Welcome to Expack!');
 
 ReactDOM.render(
   <App />,

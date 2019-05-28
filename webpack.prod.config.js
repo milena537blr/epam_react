@@ -1,20 +1,16 @@
-const path = require('path');
+const merge = require('webpack-merge');
+const common = require('./webpack.common.config.js');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
-module.exports = {
+module.exports = merge(common, {
   entry: {
     main: './src/index.js'
   },
-  output: {
-    path: path.join(__dirname, 'dist'),
-    publicPath: '/',
-    filename: '[name].js'
-  },
+  mode: 'production',
   target: 'web',
-  devtool: 'source-map',
   optimization: {
     minimizer: [
       new UglifyJsPlugin({
@@ -25,15 +21,8 @@ module.exports = {
       new OptimizeCSSAssetsPlugin({})
     ]
   },
-  resolve: { extensions: ["*", ".js", ".jsx"] },
   module: {
     rules: [
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /(node_modules)/,
-        loader: "babel-loader",
-        options: { presets: ["@babel/env"] }
-      },
       {
         test: /\.html$/,
         use: [{
@@ -65,4 +54,4 @@ module.exports = {
       chunkFilename: "[id].css"
     })
   ]
-}
+});
