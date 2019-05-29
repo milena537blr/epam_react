@@ -1,9 +1,7 @@
-const merge = require('webpack-merge');
-const common = require('./webpack.common.config.js');
 const webpack = require("webpack");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
-module.exports = merge(common, {
+module.exports = {
   entry: {
     main: ['webpack-hot-middleware/client', './src/index.js']
   },
@@ -39,4 +37,4 @@ module.exports = merge(common, {
     }),
     new webpack.HotModuleReplacementPlugin()
   ]
-});
+};
