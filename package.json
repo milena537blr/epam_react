@@ -9,6 +9,12 @@
     "build:prod": "webpack --mode production --config webpack.server.config.js && webpack --config webpack.prod.config.js",
     "start": "node ./dist/server.js"
   },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js",
+      "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/milena537blr/epam_react.git"
