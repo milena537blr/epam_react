@@ -2,26 +2,17 @@ import path from 'path';
 import express from 'express';
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
-import webpackHotMiddleware from 'webpack-hot-middleware';
-const webpackHotServerMiddleware = require('webpack-hot-server-middleware');
-import config from '../../webpack.dev.config.js';
+import configFunction from '../../webpack.config';
 
+const config = configFunction();
 const app = express(),
             DIST_DIR = __dirname,
             HTML_FILE = path.join(DIST_DIR, 'index.html'),
             compiler = webpack(config);
 
-/* app.use(webpackDevMiddleware(compiler, {
-  serverSideRender: true
-}));
-app.use(webpackHotMiddleware(compiler.compilers.find(c => c.name === 'client')));
-app.use(webpackHotServerMiddleware(compiler)); */
-
 app.use(webpackDevMiddleware(compiler, {
   publicPath: config.output.publicPath
 }));
-
-app.use(webpackHotMiddleware(compiler));
 
 app.get('*', (req, res, next) => {
   compiler.outputFileSystem.readFile(HTML_FILE, (err, result) => {

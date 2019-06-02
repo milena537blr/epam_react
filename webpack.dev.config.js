@@ -1,13 +1,10 @@
-const webpack = require("webpack");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: {
-    main: ['webpack-hot-middleware/client', './src/index.js']
-  },
   mode: 'development',
   name: 'client',
   target: 'web',
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -35,6 +32,5 @@ module.exports = {
       filename: "./index.html",
       excludeChunks: [ 'server' ]
     }),
-    new webpack.HotModuleReplacementPlugin()
   ]
 };

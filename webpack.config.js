@@ -4,6 +4,11 @@ const webpackProdConfig = require('./webpack.prod.config');
 const webpackDevConfig = require('./webpack.dev.config');
 
 module.exports = (env) => {
-  const config = (env.production) ? webpackProdConfig : webpackDevConfig;
+  let config;
+  if (env) {
+    config = (env.production) ? webpackProdConfig : webpackDevConfig;
+  } else {
+    config = webpackDevConfig;
+  }
   return merge(common, config);
 }

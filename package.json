@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "coverage": "jest --coverage",
     "build:dev": "webpack --env.development --config webpack.server.config.js && webpack --env.development --config webpack.config.js",
     "build:prod": "webpack --env.production --config webpack.server.config.js && webpack --env.production --config webpack.config.js",
     "start": "node ./dist/server.js"

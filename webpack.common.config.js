@@ -1,12 +1,14 @@
 const path = require('path');
 
 module.exports = {
+  entry: {
+    main: './src/index.js'
+  },
   output: {
     path: path.join(__dirname, 'dist'),
     publicPath: '/',
     filename: '[name].js'
   },
-  devtool: 'source-map',
   resolve: { extensions: ["*", ".js", ".jsx"] },
   module: {
     rules: [

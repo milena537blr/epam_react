@@ -4,9 +4,6 @@ const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 module.exports = {
-  entry: {
-    main: './src/index.js'
-  },
   mode: 'production',
   target: 'web',
   optimization: {
@@ -41,7 +38,6 @@ module.exports = {
       },
     ]
   },
-
   plugins: [
     new HtmlWebPackPlugin({
       template: "./src/index.html",
