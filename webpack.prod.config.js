@@ -19,6 +19,10 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.scss$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader?modules", "sass-loader"]
+      },
+      {
         test: /\.html$/,
         use: [{
           loader: "html-loader",
@@ -29,12 +33,6 @@ module.exports = {
         // Loads images into CSS and Javascript files
         test: /\.jpg$/,
         use: [{loader: "url-loader"}]
-      },
-      {
-        // Loads CSS into a file when you import it via Javascript
-        // Rules are set in MiniCssExtractPlugin
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader']
       },
     ]
   },
