@@ -1,8 +1,11 @@
-import React, { Component} from "react";
+import React from "react";
 import "./app.css";
+import PropTypes from 'prop-types';
 
 function Component1(props) {
-  return <h1>Hello {props.name}!</h1>;
+  if (props.name) {
+    return <h1>Hello {props.name}!</h1>;
+  }
 }
 
 class Component2 extends React.Component {
@@ -11,16 +14,28 @@ class Component2 extends React.Component {
   }
 }
 
+Component2.propTypes = {
+  name: PropTypes.string
+}
+
 class Component3 extends React.Component {
   render() {
     return React.createElement('h1', null, `Hello ${this.props.name}!`);
   }
 }
 
+Component3.propTypes = {
+  name: PropTypes.string
+}
+
 class Component4 extends React.PureComponent {
   render() {
     return <h1>Hello {this.props.name}!</h1>;
   }
+}
+
+Component4.propTypes = {
+  name: PropTypes.string
 }
 
 function App() {
