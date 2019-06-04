@@ -42,7 +42,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Header name="header" />
+        <Header name="netflixroulette" />
         <Panel name="panel" />
         <Main name="main" />
         <Footer name="footer" />

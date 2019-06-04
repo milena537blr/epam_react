@@ -9,7 +9,7 @@ module.exports = {
     publicPath: '/',
     filename: '[name].js'
   },
-  resolve: { extensions: ["*", ".js", ".jsx"] },
+  resolve: { extensions: ["*", ".js", ".jsx", '.tsx', '.ts'] },
   module: {
     rules: [
       {
@@ -29,6 +29,11 @@ module.exports = {
         loader: "babel-loader",
         options: { presets: ["@babel/env"] }
       },
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/
+      }
     ]
   }
 }
