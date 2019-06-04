@@ -1,8 +1,6 @@
-import React from "react";
+/* import React from "react";
 import PropTypes from "prop-types";
 import styles from "./Header.module.scss";
-
-console.log(styles);
 
 class Header extends React.Component {
   render() { 
@@ -10,10 +8,14 @@ class Header extends React.Component {
       <div className={styles.error}>{this.props.name}</div>
     );
   }
-}
+} */
 
-Header.propTypes = {
+/* Header.propTypes = {
   name: PropTypes.string
-};
+}; */
+
+function Header() {
+  return 5;
+}
 
 export { Header };
