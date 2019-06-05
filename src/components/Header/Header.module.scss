@@ -1,3 +1,80 @@
-.error {
-  background-color: red;
+@import "../../styles/core.scss";
+
+.block-link {
+  display: block;
+}
+
+.logo{
+  color: $color--red;
+  font-weight: bold;
+}
+
+.button {
+  cursor: pointer;
+  padding: rem(5) rem(10);
+  border-radius: rem(2); 
+  font-size: rem(18);
+
+  &.white {
+    background-color: $color--white;
+    color: $color--red;
+  }
+
+  &.gray {
+    background-color: $color--gray;
+    color: $color--white;
+  }
+
+  &.red {
+    background-color: $color--red;
+    color: $color--white;
+  }
+}
+
+.header {
+  padding: rem(20) rem(40);
+  background-image: url("../../images/header-bg.jpg");
+  min-height: 400px;
+  position: relative;
+
+  .overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  &__searchTitle {
+    margin-bottom: rem(20);
+    margin-top: rem(40);
+  }
+}
+
+.container {
+  max-width: rem(1200);
+  margin: 0 auto;
+  position: relative;
+}
+
+.searchTitle {
+  color: $color--white;
+  text-transform: uppercase;
+}
+
+.searchInput {
+  color: $color--white;
+  background-color: $color--black;
+  font-size: rem(18);
+  height: rem(60);
+  padding: rem(10) rem(20);
+  border: 0;
+  width: 100%;
+}
+
+.searchLabel {
+  color: $color--white;
+  text-transform: uppercase;
+  margin-right: rem(10);
 }

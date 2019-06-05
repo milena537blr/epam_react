@@ -28,6 +28,7 @@
   "homepage": "https://github.com/milena537blr/epam_react#readme",
   "dependencies": {
     "babel-jest": "^24.8.0",
+    "classnames": "^2.2.6",
     "express": "^4.17.0",
     "jest": "^24.8.0",
     "node-sass": "^4.12.0",
