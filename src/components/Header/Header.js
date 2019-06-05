@@ -2,19 +2,22 @@ import React from "react";
 import PropTypes from "prop-types";
 import s from "./Header.module.scss";
 import Box from "../Box/Box";
+import Button from "../Button/Button";
 import classNames from "classnames";
 
-let buttonWhiteClass = classNames(s.button, s.white);
-let buttonRedClass = classNames(s.button, s.red);
-let buttonGrayClass = classNames(s.button, s.gray);
+let buttonWhiteClass = classNames(s.button, s.white, s.large);
+let buttonRedClass = classNames(s.button, s.red, s.medium);
+let buttonGrayClass = classNames(s.button, s.gray, s.medium);
 let buttonRedLargeClass = classNames(s.button, s.red, s.large);
 let searchTitleClass = classNames(s.searchTitle, s.header__searchTitle);
 
+console.log(Button);
 class Header extends React.Component {
   render() {
     return (
       <header className={s.header}>
         <div className={s.overlay} />
+            <Button text="SEARCH" />
         <section className={s.container}>
           <Box align="space-between" verticalAlign="middle">
             <a className={s.logo} href="#">

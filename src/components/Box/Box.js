@@ -45,7 +45,7 @@ const Box = ({
   dataHook,
   children,
   className,
-  style,
+  style, // eslint-disable-line no-undef 
   inline,
   direction,
   align,
@@ -66,20 +66,9 @@ const Box = ({
   minHeight,
   maxHeight,
   height,
-  color,
-  backgroundColor,
-  border,
-  borderColor,
-  borderTopColor,
-  borderRightColor,
-  borderBottomColor,
-  borderLeftColor,
 
   // Excluded props (which are handled above and should not be spread into `style`)
-  'data-hook': dataHookByKebabCase,
-  flexDirection,
-  justifyContent,
-  alignItems,
+  'data-hook': dataHookByKebabCase, // eslint-disable-line no-undef 
 
   ...nativeStyles
 }) => {
