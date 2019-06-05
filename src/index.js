@@ -7,5 +7,3 @@ ReactDOM.render(
   <App />,
   window.document.getElementById('root')
 )
-
-// eslint-disable-line no-undef 

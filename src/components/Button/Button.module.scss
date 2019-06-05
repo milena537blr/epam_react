@@ -2,9 +2,10 @@
 
 .button {
   cursor: pointer;
-  padding: rem(5) rem(10);
+  padding: rem(10) rem(10);
   border-radius: rem(2); 
-  font-size: rem(18);
+  font-size: rem(16);
+  text-transform: uppercase;
 
   &.white {
     background-color: $color--white;

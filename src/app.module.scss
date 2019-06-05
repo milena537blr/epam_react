@@ -1,17 +1,17 @@
-@import "../../styles/core.scss";
+@import "styles/core.scss";
 
 .block-link {
   display: block;
 }
 
-.logo{
+.logo {
   color: $color--red;
   font-weight: bold;
 }
 
 .header {
   padding: rem(20) rem(40);
-  background-image: url("../../images/header-bg.jpg");
+  background-image: url("./images/header-bg.jpg");
   min-height: 400px;
   position: relative;
 
@@ -31,9 +31,7 @@
 }
 
 .container {
-  max-width: rem(1200);
-  margin: 0 auto;
-  position: relative;
+  @include container;
 }
 
 .searchTitle {
@@ -49,10 +47,31 @@
   padding: rem(10) rem(20);
   border: 0;
   width: 100%;
+  border-bottom: 2px solid $color--red;
 }
 
 .searchLabel {
   color: $color--white;
   text-transform: uppercase;
   margin-right: rem(10);
+}
+
+.panel {
+  background-color: lighten($color--gray, 40%);
+  padding: rem(10);
+}
+
+.main {
+  background-color: $color--white;
+}
+
+.wrapper {
+  padding: rem(40) rem(20);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.footer {
+  background-color: darken($color--gray, 35%);
+  padding: rem(20) 0;
 }
