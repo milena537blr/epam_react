@@ -6,86 +6,28 @@ import { Button } from "./components/Button/Button";
 import { Card } from "./components/Card/Card";
 import { Sorter } from "./components/Sorter/Sorter";
 import { Logo } from "./components/Logo/Logo";
-import classNames from "classnames";
-import cardImage from "./images/card.jpg";
+// import { Article } from "./components/Article/Article";
+import Search from "./components/Search/Search";
+import data from "./data/data.json";
 
-let searchTitleClass = classNames(s.searchTitle, s.header__searchTitle);
-const cards = [
-  {
-    date: 2007,
-    name: "Vampire diaries",
-    genre: "Dramas",
-    image: cardImage
-  },
-  {
-    date: 2011,
-    name: "Vampire diaries 2",
-    genre: "American drama series",
-    image: cardImage
-  },
-  {
-    date: 2008,
-    name: "Twilight",
-    genre: "Drama/Fantasy",
-    image: cardImage
-  },
-  {
-    date: 2007,
-    name: "Vampire diaries",
-    genre: "Dramas",
-    image: cardImage
-  },
-  {
-    date: 2011,
-    name: "Vampire diaries 2",
-    genre: "American drama series",
-    image: cardImage
-  },
-  {
-    date: 2008,
-    name: "Twilight",
-    genre: "Drama/Fantasy",
-    image: cardImage
-  }
-];
+const cards = data.cards;
 
 class App extends React.Component {
   render() {
-    let listCards = cards.map((card, index) => 
+    let listCards = cards.map((card, index) => (
       <Card key={index} card={card} />
-    );
+    ));
     return (
       <React.Fragment>
         <header className={s.header}>
           <div className={s.overlay} />
           <section className={s.container}>
-            <Box align="space-between" verticalAlign="middle">
+            <Box align="space-between" verticalAlign="middle" marginBottom={8}>
               <Logo />
               <Button text="SEARCH" size="large" color="white" />
             </Box>
-            <div className={s.search}>
-              <div className={searchTitleClass}>Find your movie</div>
-              <Box marginBottom={4}>
-                <input
-                  className={s.searchInput}
-                  type="text"
-                  placeholder="Quentin Tarantino"
-                  name="search"
-                />
-              </Box>
-              <Box align="space-between" verticalAlign="middle">
-                <Box align="space-between" verticalAlign="middle">
-                  <div className={s.searchLabel}>search by</div>
-                  <Box marginRight={2}>
-                    <Button text="title" size="medium" color="red" />
-                  </Box>
-                  <Box marginRight={2}>
-                    <Button text="genre" size="medium" color="gray" />
-                  </Box>
-                </Box>
-                <Button text="SEARCH" size="large" color="red" />
-              </Box>
-            </div>
+            {/* <Article card={cards[0]} /> */}
+            <Search />
           </section>
         </header>
         <section className={s.panel}>

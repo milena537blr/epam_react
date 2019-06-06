@@ -1,0 +1,41 @@
+@import "../../styles/core.scss";
+
+.image {
+  color: red;
+}
+
+.article {
+  color: lighten($color--gray, 20%);
+  padding: rem(20);
+
+  .image {
+    width: rem(300);
+    margin-right: rem(60);
+  }
+
+  .name {
+    color: $color--red;
+    font-size: rem(32);
+    margin-bottom: rem(15);
+    font-weight: bold;
+  }
+  
+  .description {
+    font-size: rem(18);
+    margin-bottom: rem(10);
+  }
+
+  .info {
+    margin-bottom: rem(20);
+    color: $color--white;
+  }
+
+  .date {
+    font-weight: bold;
+    margin-right: rem(10);
+  }
+  
+  .time {
+    font-weight: bold;
+  }
+}

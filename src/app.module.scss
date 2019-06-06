@@ -34,28 +34,6 @@
   @include container;
 }
 
-.searchTitle {
-  color: $color--white;
-  text-transform: uppercase;
-}
-
-.searchInput {
-  color: $color--white;
-  background-color: $color--black;
-  font-size: rem(18);
-  height: rem(60);
-  padding: rem(10) rem(20);
-  border: 0;
-  width: 100%;
-  border-bottom: 2px solid $color--red;
-}
-
-.searchLabel {
-  color: $color--white;
-  text-transform: uppercase;
-  margin-right: rem(10);
-}
-
 .panel {
   background-color: lighten($color--gray, 40%);
   padding: rem(10);
@@ -75,3 +53,4 @@
   background-color: darken($color--gray, 35%);
   padding: rem(20) 0;
 }
+

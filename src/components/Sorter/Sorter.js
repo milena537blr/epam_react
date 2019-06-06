@@ -1,6 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
-import s from "./Sorter.module.scss";
+// import PropTypes from "prop-types";
+// import s from "./Sorter.module.scss";
 
 class Sorter extends React.Component {
   render() {
