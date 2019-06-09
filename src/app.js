@@ -9,7 +9,7 @@ import { Logo } from "./components/Logo/Logo";
 // import { Article } from "./components/Article/Article";
 import Search from "./components/Search/Search";
 import data from "./data/data.json";
-
+import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 const cards = data.cards;
 
 class App extends React.Component {
@@ -19,39 +19,45 @@ class App extends React.Component {
     ));
     return (
       <React.Fragment>
-        <header className={s.header}>
-          <div className={s.overlay} />
-          <section className={s.container}>
-            <Box align="space-between" verticalAlign="middle" marginBottom={8}>
-              <Logo />
-              <Button text="SEARCH" size="large" color="white" />
+        <ErrorBoundary>
+          <header className={s.header}>
+            <div className={s.overlay} />
+            <section className={s.container}>
+              <Box
+                align="space-between"
+                verticalAlign="middle"
+                marginBottom={8}
+              >
+                <Logo />
+                <Button text="SEARCH" size="large" color="white" />
+              </Box>
+              {/* <Article card={cards[0]} /> */}
+              <Search />
+            </section>
+          </header>
+          <section className={s.panel}>
+            <Box
+              align="space-between"
+              verticalAlign="middle"
+              className={s.container}
+            >
+              <div>7 movies found</div>
+              <Sorter />
             </Box>
-            {/* <Article card={cards[0]} /> */}
-            <Search />
           </section>
-        </header>
-        <section className={s.panel}>
-          <Box
-            align="space-between"
-            verticalAlign="middle"
-            className={s.container}
-          >
-            <div>7 movies found</div>
-            <Sorter />
-          </Box>
-        </section>
-        <main className={s.main}>
-          <div className={s.container}>
-            <Box className={s.wrapper} align="center">
-              {listCards}
-            </Box>
-          </div>
-        </main>
-        <footer className={s.footer}>
-          <div className={s.container}>
-            <Logo />
-          </div>
-        </footer>
+          <main className={s.main}>
+            <div className={s.container}>
+              <Box className={s.wrapper} align="center">
+                {listCards}
+              </Box>
+            </div>
+          </main>
+          <footer className={s.footer}>
+            <div className={s.container}>
+              <Logo />
+            </div>
+          </footer>
+        </ErrorBoundary>
       </React.Fragment>
     );
   }
