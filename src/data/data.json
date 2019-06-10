@@ -32,14 +32,14 @@
       "date": 2011,
       "name": "Vampire diaries 2",
       "genre": "American drama series",
-      "description": "American drama",
+      "description": "American drama series",
       "time": 110
     },
     {
       "date": 2008,
       "name": "Twilight",
       "genre": "Drama/Fantasy",
-      "description": "American drama",
+      "description": "TV show",
       "time": 165
     }
   ]
