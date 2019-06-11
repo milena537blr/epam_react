@@ -27,4 +27,4 @@ Card.propTypes = {
   image: PropTypes.string,
 };
 
-export { Card };
+export default Card;

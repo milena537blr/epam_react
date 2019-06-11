@@ -17,4 +17,4 @@ class Logo extends Component {
 Logo.propTypes = {
 }
 
-export { Logo };
+export default Logo;

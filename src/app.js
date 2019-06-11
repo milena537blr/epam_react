@@ -1,21 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
-import s from "./app.module.scss";
-import Box from "./components/Box/Box";
-import { Button } from "./components/Button/Button";
-import { Card } from "./components/Card/Card";
-import { Sorter } from "./components/Sorter/Sorter";
-import { Logo } from "./components/Logo/Logo";
+import Card from "./components/Card/Card";
 // import { Article } from "./components/Article/Article";
 import Search from "./components/Search/Search";
 import data from "./data/data.json";
 import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
+import TopBar from "./components/TopBar/TopBar";
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import Panel from './components/Panel/Panel';
+import Main from './components/Main/Main';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cards: data.cards,
+      data: data,
       listCards: []
     };
   }
@@ -25,53 +25,34 @@ class App extends React.Component {
   }
 
   makeListCards() {
+    let cards = [];
+    this.state.data.cards.forEach(item => {
+      let card = {
+        name: item.name,
+        date: item.date,
+        genre: item.genre
+      };
+      cards.push(card);
+    });
+
     this.setState({
-      listCards: this.state.cards.map((card, index) => (
-        <Card key={index} card={card} />
-      ))
+      listCards: cards.map((card, index) => <Card key={index} card={card} />)
     });
   }
 
   render() {
     return (
       <ErrorBoundary>
-        <header className={s.header}>
-          <div className={s.overlay} />
-          <section className={s.container}>
-            <Box
-              align="space-between"
-              verticalAlign="middle"
-              marginBottom={8}
-            >
-              <Logo />
-              <Button text="SEARCH" size="large" color="white" />
-            </Box>
-            {/* <Article card={cards[0]} /> */}
-            <Search />
-          </section>
-        </header>
-        <section className={s.panel}>
-          <Box
-            align="space-between"
-            verticalAlign="middle"
-            className={s.container}
-          >
-            <div>7 movies found</div>
-            <Sorter />
-          </Box>
-        </section>
-        <main className={s.main}>
-          <div className={s.container}>
-            <Box className={s.wrapper} align="center">
-              {this.state.listCards}
-            </Box>
-          </div>
-        </main>
-        <footer className={s.footer}>
-          <div className={s.container}>
-            <Logo />
-          </div>
-        </footer>
+        <Header>
+          <TopBar />
+          {/* <Article card={this.state.data.cards[0]} /> */}
+          <Search />
+        </Header>
+        <Panel />
+        <Main>
+          {this.state.listCards}
+        </Main>
+        <Footer />
       </ErrorBoundary>
     );
   }

@@ -1,17 +1,17 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
 // import PropTypes from 'prop-types';
-import s from './Search.module.scss';
+import s from "./Search.module.scss";
 import classNames from "classnames";
 import Box from "../Box/Box";
-import { Button } from "../Button/Button";
+import Button from "../Button/Button";
 
 let searchTitleClass = classNames(s.searchTitle, s.header__searchTitle);
 
 class Search extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
   }
-  render(){
+  render() {
     return (
       <div className={s.search}>
         <div className={searchTitleClass}>Find your movie</div>
@@ -36,7 +36,7 @@ class Search extends Component {
           <Button text="SEARCH" size="large" color="red" />
         </Box>
       </div>
-    )
+    );
   }
 }
 

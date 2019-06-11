@@ -18,4 +18,4 @@ class Sorter extends React.Component {
   card: PropTypes.object,
 }; */
 
-export { Sorter };
+export default Sorter;

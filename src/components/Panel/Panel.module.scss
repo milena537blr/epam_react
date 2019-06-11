@@ -1,0 +1,10 @@
+@import "../../styles/core.scss";
+
+.panel {
+  background-color: lighten($color--gray, 40%);
+  padding: rem(10);
+}
+
+.container {
+  @include container;
+}
