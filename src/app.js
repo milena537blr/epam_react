@@ -16,7 +16,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       data: data,
-      listCards: []
+      listCards: [],
+      searchText: '',
     };
   }
 
@@ -46,10 +47,10 @@ class App extends React.Component {
         <Header>
           <TopBar />
           {/* <Article card={this.state.data.cards[0]} /> */}
-          <Search />
+          <Search searchText={this.state.searchText} />
         </Header>
         <Panel />
-        <Main>
+        <Main searchText={this.state.searchText}>
           {this.state.listCards}
         </Main>
         <Footer />

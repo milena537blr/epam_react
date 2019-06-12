@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import "./TopBar.module.scss";
 import Logo from '../Logo/Logo';
 import Button from '../Button/Button';

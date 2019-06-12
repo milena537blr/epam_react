@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import s from "./Panel.module.scss";
 import Box from '../Box/Box';
 import Sorter from '../Sorter/Sorter';

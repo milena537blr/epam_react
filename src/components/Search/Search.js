@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import s from "./Search.module.scss";
 import classNames from "classnames";
 import Box from "../Box/Box";
@@ -12,6 +12,8 @@ class Search extends Component {
     super(props);
   }
   render() {
+    const searchText = this.props.searchText;
+
     return (
       <div className={s.search}>
         <div className={searchTitleClass}>Find your movie</div>
@@ -21,6 +23,7 @@ class Search extends Component {
             type="text"
             placeholder="Quentin Tarantino"
             name="search"
+            value={searchText}
           />
         </Box>
         <Box align="space-between" verticalAlign="middle">
@@ -40,7 +43,8 @@ class Search extends Component {
   }
 }
 
-/* Search.propTypes = {
-} */
+Search.propTypes = {
+  searchText: PropTypes.string,
+}
 
 export default Search;

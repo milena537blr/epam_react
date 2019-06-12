@@ -29,6 +29,7 @@
   "dependencies": {
     "babel-jest": "^24.8.0",
     "classnames": "^2.2.6",
+    "cli-react": "^2.1.0",
     "express": "^4.17.0",
     "jest": "^24.8.0",
     "node-sass": "^4.12.0",
