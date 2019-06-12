@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Card from "./components/Card/Card";
 // import { Article } from "./components/Article/Article";
 import Search from "./components/Search/Search";
 import data from "./data/data.json";
@@ -18,6 +17,7 @@ class App extends React.Component {
       data: data,
       listCards: [],
       searchText: '',
+      cards: []
     };
   }
 
@@ -37,10 +37,11 @@ class App extends React.Component {
     });
 
     this.setState({
-      listCards: cards.map((card, index) => <Card key={index} card={card} />)
+      cards: cards,
     });
-  }
 
+  }
+  
   render() {
     return (
       <ErrorBoundary>
@@ -50,9 +51,7 @@ class App extends React.Component {
           <Search searchText={this.state.searchText} />
         </Header>
         <Panel />
-        <Main searchText={this.state.searchText}>
-          {this.state.listCards}
-        </Main>
+        <Main searchText={this.state.searchText} cards={this.state.cards} />
         <Footer />
       </ErrorBoundary>
     );
