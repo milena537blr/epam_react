@@ -20,29 +20,35 @@ class Search extends Component {
   render() {
     return (
       <div className={s.search}>
-        <div className={searchTitleClass}>Find your movie</div>
-        <Box marginBottom={4}>
-          <input
-            className={s.searchInput}
-            type="text"
-            placeholder="Quentin Tarantino"
-            name="search"
-            value={this.props.searchText}
-            onChange={this.handleSearchTextChange}
-          />
-        </Box>
-        <Box align="space-between" verticalAlign="middle">
-          <Box align="space-between" verticalAlign="middle">
-            <div className={s.searchLabel}>search by</div>
-            <Box marginRight={2}>
-              <Button text="title" size="medium" color="red" />
+        <form>
+          <fieldset>
+            <legend className={searchTitleClass}>Find your movie</legend>
+            <Box marginBottom={4}>
+              <input
+                className={s.searchInput}
+                type="text"
+                placeholder="Quentin Tarantino"
+                name="search"
+                value={this.props.searchText}
+                onChange={this.handleSearchTextChange}
+                aria-label="Search"
+                aria-labelledby="searchButton"
+              />
             </Box>
-            <Box marginRight={2}>
-              <Button text="genre" size="medium" color="gray" />
+            <Box align="space-between" verticalAlign="middle">
+              <Box align="space-between" verticalAlign="middle">
+                <div className={s.searchLabel}>search by</div>
+                <Box marginRight={2}>
+                  <Button text="title" size="medium" color="red" />
+                </Box>
+                <Box marginRight={2}>
+                  <Button text="genre" size="medium" color="gray" />
+                </Box>
+              </Box>
+              <Button id="searchButton" text="SEARCH" size="large" color="red" />
             </Box>
-          </Box>
-          <Button text="SEARCH" size="large" color="red" />
-        </Box>
+          </fieldset>
+        </form>
       </div>
     );
   }

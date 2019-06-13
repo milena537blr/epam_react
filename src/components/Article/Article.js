@@ -11,11 +11,11 @@ class Article extends Component {
   render() {
     return (
       <Box className={s.article}>
-        <div>
+        <figure>
           <img className={s.image} src={imageCard} />
-        </div>
-        <div>
-          <div className={s.name}>{this.props.card.name}</div>
+        </figure>
+        <article>
+          <div role="heading" className={s.name}>{this.props.card.name}</div>
           <div className={s.description}>{this.props.card.description}</div>
           <div className={s.info}>
             <span className={s.date}>{this.props.card.date}</span>
@@ -26,8 +26,8 @@ class Article extends Component {
             television series developed by Kevin Williamson and Julie Plec,
             based on the popular book series of the same name written by L. J.
             Smith.
-          </div>
-        </div>
+            </div>
+        </article>
       </Box>
     );
   }
