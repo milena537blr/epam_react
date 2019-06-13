@@ -19,10 +19,18 @@ class App extends React.Component {
       searchText: '',
       cards: []
     };
+
+    this.handleSearchTextChange = this.handleSearchTextChange.bind(this);
   }
 
   componentDidMount() {
     this.makeListCards();
+  }
+
+  handleSearchTextChange(searchText) {
+    this.setState({
+      searchText: searchText
+    });
   }
 
   makeListCards() {
@@ -48,7 +56,7 @@ class App extends React.Component {
         <Header>
           <TopBar />
           {/* <Article card={this.state.data.cards[0]} /> */}
-          <Search searchText={this.state.searchText} />
+          <Search searchText={this.state.searchText} onSearchTextChange={this.handleSearchTextChange} />
         </Header>
         <Panel />
         <Main searchText={this.state.searchText} cards={this.state.cards} />

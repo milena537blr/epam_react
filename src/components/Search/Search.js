@@ -10,10 +10,14 @@ let searchTitleClass = classNames(s.searchTitle, s.header__searchTitle);
 class Search extends Component {
   constructor(props) {
     super(props);
+    this.handleSearchTextChange = this.handleSearchTextChange.bind(this);
   }
-  render() {
-    const searchText = this.props.searchText;
 
+  handleSearchTextChange(e) {
+    this.props.onSearchTextChange(e.target.value);
+  }
+
+  render() {
     return (
       <div className={s.search}>
         <div className={searchTitleClass}>Find your movie</div>
@@ -23,7 +27,8 @@ class Search extends Component {
             type="text"
             placeholder="Quentin Tarantino"
             name="search"
-            value={searchText}
+            value={this.props.searchText}
+            onChange={this.handleSearchTextChange}
           />
         </Box>
         <Box align="space-between" verticalAlign="middle">
@@ -45,6 +50,7 @@ class Search extends Component {
 
 Search.propTypes = {
   searchText: PropTypes.string,
+  onSearchTextChange: PropTypes.func
 }
 
 export default Search;
