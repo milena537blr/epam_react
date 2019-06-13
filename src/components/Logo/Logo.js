@@ -8,7 +8,7 @@ class Logo extends Component {
   }
   render(){
     return (
-      <a className={s.logo} href="#">
+      <a className={s.logo} href="/">
         netflixroulette
       </a>
     )

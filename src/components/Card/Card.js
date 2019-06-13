@@ -8,7 +8,7 @@ class Card extends React.Component {
   render() {
     return (
       <figure className={s.card}>
-        <img className={s.image} src={imageCard} alt="" />
+        <img className={s.image} src={imageCard} alt={this.props.card.name} />
         <figcaption>
           <Box align="space-between" verticalAlign="middle">
             <div className={s.name}>{this.props.card.name}</div>

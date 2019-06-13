@@ -12,7 +12,7 @@ class Article extends Component {
     return (
       <Box className={s.article}>
         <figure>
-          <img className={s.image} src={imageCard} />
+          <img className={s.image} src={imageCard} alt={this.props.card.name}/>
         </figure>
         <article>
           <div role="heading" className={s.name}>{this.props.card.name}</div>
