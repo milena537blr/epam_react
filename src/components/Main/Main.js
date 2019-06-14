@@ -7,7 +7,18 @@ import Card from '../Card/Card';
 class Main extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      filterText: '',
+      inStockOnly: false
+    };
+    this.handleCardClick = this.handleCardClick.bind(this);
   }
+
+  handleCardClick(e) {
+    console.log("dsfdsf");
+    this.props.onHandleCardClick(e.target.value);
+  }
+
   render() {
     // const searchText = this.props.searchText;
 
@@ -15,6 +26,7 @@ class Main extends Component {
     this.props.cards.forEach((card, index) => {
       cards.push(
         <Card
+          onClick={this.handleCardClick}
           card={card}
           key={index}
         />
@@ -23,7 +35,7 @@ class Main extends Component {
 
     return (
       <main className={s.main}>
-        <div className={s.container}>
+        <div className={s.container} onClick={this.handleCardClick}>
           <Box className={s.wrapper} align="center" >
            {cards}
           </Box>
