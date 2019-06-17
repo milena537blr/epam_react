@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Article } from "./components/Article/Article";
+import Article from "./components/Article/Article";
 import Search from "./components/Search/Search";
 import data from "./data/data.json";
 import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
@@ -18,10 +18,13 @@ class App extends React.Component {
       listCards: [],
       searchText: '',
       cards: [],
-      isSearchActive: true
+      isSearchActive: true,
+      currentCard: {}
     };
 
     this.handleSearchTextChange = this.handleSearchTextChange.bind(this);
+    this.handleCardClick = this.handleCardClick.bind(this);
+    this.handleSearchClick = this.handleSearchClick.bind(this);
   }
 
   componentDidMount() {
@@ -51,8 +54,14 @@ class App extends React.Component {
 
   }
 
-  handleCardClick() {
-    // console.log(card);
+  handleCardClick(currentCard) {
+    this.setState({
+      isSearchActive: false,
+      currentCard: currentCard
+    });
+  }
+
+  handleSearchClick() {
     this.setState({
       isSearchActive: true
     });
@@ -65,13 +74,13 @@ class App extends React.Component {
     if (isSearchActive) {
       content = <Search searchText={this.state.searchText} onSearchTextChange={this.handleSearchTextChange} />;
     } else {
-      content = <Article card={this.state.data.cards[0]} />;
+      content = <Article card={this.state.currentCard} />;
     }
 
     return (
       <ErrorBoundary>
         <Header>
-          <TopBar />
+          <TopBar onHandleSearchClick={this.handleSearchClick} />
          {content}
         </Header>
         <Panel />

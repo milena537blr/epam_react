@@ -9,14 +9,7 @@ class Main extends Component {
     super(props);
     this.state = {
       filterText: '',
-      inStockOnly: false
     };
-    this.handleCardClick = this.handleCardClick.bind(this);
-  }
-
-  handleCardClick(e) {
-    console.log("dsfdsf");
-    this.props.onHandleCardClick(e.target.value);
   }
 
   render() {
@@ -26,7 +19,7 @@ class Main extends Component {
     this.props.cards.forEach((card, index) => {
       cards.push(
         <Card
-          onClick={this.handleCardClick}
+          cardClick={this.props.onHandleCardClick}
           card={card}
           key={index}
         />
@@ -35,7 +28,7 @@ class Main extends Component {
 
     return (
       <main className={s.main}>
-        <div className={s.container} onClick={this.handleCardClick}>
+        <div className={s.container}>
           <Box className={s.wrapper} align="center" >
            {cards}
           </Box>
@@ -44,9 +37,11 @@ class Main extends Component {
     );
   }
 }
+
 Main.propTypes = {
   cards: PropTypes.array,
-  searchText: PropTypes.string
+  searchText: PropTypes.string,
+  onHandleCardClick: PropTypes.func
 };
 
 export default Main;
