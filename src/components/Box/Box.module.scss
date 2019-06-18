@@ -62,7 +62,8 @@
   }
 }
 
-.horizontal, .vertical {
+.horizontal,
+.vertical {
   &.spaceBetween {
     justify-content: space-between;
   }

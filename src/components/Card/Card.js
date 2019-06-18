@@ -1,24 +1,22 @@
-import React from "react";
-import PropTypes from "prop-types";
-import s from "./Card.module.scss";
-import Box from "../Box/Box";
+import React from 'react';
+import PropTypes from 'prop-types';
+import s from './Card.module.scss';
+import Box from '../Box/Box';
 import imageCard from '../../images/card.jpg';
 
 class Card extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super (props);
     this.state = {
-      currentCardId: this.props.card.id
+      currentCardId: this.props.card.id,
     };
-
-    this.handleCardClick = this.handleCardClick.bind(this);
   }
 
-  handleCardClick() {
-    this.props.cardClick(this.state.currentCardId);
-  }
+  handleCardClick = () => {
+    this.props.cardClick (this.state.currentCardId);
+  };
 
-  render() {
+  render () {
     return (
       <button onClick={this.handleCardClick} onKeyDown={this.props.cardClick}>
         <figure className={s.card}>
@@ -42,7 +40,7 @@ Card.propTypes = {
   name: PropTypes.string,
   genre: PropTypes.string,
   image: PropTypes.string,
-  cardClick: PropTypes.func
+  cardClick: PropTypes.func,
 };
 
 export default Card;

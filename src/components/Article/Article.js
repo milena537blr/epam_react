@@ -1,14 +1,11 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import s from "./Article.module.scss";
-import Box from "../Box/Box";
-import imageCard from "../../images/card.jpg";
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+import s from './Article.module.scss';
+import Box from '../Box/Box';
+import imageCard from '../../images/card.jpg';
 
 class Article extends Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
+  render () {
     return (
       <Box className={s.article}>
         <figure>
@@ -35,7 +32,7 @@ Article.propTypes = {
   date: PropTypes.string,
   name: PropTypes.string,
   genre: PropTypes.string,
-  image: PropTypes.string
+  image: PropTypes.string,
 };
 
 export default Article;

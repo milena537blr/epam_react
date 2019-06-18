@@ -39,13 +39,13 @@ const spacingValues = {
  *   2. Space-separated values that are represented by a string (for example: "3px 3px")
  * */
 const formatSpacingValue = value =>
-  isFinite(value) ? value * spacingUnit : spacingValues[value] || `${value}`;
+  isFinite (value) ? value * spacingUnit : spacingValues[value] || `${value}`;
 
 const Box = ({
   dataHook,
   children,
   className,
-  style, // eslint-disable-line no-undef 
+  style, // eslint-disable-line no-undef
   inline,
   direction,
   align,
@@ -68,11 +68,11 @@ const Box = ({
   height,
 
   // Excluded props (which are handled above and should not be spread into `style`)
-  'data-hook': dataHookByKebabCase, // eslint-disable-line no-undef 
+  'data-hook': dataHookByKebabCase, // eslint-disable-line no-undef
 
   ...nativeStyles
 }) => {
-  const rootClassNames = classNames(styles.root, className, {
+  const rootClassNames = classNames (styles.root, className, {
     [styles.inline]: inline,
 
     // Alignment
@@ -84,16 +84,16 @@ const Box = ({
     ...style,
 
     // Spacing
-    padding: formatSpacingValue(padding),
-    paddingTop: formatSpacingValue(paddingTop),
-    paddingRight: formatSpacingValue(paddingRight),
-    paddingBottom: formatSpacingValue(paddingBottom),
-    paddingLeft: formatSpacingValue(paddingLeft),
-    margin: formatSpacingValue(margin),
-    marginTop: formatSpacingValue(marginTop),
-    marginRight: formatSpacingValue(marginRight),
-    marginBottom: formatSpacingValue(marginBottom),
-    marginLeft: formatSpacingValue(marginLeft),
+    padding: formatSpacingValue (padding),
+    paddingTop: formatSpacingValue (paddingTop),
+    paddingRight: formatSpacingValue (paddingRight),
+    paddingBottom: formatSpacingValue (paddingBottom),
+    paddingLeft: formatSpacingValue (paddingLeft),
+    margin: formatSpacingValue (margin),
+    marginTop: formatSpacingValue (marginTop),
+    marginRight: formatSpacingValue (marginRight),
+    marginBottom: formatSpacingValue (marginBottom),
+    marginLeft: formatSpacingValue (marginLeft),
 
     // Sizing
     minWidth: `${minWidth}`,
@@ -124,63 +124,63 @@ Box.propTypes = {
   /** Defines if the box behaves as an inline element */
   inline: PropTypes.bool,
   /** Defines how the children are ordered (horizontally or vertically) */
-  direction: PropTypes.oneOf(Object.keys(directions)),
+  direction: PropTypes.oneOf (Object.keys (directions)),
   /** Defines how the children are aligned according to the X axis */
-  align: PropTypes.oneOf(Object.keys(horizontalAlignmentValues)),
+  align: PropTypes.oneOf (Object.keys (horizontalAlignmentValues)),
   /** Defines how the children are aligned according to the Y axis */
-  verticalAlign: PropTypes.oneOf(Object.keys(verticalAlignmentValues)),
+  verticalAlign: PropTypes.oneOf (Object.keys (verticalAlignmentValues)),
   /** Sets padding on all sides.
    * Accepts a numeric value (multiplied by spacing unit), predefined spacing value (tiny, small, etc.)
    * or a string of space-separated values ("3px 3px") */
-  padding: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  padding: PropTypes.oneOfType ([PropTypes.string, PropTypes.number]),
   /** Sets padding on the top.
    * Accepts a numeric value (multiplied by spacing unit), predefined spacing value (tiny, small, etc.)
    * or a string of space-separated values ("3px 3px") */
-  paddingTop: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  paddingTop: PropTypes.oneOfType ([PropTypes.string, PropTypes.number]),
   /** Sets padding on the right.
    * Accepts a numeric value (multiplied by spacing unit), predefined spacing value (tiny, small, etc.)
    * or a string of space-separated values ("3px 3px") */
-  paddingRight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  paddingRight: PropTypes.oneOfType ([PropTypes.string, PropTypes.number]),
   /** Sets padding on the bottom.
    * Accepts a numeric value (multiplied by spacing unit), predefined spacing value (tiny, small, etc.)
    * or a string of space-separated values ("3px 3px") */
-  paddingBottom: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  paddingBottom: PropTypes.oneOfType ([PropTypes.string, PropTypes.number]),
   /** Sets padding on the left.
    * Accepts a numeric value (multiplied by spacing unit), predefined spacing value (tiny, small, etc.)
    * or a string of space-separated values ("3px 3px") */
-  paddingLeft: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  paddingLeft: PropTypes.oneOfType ([PropTypes.string, PropTypes.number]),
   /** Sets margin on all sides.
    * Accepts a numeric value (multiplied by spacing unit), predefined spacing value (tiny, small, etc.)
    * or a string of space-separated values ("3px 3px") */
-  margin: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  margin: PropTypes.oneOfType ([PropTypes.string, PropTypes.number]),
   /** Sets margin on the top.
    * Accepts a numeric value (multiplied by spacing unit), predefined spacing value (tiny, small, etc.)
    * or a string of space-separated values ("3px 3px") */
-  marginTop: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  marginTop: PropTypes.oneOfType ([PropTypes.string, PropTypes.number]),
   /** Sets margin on the right.
    * Accepts a numeric value (multiplied by spacing unit), predefined spacing value (tiny, small, etc.)
    * or a string of space-separated values ("3px 3px") */
-  marginRight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  marginRight: PropTypes.oneOfType ([PropTypes.string, PropTypes.number]),
   /** Sets margin on the bottom.
    * Accepts a numeric value (multiplied by spacing unit), predefined spacing value (tiny, small, etc.)
    * or a string of space-separated values ("3px 3px") */
-  marginBottom: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  marginBottom: PropTypes.oneOfType ([PropTypes.string, PropTypes.number]),
   /** Sets margin on the left.
    * Accepts a numeric value (multiplied by spacing unit), predefined spacing value (tiny, small, etc.)
    * or a string of space-separated values ("3px 3px") */
-  marginLeft: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  marginLeft: PropTypes.oneOfType ([PropTypes.string, PropTypes.number]),
   /** Sets the minimum width of the box (pixels) */
-  minWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  minWidth: PropTypes.oneOfType ([PropTypes.string, PropTypes.number]),
   /** Sets the maximum width of the box (pixels) */
-  maxWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  maxWidth: PropTypes.oneOfType ([PropTypes.string, PropTypes.number]),
   /** Sets the width of the box (pixels) */
-  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  width: PropTypes.oneOfType ([PropTypes.string, PropTypes.number]),
   /** Sets the minimum height of the box (pixels) */
-  minHeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  minHeight: PropTypes.oneOfType ([PropTypes.string, PropTypes.number]),
   /** Sets the maximum height of the box (pixels) */
-  maxHeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  maxHeight: PropTypes.oneOfType ([PropTypes.string, PropTypes.number]),
   /** Sets the height of the box (pixels) */
-  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  height: PropTypes.oneOfType ([PropTypes.string, PropTypes.number]),
   dataHook: PropTypes.string,
 };
 

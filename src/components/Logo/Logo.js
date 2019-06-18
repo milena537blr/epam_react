@@ -1,20 +1,19 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 // import PropTypes from 'prop-types';
-import s from "./Logo.module.scss";
+import s from './Logo.module.scss';
 
 class Logo extends Component {
-  constructor(props){
-    super(props);
+  constructor (props) {
+    super (props);
   }
-  render(){
+  render () {
     return (
       <a className={s.logo} href="/">
         netflixroulette
       </a>
-    )
+    );
   }
 }
-Logo.propTypes = {
-}
+Logo.propTypes = {};
 
 export default Logo;

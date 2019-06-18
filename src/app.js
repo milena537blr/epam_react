@@ -1,103 +1,88 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Article from "./components/Article/Article";
-import Search from "./components/Search/Search";
-import data from "./data/data.json";
-import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
-import TopBar from "./components/TopBar/TopBar";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Article from './components/Article/Article';
+import Search from './components/Search/Search';
+import data from './data/data.json';
+import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
+import TopBar from './components/TopBar/TopBar';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Panel from './components/Panel/Panel';
 import Main from './components/Main/Main';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: data,
-      listCards: [],
-      searchText: '',
-      cards: [],
-      isSearchActive: true,
-      currentCard: {}
-    };
+  constructor (props) {
+    super (props);
 
-    this.handleSearchTextChange = this.handleSearchTextChange.bind(this);
-    this.handleCardClick = this.handleCardClick.bind(this);
-    this.handleSearchClick = this.handleSearchClick.bind(this);
-  }
-
-  componentDidMount() {
-    this.makeListCards();
-  }
-
-  handleSearchTextChange(searchText) {
-    this.setState({
-      searchText: searchText
-    });
-  }
-
-  makeListCards() {
-    let cards = [];
-    this.state.data.cards.forEach(item => {
-      let card = {
+    let cards = data.cards.map (item => {
+      return {
         name: item.name,
         date: item.date,
         genre: item.genre,
-        id: item.id
+        id: item.id,
       };
-      cards.push(card);
     });
 
-    this.setState({
-      cards: cards,
-    });
+    this.state = {
+      data,
+      listCards: [],
+      searchText: '',
+      cards,
+      isSearchActive: true,
+      currentCard: {},
+    };
   }
 
-  handleCardClick(currentCardId) {
-    this.setState({
+  handleSearchTextChange = searchText => {
+    this.setState ({searchText});
+  };
+
+  handleCardClick = currentCardId => {
+    this.setState ({
       isSearchActive: false,
-      currentCardId: currentCardId
+      currentCardId,
     });
 
-    this.setCurrentCard();
-  }
+    this.setCurrentCard ();
+  };
 
-  handleSearchClick() {
-    this.setState({
-      isSearchActive: true
+  handleSearchClick = () => {
+    this.setState ({
+      isSearchActive: true,
     });
-  }
+  };
 
-  setCurrentCard() {
-    this.state.data.cards.forEach((item)=>{
+  setCurrentCard () {
+    this.state.data.cards.forEach (item => {
       if (item.id === this.state.currentCardId) {
-        this.setState({
-          currentCard: item
+        this.setState ({
+          currentCard: item,
         });
         return;
       }
     });
   }
 
-  render() {
+  render () {
     const isSearchActive = this.state.isSearchActive;
-    let content;
-
-    if (isSearchActive) {
-      content = <Search searchText={this.state.searchText} onSearchTextChange={this.handleSearchTextChange} />;
-    } else {
-      content = <Article card={this.state.currentCard} />;
-    }
 
     return (
       <ErrorBoundary>
         <Header>
           <TopBar onHandleSearchClick={this.handleSearchClick} />
-          {content}
+          {isSearchActive
+            ? <Search
+                searchText={this.state.searchText}
+                onSearchTextChange={this.handleSearchTextChange}
+              />
+            : <Article card={this.state.currentCard} />}
         </Header>
         <Panel />
-        <Main onHandleCardClick={this.handleCardClick} searchText={this.state.searchText} cards={this.state.cards} />
+        <Main
+          onHandleCardClick={this.handleCardClick}
+          searchText={this.state.searchText}
+          cards={this.state.cards}
+        />
         <Footer />
       </ErrorBoundary>
     );
@@ -105,7 +90,7 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  name: PropTypes.string
+  name: PropTypes.string,
 };
 
-export { App };
+export {App};
