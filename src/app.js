@@ -43,7 +43,8 @@ class App extends React.Component {
       let card = {
         name: item.name,
         date: item.date,
-        genre: item.genre
+        genre: item.genre,
+        id: item.id
       };
       cards.push(card);
     });
@@ -51,13 +52,12 @@ class App extends React.Component {
     this.setState({
       cards: cards,
     });
-
   }
 
-  handleCardClick(currentCard) {
+  handleCardClick(currentCardId) {
     this.setState({
       isSearchActive: false,
-      currentCard: currentCard
+      currentCardId: currentCardId
     });
   }
 
@@ -66,22 +66,23 @@ class App extends React.Component {
       isSearchActive: true
     });
   }
-  
+
   render() {
+    console.log(this.state.currentCardId);
     const isSearchActive = this.state.isSearchActive;
     let content;
 
     if (isSearchActive) {
       content = <Search searchText={this.state.searchText} onSearchTextChange={this.handleSearchTextChange} />;
     } else {
-      content = <Article card={this.state.currentCard} />;
+      content = <Article card={this.state.data.cards[this.state.currentCardId]} />;
     }
 
     return (
       <ErrorBoundary>
         <Header>
           <TopBar onHandleSearchClick={this.handleSearchClick} />
-         {content}
+          {content}
         </Header>
         <Panel />
         <Main onHandleCardClick={this.handleCardClick} searchText={this.state.searchText} cards={this.state.cards} />

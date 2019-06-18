@@ -15,9 +15,9 @@ class Article extends Component {
           <img className={s.image} src={imageCard} alt={this.props.card.name} />
         </figure>
         <article>
-          <div role="heading" className={s.name}>
+          <h1 className={s.name}>
             {this.props.card.name}
-          </div>
+          </h1>
           <div className={s.description}>{this.props.card.description}</div>
           <div className={s.info}>
             <span className={s.date}>{this.props.card.date}</span>

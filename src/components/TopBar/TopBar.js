@@ -19,13 +19,12 @@ class TopBar extends React.Component {
     return (
       <Box align="space-between" verticalAlign="middle" marginBottom={8}>
         <Logo />
-        <div onClick={this.handleSearchClick}>
-          <Button text="SEARCH" size="large" color="white" />
-        </div>
+        <Button onHandleSearchClick={this.handleSearchClick} text="SEARCH" size="large" color="white" />
       </Box>
     );
   }
 }
+
 TopBar.propTypes = {
   onHandleSearchClick: PropTypes.func
 };

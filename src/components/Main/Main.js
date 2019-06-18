@@ -13,15 +13,13 @@ class Main extends Component {
   }
 
   render() {
-    // const searchText = this.props.searchText;
-
     const cards = [];
-    this.props.cards.forEach((card, index) => {
+    this.props.cards.forEach((card) => {
       cards.push(
         <Card
           cardClick={this.props.onHandleCardClick}
           card={card}
-          key={index}
+          key={card.id}
         />
       );
     });
@@ -29,7 +27,7 @@ class Main extends Component {
     return (
       <main className={s.main}>
         <div className={s.container}>
-          <Box className={s.wrapper} align="center" >
+          <Box className={s.wrapper} align="center">
            {cards}
           </Box>
         </div>

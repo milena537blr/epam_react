@@ -11,7 +11,7 @@ class Button extends React.Component {
       this.props.color ? s[this.props.color] : null
     );
     return (
-      <button type="submit" className={buttonClassNames}>
+      <button type="submit" className={buttonClassNames} onClick={this.props.onHandleSearchClick} onKeyDown={this.handleSearchClick}>
         {this.props.text}
       </button>
     );
@@ -21,7 +21,8 @@ class Button extends React.Component {
 Button.propTypes = {
   text: PropTypes.string,
   size: PropTypes.string,
-  color: PropTypes.string
+  color: PropTypes.string,
+  onHandleSearchClick: PropTypes.func
 };
 
 export default Button;

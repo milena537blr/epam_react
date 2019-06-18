@@ -8,14 +8,14 @@ class Card extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentCard: this.props.card
+      currentCardId: this.props.card.id
     };
 
     this.handleCardClick = this.handleCardClick.bind(this);
   }
 
   handleCardClick() {
-    this.props.cardClick(this.state.currentCard);
+    this.props.cardClick(this.state.currentCardId);
   }
 
   render() {
