@@ -59,6 +59,8 @@ class App extends React.Component {
       isSearchActive: false,
       currentCardId: currentCardId
     });
+
+    this.setCurrentCard();
   }
 
   handleSearchClick() {
@@ -67,15 +69,25 @@ class App extends React.Component {
     });
   }
 
+  setCurrentCard() {
+    this.state.data.cards.forEach((item)=>{
+      if (item.id === this.state.currentCardId) {
+        this.setState({
+          currentCard: item
+        });
+        return;
+      }
+    });
+  }
+
   render() {
-    console.log(this.state.currentCardId);
     const isSearchActive = this.state.isSearchActive;
     let content;
 
     if (isSearchActive) {
       content = <Search searchText={this.state.searchText} onSearchTextChange={this.handleSearchTextChange} />;
     } else {
-      content = <Article card={this.state.data.cards[this.state.currentCardId]} />;
+      content = <Article card={this.state.currentCard} />;
     }
 
     return (
