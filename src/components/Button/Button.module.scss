@@ -1,0 +1,47 @@
+@import "../../styles/core.scss";
+
+.button {
+  cursor: pointer;
+  padding: rem(10) rem(10);
+  border-radius: rem(2);
+  font-size: rem(16);
+  text-transform: uppercase;
+  text-align: center;
+
+  &.white {
+    background-color: $color--white;
+    color: $color--red;
+
+    &:hover {
+      background-color: darken($color--white, 10%);
+    }
+  }
+
+  &.gray {
+    background-color: $color--gray;
+    color: $color--white;
+
+    &:hover {
+      background-color: lighten($color--gray, 10%);
+    }
+  }
+
+  &.red {
+    background-color: $color--red;
+    color: $color--white;
+
+    &:hover {
+      background-color: lighten($color--red, 10%);
+    }
+  }
+
+  &.medium {
+    padding: rem(5) rem(20);
+    min-width: 100px;
+  }
+
+  &.large {
+    padding: rem(10) rem(30);
+    min-width: 150px;
+  }
+}

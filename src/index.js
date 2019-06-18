@@ -1,15 +1,6 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { App, Component3 } from "./app.js";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {App} from './app.js';
+import './styles/global.scss';
 
-ReactDOM.render(
-  <App />,
-  window.document.getElementById('root1')
-)
-
-ReactDOM.render(
-  React.createElement(Component3, { name: 'React.createElement' }, null),
-  window.document.getElementById('root2')
-);
-
-// eslint-disable-line no-undef 
+ReactDOM.render (<App />, window.document.getElementById ('root'));

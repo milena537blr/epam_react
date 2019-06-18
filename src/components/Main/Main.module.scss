@@ -1,0 +1,15 @@
+@import "../../styles/core.scss";
+
+.main {
+  background-color: $color--white;
+}
+
+.container {
+  @include container;
+}
+
+.wrapper {
+  padding: rem(40) rem(20);
+  display: flex;
+  flex-wrap: wrap;
+}

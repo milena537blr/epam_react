@@ -1,0 +1,10 @@
+@import "../../styles/core.scss";
+
+.footer {
+  background-color: darken($color--gray, 35%);
+  padding: rem(20) 0;
+}
+
+.container {
+  @include container;
+}

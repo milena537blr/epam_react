@@ -1,0 +1,31 @@
+@import "../../styles/core.scss";
+
+.card {
+  width: 300px;
+  margin: rem(10);
+  cursor: pointer;
+
+  .image {
+    width: 300px;
+    height: auto;
+    margin-bottom: rem(10);
+  }
+
+  .name {
+    @include ellipsis;
+
+    text-transform: uppercase;
+  }
+
+  .genre {
+    font-size: rem(14);
+    color: $color--gray;
+  }
+
+  .date {
+    border: 1px solid $color--gray;
+    padding: rem(3) rem(5);
+    border-radius: rem(3);
+    font-size: rem(13);
+  }
+}

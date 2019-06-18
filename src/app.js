@@ -1,51 +1,96 @@
-import React from "react";
-import "./app.css";
+import React from 'react';
 import PropTypes from 'prop-types';
+import Article from './components/Article/Article';
+import Search from './components/Search/Search';
+import data from './data/data.json';
+import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
+import TopBar from './components/TopBar/TopBar';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import Panel from './components/Panel/Panel';
+import Main from './components/Main/Main';
 
-function Component1(props) {
-  if (props.name) {
-    return <h1>Hello {props.name}!</h1>;
+class App extends React.Component {
+  constructor (props) {
+    super (props);
+
+    let cards = data.cards.map (item => {
+      return {
+        name: item.name,
+        date: item.date,
+        genre: item.genre,
+        id: item.id,
+      };
+    });
+
+    this.state = {
+      data,
+      listCards: [],
+      searchText: '',
+      cards,
+      isSearchActive: true,
+      currentCard: {},
+    };
+  }
+
+  handleSearchTextChange = searchText => {
+    this.setState ({searchText});
+  };
+
+  handleCardClick = currentCardId => {
+    this.setState ({
+      isSearchActive: false,
+      currentCardId,
+    });
+
+    this.setCurrentCard ();
+  };
+
+  handleSearchClick = () => {
+    this.setState ({
+      isSearchActive: true,
+    });
+  };
+
+  setCurrentCard () {
+    this.state.data.cards.forEach (item => {
+      if (item.id === this.state.currentCardId) {
+        this.setState ({
+          currentCard: item,
+        });
+        return;
+      }
+    });
+  }
+
+  render () {
+    const isSearchActive = this.state.isSearchActive;
+
+    return (
+      <ErrorBoundary>
+        <Header>
+          <TopBar onHandleSearchClick={this.handleSearchClick} />
+          {isSearchActive
+            ? <Search
+                searchText={this.state.searchText}
+                onSearchTextChange={this.handleSearchTextChange}
+              />
+            : <Article card={this.state.currentCard} />}
+        </Header>
+        <Panel />
+        <Main
+          onHandleCardClick={this.handleCardClick}
+          searchText={this.state.searchText}
+          cards={this.state.cards}
+        />
+        <Footer />
+      </ErrorBoundary>
+    );
   }
 }
 
-class Component2 extends React.Component {
-  render() {
-    return <h1>Hello {this.props.name}!</h1>;
-  }
-}
+App.propTypes = {
+  name: PropTypes.string,
+};
 
-Component2.propTypes = {
-  name: PropTypes.string
-}
-
-class Component3 extends React.Component {
-  render() {
-    return React.createElement('h1', null, `Hello ${this.props.name}!`);
-  }
-}
-
-Component3.propTypes = {
-  name: PropTypes.string
-}
-
-class Component4 extends React.PureComponent {
-  render() {
-    return <h1>Hello {this.props.name}!</h1>;
-  }
-}
-
-Component4.propTypes = {
-  name: PropTypes.string
-}
-
-function App() {
-  return (
-    <div>
-      <Component1 name="functional component" />
-      <Component2 name="React.Component" />
-      <Component4 name="PureComponent" />
-    </div>
-  );
-}
-
-export { App, Component3 };
+export {App};
