@@ -40,10 +40,14 @@ class App extends React.Component {
   handleCardClick = currentCardId => {
     this.setState ({
       isSearchActive: false,
-      currentCardId,
     });
 
-    this.setCurrentCard ();
+    this.state.data.cards.forEach (currentCard => {
+      if (currentCard.id === currentCardId) {
+        this.setState ({currentCard});
+        return;
+      }
+    });
   };
 
   handleSearchClick = () => {
@@ -51,17 +55,6 @@ class App extends React.Component {
       isSearchActive: true,
     });
   };
-
-  setCurrentCard () {
-    this.state.data.cards.forEach (item => {
-      if (item.id === this.state.currentCardId) {
-        this.setState ({
-          currentCard: item,
-        });
-        return;
-      }
-    });
-  }
 
   render () {
     const isSearchActive = this.state.isSearchActive;

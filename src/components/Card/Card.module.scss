@@ -3,12 +3,12 @@
 .card {
   width: 300px;
   margin: rem(10);
-  cursor: pointer;
 
   .image {
     width: 300px;
     height: auto;
     margin-bottom: rem(10);
+    cursor: pointer;
   }
 
   .name {

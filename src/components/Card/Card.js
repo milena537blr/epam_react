@@ -18,18 +18,18 @@ class Card extends React.Component {
 
   render () {
     return (
-      <button onClick={this.handleCardClick} onKeyDown={this.props.cardClick}>
-        <figure className={s.card}>
+      <figure className={s.card}>
+        <button onClick={this.handleCardClick} onKeyDown={this.props.cardClick} area-label={this.props.card.name}>
           <img className={s.image} src={imageCard} alt={this.props.card.name} />
-          <figcaption>
-            <Box align="space-between" verticalAlign="middle">
-              <div className={s.name}>{this.props.card.name}</div>
-              <div className={s.date}>{this.props.card.date}</div>
-            </Box>
-            <div className={s.genre}>{this.props.card.genre}</div>
-          </figcaption>
-        </figure>
-      </button>
+        </button>
+        <figcaption>
+          <Box align="space-between" verticalAlign="middle">
+            <div className={s.name}>{this.props.card.name}</div>
+            <div className={s.date}>{this.props.card.date}</div>
+          </Box>
+          <div className={s.genre}>{this.props.card.genre}</div>
+        </figcaption>
+      </figure>
     );
   }
 }
