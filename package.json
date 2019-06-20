@@ -12,7 +12,7 @@
   },
   "jest": {
     "moduleNameMapper": {
-      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js",
+      "\\.(css|scss)$": "identity-obj-proxy",
       "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js"
     }
   },
@@ -27,7 +27,6 @@
   },
   "homepage": "https://github.com/milena537blr/epam_react#readme",
   "dependencies": {
-    "babel-jest": "^24.8.0",
     "classnames": "^2.2.6",
     "cli-react": "^2.1.0",
     "express": "^4.17.0",
@@ -45,6 +44,7 @@
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.2",
     "clean-webpack-plugin": "^2.0.2",
     "css-loader": "^1.0.0",
@@ -55,6 +55,7 @@
     "file-loader": "^3.0.1",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "identity-obj-proxy": "^3.0.0",
     "mini-css-extract-plugin": "^0.7.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "react": "^16.5.2",
