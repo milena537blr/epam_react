@@ -37,9 +37,9 @@ class Card extends React.Component {
 Card.propTypes = {
   card: PropTypes.object,
   date: PropTypes.string,
-  name: PropTypes.string,
-  genre: PropTypes.string,
-  image: PropTypes.string,
+  // name: PropTypes.string,
+  // genre: PropTypes.string,
+  // image: PropTypes.string,
   cardClick: PropTypes.func,
 };
 

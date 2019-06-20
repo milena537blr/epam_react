@@ -1,7 +1,7 @@
-// import handleCardClick from './Card.js';
+import handleCardClick from './Card.js';
 
 describe('handleCardClick', () => {
-  it('should set state', () => {
-    expect(3).toBe(3);
+  it('should be a function', () => {
+    expect(typeof handleCardClick).toBe("function");
   });
 })
