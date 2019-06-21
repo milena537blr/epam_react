@@ -86,4 +86,4 @@ App.propTypes = {
   name: PropTypes.string,
 };
 
-export {App};
+export default App;
