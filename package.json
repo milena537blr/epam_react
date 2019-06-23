@@ -13,13 +13,16 @@
   "jest": {
     "moduleNameMapper": {
       "\\.(css|scss)$": "identity-obj-proxy",
-      "\\.(gif|ttf|eot|svg|jpg)$": "<rootDir>/__mocks__/fileMock.js"
+      "\\.(gif|ttf|eot|svg|jpg)$": "<rootDir>/__mocks__/fileMock.js",
+      "setupTestFrameworkScriptFile": "jest-enzyme",
+      "testEnvironment": "enzyme"
     },
     "transform": {
       ".*": "babel-jest"
     },
     "setupFilesAfterEnv": [
-      "<rootDir>/setupTests.js"
+      "<rootDir>/setupTests.js",
+      "<rootDir>/node_modules/jest-enzyme/lib/index.js"
     ],
     "collectCoverage": true
   },
@@ -65,6 +68,8 @@
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "identity-obj-proxy": "^3.0.0",
+    "jest-environment-enzyme": "^7.0.2",
+    "jest-enzyme": "^7.0.2",
     "mini-css-extract-plugin": "^0.7.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "react": "^16.5.2",
