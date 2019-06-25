@@ -4,7 +4,8 @@ module.exports = {
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:jsx-a11y/recommended',
-    'plugin:jest/recommended'
+    'plugin:jest/recommended',
+    // 'airbnb'
   ],
   parser: 'babel-eslint',
   globals: {

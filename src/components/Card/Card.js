@@ -1,5 +1,6 @@
+// @flow
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import s from "./Card.module.scss";
 import Box from "../Box/Box";
 import imageCard from "../../images/card.jpg";
@@ -38,13 +39,13 @@ class Card extends React.Component {
   }
 }
 
-Card.propTypes = {
-  card: PropTypes.object,
-  date: PropTypes.string,
-  name: PropTypes.string,
-  genre: PropTypes.string,
-  image: PropTypes.string,
-  cardClick: PropTypes.func
-};
+// Card.propTypes = {
+//   card: PropTypes.object,
+//   date: PropTypes.string,
+//   name: PropTypes.string,
+//   genre: PropTypes.string,
+//   image: PropTypes.string,
+//   cardClick: PropTypes.func
+// };
 
 export default Card;

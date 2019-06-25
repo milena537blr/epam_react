@@ -2,6 +2,7 @@ import React from 'react';
 import handleCardClick from './Card.js';
 import { shallow } from 'enzyme';
 import Card from './Card.js';
+import renderer from "react-test-renderer";
 
 let card = {
   "id": 1,
@@ -21,5 +22,15 @@ describe('<Card />', () => {
   it('renders an `.card`', () => {
     const wrapper = shallow(<Card card={card}/>);
     expect(wrapper.find('.card')).toExist();
+  });
+
+  it('The card have a property', () => {
+    expect(card).toHaveProperty('name');
+  });
+
+  it('Card snapshot test', () => {
+    const component = renderer.create(<Card card={card}/>);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
   });
 })

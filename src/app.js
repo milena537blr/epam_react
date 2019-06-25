@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import Article from './components/Article/Article';
 import Search from './components/Search/Search';
 import data from './data/data.json';
@@ -82,8 +82,8 @@ class App extends React.Component {
   }
 }
 
-App.propTypes = {
+/* App.propTypes = {
   name: PropTypes.string,
-};
+}; */
 
 export default App;

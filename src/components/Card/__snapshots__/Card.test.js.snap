@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Card /> Card snapshot test 1`] = `
+<figure
+  className="card"
+>
+  <button
+    area-label="Vampire diaries"
+    onClick={[Function]}
+  >
+    <img
+      alt="Vampire diaries"
+      className="image"
+      src="test-file-stub"
+    />
+  </button>
+  <figcaption>
+    <div
+      className="root horizontal spaceBetween middle"
+      style={
+        Object {
+          "height": "undefined",
+          "margin": "undefined",
+          "marginBottom": "undefined",
+          "marginLeft": "undefined",
+          "marginRight": "undefined",
+          "marginTop": "undefined",
+          "maxHeight": "undefined",
+          "maxWidth": "undefined",
+          "minHeight": "undefined",
+          "minWidth": "undefined",
+          "padding": "undefined",
+          "paddingBottom": "undefined",
+          "paddingLeft": "undefined",
+          "paddingRight": "undefined",
+          "paddingTop": "undefined",
+          "width": "undefined",
+        }
+      }
+    >
+      <div
+        className="name"
+      >
+        Vampire diaries
+      </div>
+      <div
+        className="date"
+      >
+        2007
+      </div>
+    </div>
+    <div
+      className="genre"
+    >
+      Dramas
+    </div>
+  </figcaption>
+</figure>
+`;
