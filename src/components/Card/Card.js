@@ -15,13 +15,13 @@ import imageCard from '../../images/card.jpg';
 class Card extends React.Component {
   constructor (props: any) {
     super (props);
-    this.state = {
+  /*   this.state = {
       currentCardId: this.props.card.id,
-    };
+    }; */
   }
 
   handleCardClick = () => {
-    this.props.cardClick (this.state.currentCardId);
+    this.props.cardClick (this.props.card.id);
   };
 
   render () {

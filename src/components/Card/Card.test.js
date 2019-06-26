@@ -15,7 +15,7 @@ let card = {
 };
 
 describe('<Card />', () => {
-  it('should be a function', () => {
+  it('handleCardClick should be a function', () => {
     expect(typeof handleCardClick).toBe("function");
   });
 
@@ -29,8 +29,17 @@ describe('<Card />', () => {
   });
 
   it('Card snapshot test', () => {
-    const component = renderer.create(<Card card={card}/>);
+    const component = renderer.create(<Card card={card} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('handleCardClick method should be invoked', () => {
+    const onHandleCardClick = jest.fn();
+    const wrapper = shallow(<Card card={card} cardClick={onHandleCardClick}/>);
+    const instance = wrapper.instance();
+    jest.spyOn(instance, 'handleCardClick');
+    wrapper.find('button').simulate('click');
+    expect(instance.handleCardClick).toHaveBeenCalled(); 
   });
 })
