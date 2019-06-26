@@ -1,23 +1,30 @@
 // @flow
-import React from "react";
-// import PropTypes from "prop-types";
-import s from "./Card.module.scss";
-import Box from "../Box/Box";
-import imageCard from "../../images/card.jpg";
+import React from 'react';
+import PropTypes from "prop-types";
+import s from './Card.module.scss';
+import Box from '../Box/Box';
+import imageCard from '../../images/card.jpg';
+
+/* type Props = {
+  id: Number,
+  name: String,
+  date: Number,
+  genre: String,
+}; */
 
 class Card extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor (props: any) {
+    super (props);
     this.state = {
-      currentCardId: this.props.card.id
+      currentCardId: this.props.card.id,
     };
   }
 
   handleCardClick = () => {
-    this.props.cardClick(this.state.currentCardId);
+    this.props.cardClick (this.state.currentCardId);
   };
 
-  render() {
+  render () {
     return (
       <figure className={s.card}>
         <button
@@ -39,13 +46,13 @@ class Card extends React.Component {
   }
 }
 
-// Card.propTypes = {
-//   card: PropTypes.object,
-//   date: PropTypes.string,
-//   name: PropTypes.string,
-//   genre: PropTypes.string,
-//   image: PropTypes.string,
-//   cardClick: PropTypes.func
-// };
+Card.propTypes = {
+  card: PropTypes.object,
+  date: PropTypes.string,
+  name: PropTypes.string,
+  genre: PropTypes.string,
+  image: PropTypes.string,
+  cardClick: PropTypes.func
+};
 
 export default Card;

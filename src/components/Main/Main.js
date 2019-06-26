@@ -1,19 +1,19 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import s from './Main.module.scss';
-import Box from '../Box/Box';
-import Card from '../Card/Card';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import s from "./Main.module.scss";
+import Box from "../Box/Box";
+import Card from "../Card/Card";
 
 class Main extends Component {
-  constructor (props) {
-    super (props);
+  constructor(props) {
+    super(props);
     this.state = {
-      filterText: '',
+      filterText: ""
     };
   }
 
-  render () {
-    const cards = this.props.cards.map (card => {
+  render() {
+    const cards = this.props.cards.map(card => {
       return (
         <Card
           cardClick={this.props.onHandleCardClick}
@@ -38,7 +38,7 @@ class Main extends Component {
 Main.propTypes = {
   cards: PropTypes.array,
   searchText: PropTypes.string,
-  onHandleCardClick: PropTypes.func,
+  onHandleCardClick: PropTypes.func
 };
 
 export default Main;
