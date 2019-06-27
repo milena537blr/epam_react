@@ -1,82 +1,125 @@
-import React from 'react';
+import React from "react";
 // import PropTypes from 'prop-types';
-import Article from './components/Article/Article';
-import Search from './components/Search/Search';
-import data from './data/data.json';
-import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
-import TopBar from './components/TopBar/TopBar';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
-import Panel from './components/Panel/Panel';
-import Main from './components/Main/Main';
+import Article from "./components/Article/Article";
+import Search from "./components/Search/Search";
+import data from "./data/data.json";
+import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
+import s from "./app.module.scss";
+import Logo from "./components/Logo/Logo";
+import Box from "./components/Box/Box";
+import Button from "./components/Button/Button";
+import Card from "./components/Card/Card";
 
 class App extends React.Component {
-  constructor (props) {
-    super (props);
+  constructor(props) {
+    super(props);
 
-    let cards = data.cards.map (item => {
+    let cards = data.cards.map(item => {
       return {
         name: item.name,
         date: item.date,
         genre: item.genre,
-        id: item.id,
+        id: item.id
       };
     });
 
     this.state = {
       data,
       listCards: [],
-      searchText: '',
+      searchText: "",
       cards,
       isSearchActive: true,
       currentCard: {},
+      filterText: ""
     };
   }
 
   handleSearchTextChange = searchText => {
-    this.setState ({searchText});
+    this.setState({ searchText });
   };
 
   handleCardClick = currentCardId => {
-    this.setState ({
-      isSearchActive: false,
+    this.setState({
+      isSearchActive: false
     });
 
-    this.state.data.cards.forEach (currentCard => {
+    this.state.data.cards.forEach(currentCard => {
       if (currentCard.id === currentCardId) {
-        this.setState ({currentCard});
+        this.setState({ currentCard });
         return;
       }
     });
   };
 
   handleSearchClick = () => {
-    this.setState ({
-      isSearchActive: true,
+    this.setState({
+      isSearchActive: true
     });
   };
 
-  render () {
+  render() {
     const isSearchActive = this.state.isSearchActive;
+
+    const cards = this.state.cards.map(card => {
+      return (
+        <Card
+          cardClick={this.handleCardClick}
+          card={card}
+          key={card.id}
+        />
+      );
+    });
 
     return (
       <ErrorBoundary>
-        <Header>
-          <TopBar onHandleSearchClick={this.handleSearchClick} />
-          {isSearchActive
-            ? <Search
+        <header className={s.header}>
+          <div className={s.overlay} />
+          <section className={s.container}>
+            <Box align="space-between" verticalAlign="middle" marginBottom={8}>
+              <Logo />
+              <Button
+                onHandleSearchClick={this.handleSearchClick}
+                text="SEARCH"
+                size="large"
+                color="white"
+              />
+            </Box>
+            {isSearchActive ? (
+              <Search
                 searchText={this.state.searchText}
                 onSearchTextChange={this.handleSearchTextChange}
               />
-            : <Article card={this.state.currentCard} />}
-        </Header>
-        <Panel />
-        <Main
-          onHandleCardClick={this.handleCardClick}
-          searchText={this.state.searchText}
-          cards={this.state.cards}
-        />
-        <Footer />
+            ) : (
+              <Article card={this.state.currentCard} />
+            )}
+          </section>
+        </header>
+        <section className={s.panel}>
+          <Box
+            align="space-between"
+            verticalAlign="middle"
+            className={s.container}
+          >
+            <div>7 movies found</div>
+            <div>
+              <span>Sort by </span>
+              <span>release date </span>
+              <span>rating</span>
+            </div>
+          </Box>
+        </section>
+        <main className={s.main}>
+          <div className={s.container}>
+            <Box className={s.wrapper} align="center">
+              {cards}
+            </Box>
+          </div>
+        </main>
+        <footer className={s.footer}>
+          <div className={s.container}>
+            <Logo />
+          </div>
+        </footer>
       </ErrorBoundary>
     );
   }
