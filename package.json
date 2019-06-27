@@ -19,7 +19,7 @@
       "testEnvironment": "enzyme"
     },
     "transform": {
-      ".*": "babel-jest"
+      "^.+\\.(js)$": "babel-jest"
     },
     "setupFilesAfterEnv": [
       "<rootDir>/setupTests.js",

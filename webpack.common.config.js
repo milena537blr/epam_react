@@ -30,10 +30,6 @@ module.exports = {
         options: { presets: ["@babel/env"] }
       },
       {
-        test: /\.json$/,
-        loader: "json-loader"
-      },
-      {
         test: /\.tsx?$/,
         use: "ts-loader",
         exclude: /node_modules/
