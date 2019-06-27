@@ -1,59 +1,80 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Card /> Card snapshot test 1`] = `
-<figure
-  className="card"
+<Card
+  card={
+    Object {
+      "date": 2007,
+      "description": "American drama",
+      "genre": "Dramas",
+      "id": 1,
+      "name": "Vampire diaries",
+      "text": "The Vampire Diaries is an American supernatural teen drama television series developed by Kevin Williamson and Julie Plec, based on the popular book series of the same name written by L. J. Smith.",
+      "time": 145,
+    }
+  }
 >
-  <button
-    area-label="Vampire diaries"
-    onClick={[Function]}
+  <figure
+    className="card"
   >
-    <img
-      alt="Vampire diaries"
-      className="image"
-      src="test-file-stub"
-    />
-  </button>
-  <figcaption>
-    <div
-      className="root horizontal spaceBetween middle"
-      style={
-        Object {
-          "height": "undefined",
-          "margin": "undefined",
-          "marginBottom": "undefined",
-          "marginLeft": "undefined",
-          "marginRight": "undefined",
-          "marginTop": "undefined",
-          "maxHeight": "undefined",
-          "maxWidth": "undefined",
-          "minHeight": "undefined",
-          "minWidth": "undefined",
-          "padding": "undefined",
-          "paddingBottom": "undefined",
-          "paddingLeft": "undefined",
-          "paddingRight": "undefined",
-          "paddingTop": "undefined",
-          "width": "undefined",
-        }
-      }
+    <button
+      area-label="Vampire diaries"
+      onClick={[Function]}
     >
-      <div
-        className="name"
+      <img
+        alt="Vampire diaries"
+        className="image"
+        src="test-file-stub"
+      />
+    </button>
+    <figcaption>
+      <Box
+        align="space-between"
+        direction="horizontal"
+        inline={false}
+        verticalAlign="middle"
       >
-        Vampire diaries
-      </div>
+        <div
+          className="root horizontal spaceBetween middle"
+          style={
+            Object {
+              "height": "undefined",
+              "margin": "undefined",
+              "marginBottom": "undefined",
+              "marginLeft": "undefined",
+              "marginRight": "undefined",
+              "marginTop": "undefined",
+              "maxHeight": "undefined",
+              "maxWidth": "undefined",
+              "minHeight": "undefined",
+              "minWidth": "undefined",
+              "padding": "undefined",
+              "paddingBottom": "undefined",
+              "paddingLeft": "undefined",
+              "paddingRight": "undefined",
+              "paddingTop": "undefined",
+              "width": "undefined",
+            }
+          }
+        >
+          <div
+            className="name"
+          >
+            Vampire diaries
+          </div>
+          <div
+            className="date"
+          >
+            2007
+          </div>
+        </div>
+      </Box>
       <div
-        className="date"
+        className="genre"
       >
-        2007
+        Dramas
       </div>
-    </div>
-    <div
-      className="genre"
-    >
-      Dramas
-    </div>
-  </figcaption>
-</figure>
+    </figcaption>
+  </figure>
+</Card>
 `;

@@ -6,21 +6,22 @@ import imageCard from '../../images/card.jpg';
 
 class Article extends Component {
   render () {
+    const { name, description, date, time, text } = this.props.card;
     return (
       <Box className={s.article}>
         <figure>
-          <img className={s.image} src={imageCard} alt={this.props.card.name} />
+          <img className={s.image} src={imageCard} alt={name} />
         </figure>
         <article>
           <h1 className={s.name}>
-            {this.props.card.name}
+            {name}
           </h1>
-          <div className={s.description}>{this.props.card.description}</div>
+          <div className={s.description}>{description}</div>
           <div className={s.info}>
-            <span className={s.date}>{this.props.card.date}</span>
-            <span className={s.time}>{this.props.card.time} min</span>
+            <span className={s.date}>{date}</span>
+            <span className={s.time}>{time} min</span>
           </div>
-          <div className={s.text}>{this.props.card.text}</div>
+          <div className={s.text}>{text}</div>
         </article>
       </Box>
     );
@@ -29,10 +30,6 @@ class Article extends Component {
 
 Article.propTypes = {
   card: PropTypes.object,
-  date: PropTypes.string,
-  name: PropTypes.string,
-  genre: PropTypes.string,
-  image: PropTypes.string,
 };
 
 export default Article;

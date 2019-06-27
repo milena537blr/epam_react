@@ -1,8 +1,8 @@
-@import "./styles/core";
+@import "../../styles/core";
 
 .header {
   padding: rem(20) rem(40);
-  background-image: url("./images/header-bg.jpg");
+  background-image: url("../../images/header-bg.jpg");
   min-height: 400px;
   position: relative;
 

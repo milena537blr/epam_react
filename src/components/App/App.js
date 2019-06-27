@@ -1,14 +1,13 @@
 import React from "react";
-// import PropTypes from 'prop-types';
-import Article from "./components/Article/Article";
-import Search from "./components/Search/Search";
-import data from "./data/data.json";
-import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
+import Article from "../Article/Article";
+import Search from "../Search/Search";
+import data from "../../data/data.json";
+import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
 import s from "./app.module.scss";
-import Logo from "./components/Logo/Logo";
-import Box from "./components/Box/Box";
-import Button from "./components/Button/Button";
-import Card from "./components/Card/Card";
+import Logo from "../Logo/Logo";
+import Box from "../Box/Box";
+import Button from "../Button/Button";
+import Card from "../Card/Card";
 
 class App extends React.Component {
   constructor(props) {
@@ -60,16 +59,6 @@ class App extends React.Component {
   render() {
     const isSearchActive = this.state.isSearchActive;
 
-    const cards = this.state.cards.map(card => {
-      return (
-        <Card
-          cardClick={this.handleCardClick}
-          card={card}
-          key={card.id}
-        />
-      );
-    });
-
     return (
       <ErrorBoundary>
         <header className={s.header}>
@@ -111,7 +100,17 @@ class App extends React.Component {
         <main className={s.main}>
           <div className={s.container}>
             <Box className={s.wrapper} align="center">
-              {cards}
+              {
+                this.state.cards.map(card => {
+                  return (
+                    <Card
+                      cardClick={() => this.handleCardClick(card.id)}
+                      card={card}
+                      key={card.id}
+                    />
+                  );
+                })
+              }
             </Box>
           </div>
         </main>
@@ -124,9 +123,5 @@ class App extends React.Component {
     );
   }
 }
-
-/* App.propTypes = {
-  name: PropTypes.string,
-}; */
 
 export default App;

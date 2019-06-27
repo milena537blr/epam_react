@@ -1,9 +1,9 @@
 // @flow
-import React from 'react';
+import React from "react";
 import PropTypes from "prop-types";
-import s from './Card.module.scss';
-import Box from '../Box/Box';
-import imageCard from '../../images/card.jpg';
+import s from "./Card.module.scss";
+import Box from "../Box/Box";
+import imageCard from "../../images/card.jpg";
 
 /* type Props = {
   id: Number,
@@ -13,18 +13,15 @@ import imageCard from '../../images/card.jpg';
 }; */
 
 class Card extends React.Component {
-  constructor (props: any) {
-    super (props);
-  /*   this.state = {
-      currentCardId: this.props.card.id,
-    }; */
+  constructor(props: any) {
+    super(props);
   }
 
   handleCardClick = () => {
-    this.props.cardClick (this.props.card.id);
+    this.props.cardClick();
   };
 
-  render () {
+  render() {
     return (
       <figure className={s.card}>
         <button
