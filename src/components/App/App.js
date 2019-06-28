@@ -1,19 +1,19 @@
 import React from "react";
 import Article from "../Article/Article";
 import Search from "../Search/Search";
-import data from "../../data/data.json";
 import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
 import s from "./app.module.scss";
 import Logo from "../Logo/Logo";
 import Box from "../Box/Box";
 import Button from "../Button/Button";
 import Card from "../Card/Card";
+import PropTypes from "prop-types";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
-    let cards = data.cards.map(item => {
+    let cards = this.props.data.cards.map(item => {
       return {
         name: item.name,
         date: item.date,
@@ -23,7 +23,7 @@ class App extends React.Component {
     });
 
     this.state = {
-      data,
+      data: this.props.data,
       listCards: [],
       searchText: "",
       cards,
@@ -123,5 +123,9 @@ class App extends React.Component {
     );
   }
 }
+
+App.propTypes = {
+  data: PropTypes.object,
+};
 
 export default App;
