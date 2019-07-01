@@ -1,7 +1,8 @@
 import React from "react";
 import { mount } from "enzyme";
 import App from "./App.js";
-import Card from "../Card/Card";
+// import Card from "../Card/Card";
+import { render } from "@testing-library/react";
 
 const card1 = {
   id: 1,
@@ -56,5 +57,13 @@ describe("<App />", () => {
     // expect(wrapper.find('Card')).to.have.length(2);
   });
 
-  
+  test("App generates 2 cards", () => {
+    const {getByText} = render(
+      <App data={data} />,
+    )
+
+    console.log(getByText);
+    // console.log(queryByText);
+    expect(getByText('Vampire diaries')).toBeInTheDocument();
+  });
 });
