@@ -1,7 +1,7 @@
 import React from "react";
 import { mount } from "enzyme";
 import App from "./App.js";
-// import data from "../../data/data";
+import Card from "../Card/Card";
 
 const card1 = {
   id: 1,
@@ -42,10 +42,19 @@ describe("<App />", () => {
     expect(wrapper.state("currentCard").id).toBe(2);
   });
 
-  test("App renders Card with the currentCard", () => {
+  test("handleSearchClick sets the isSearchActive state properly", () => {
     const data = { cards: [card1, card2] };
     const wrapper = mount(<App data={data} />);
-    // console.log(wrapper.find('.wrapper').children);
-    // expect(wrapper.find('.wrapper').children).toBe(hats.contents)
+    wrapper.instance().handleSearchClick();
+    expect(wrapper.state("isSearchActive")).toBe(true);
   });
+
+  test("App renders 2 Cards", () => {
+    const data = { cards: [card1, card2] };
+    const wrapper = mount(<App data={data} />);
+    // console.log(wrapper.find('.wrapper').children());
+    // expect(wrapper.find('Card')).to.have.length(2);
+  });
+
+  
 });
