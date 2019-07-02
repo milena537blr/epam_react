@@ -34,38 +34,23 @@ describe("<App />", () => {
     expect(component).toMatchSnapshot();
   });
 
-  test("handleCardClick sets the currentCard state properly", () => {
-    const data = { cards: [card1, card2] };
+  test("renders all Cards", () => {
     const wrapper = mount(<App data={data} />);
-    wrapper.instance().handleCardClick(1);
-    expect(wrapper.state("currentCard").id).toBe(1);
-    wrapper.instance().handleCardClick(2);
-    expect(wrapper.state("currentCard").id).toBe(2);
+    expect(wrapper.find('Card').length).toBe(2);
   });
 
-  test("handleSearchClick sets the isSearchActive state properly", () => {
-    const data = { cards: [card1, card2] };
-    const wrapper = mount(<App data={data} />);
-    wrapper.instance().handleSearchClick();
-    expect(wrapper.state("isSearchActive")).toBe(true);
-  });
-
-  test("App renders 2 Cards", () => {
-    const data = { cards: [card1, card2] };
-    const wrapper = mount(<App data={data} />);
-    // console.log(wrapper.find('.wrapper').children());
-    // expect(wrapper.find('Card')).to.have.length(2);
-  });
-
-  test("App generates Card", () => {
-    const {getByText, getAllByText} = render(
+  test("generates name, date and genre of Card", () => {
+    const {getByText} = render(
       <App data={data} />,
     )
 
     expect(getByText(data.cards[0].name)).toBeInTheDocument();
-    // expect(getByText(data.cards[0].date)).toBeInTheDocument();
+    expect(getByText(data.cards[0].date.toString())).toBeInTheDocument();
     expect(getByText(data.cards[0].genre)).toBeInTheDocument();
-    expect(getAllByText(data.cards[0].name).length).toBe(2);
-    // fireEvent.click(getByText(footware.title));
+  });
+
+  test("generates images for all Cards", () => {
+    const wrapper = mount(<App data={data} />);
+    expect(wrapper.find('img').length).toBe(2);
   });
 });
