@@ -2,7 +2,7 @@ import React from "react";
 import { mount } from "enzyme";
 import App from "./App.js";
 // import Card from "../Card/Card";
-import { render } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 
 const card1 = {
   id: 1,
@@ -57,13 +57,15 @@ describe("<App />", () => {
     // expect(wrapper.find('Card')).to.have.length(2);
   });
 
-  test("App generates 2 cards", () => {
-    const {getByText} = render(
+  test("App generates Card", () => {
+    const {getByText, getAllByText} = render(
       <App data={data} />,
     )
 
-    console.log(getByText);
-    // console.log(queryByText);
-    expect(getByText('Vampire diaries')).toBeInTheDocument();
+    expect(getByText(data.cards[0].name)).toBeInTheDocument();
+    // expect(getByText(data.cards[0].date)).toBeInTheDocument();
+    expect(getByText(data.cards[0].genre)).toBeInTheDocument();
+    expect(getAllByText(data.cards[0].name).length).toBe(2);
+    // fireEvent.click(getByText(footware.title));
   });
 });
