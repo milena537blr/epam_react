@@ -69,10 +69,10 @@ class App extends React.Component {
               <Button
                 onHandleSearchClick={this.handleSearchClick}
                 text="SEARCH"
-                area-label="Display search area"
+                areaLabel="Display search area"
                 size="large"
                 color="white"
-                data-testid="search-switcher"
+                dataTestId="search-switcher"
               />
             </Box>
             {isSearchActive ? (

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<App /> snapshot test 1`] = `
+exports[`snapshot test 1`] = `
 <App
   data={
     Object {
@@ -20,7 +20,7 @@ exports[`<App /> snapshot test 1`] = `
           "genre": "Drama",
           "id": 2,
           "name": "The Fault in Our Stars",
-          "text": "Hazel Grace Lancaster (Shailene Woodley), a 16-year-old cancer patient, meets and falls in love with Gus Waters (Ansel Elgort), a similarly afflicted teen from her cancer support group. Hazel feels that Gus really understands her. ",
+          "text": "Hazel Grace Lancaster (Shailene Woodley), a 16-year-old cancer patient, meets and falls in love with Gus Waters (Ansel Elgort), a similarly afflicted teen from her cancer support group. Hazel feels that Gus really understands her.",
           "time": 133,
         },
       ],
@@ -76,15 +76,17 @@ exports[`<App /> snapshot test 1`] = `
               </a>
             </Logo>
             <Button
-              area-label="Display search area"
+              areaLabel="Display search area"
               color="white"
-              data-testid="search-switcher"
+              dataTestId="search-switcher"
               onHandleSearchClick={[Function]}
               size="large"
               text="SEARCH"
             >
               <button
+                area-label="Display search area"
                 className="button large white"
+                data-testid="search-switcher"
                 onClick={[Function]}
                 type="submit"
               >
