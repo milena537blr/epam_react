@@ -76,7 +76,9 @@ exports[`<App /> snapshot test 1`] = `
               </a>
             </Logo>
             <Button
+              area-label="Display search area"
               color="white"
+              data-testid="search-switcher"
               onHandleSearchClick={[Function]}
               size="large"
               text="SEARCH"
@@ -97,6 +99,7 @@ exports[`<App /> snapshot test 1`] = `
         >
           <div
             className="search"
+            data-testid="search"
           >
             <form>
               <fieldset>

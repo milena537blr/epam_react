@@ -69,8 +69,10 @@ class App extends React.Component {
               <Button
                 onHandleSearchClick={this.handleSearchClick}
                 text="SEARCH"
+                area-label="Display search area"
                 size="large"
                 color="white"
+                data-testid="search-switcher"
               />
             </Box>
             {isSearchActive ? (
@@ -100,17 +102,15 @@ class App extends React.Component {
         <main className={s.main}>
           <div className={s.container}>
             <Box className={s.wrapper} align="center">
-              {
-                this.state.cards.map(card => {
-                  return (
-                    <Card
-                      cardClick={() => this.handleCardClick(card.id)}
-                      card={card}
-                      key={card.id}
-                    />
-                  );
-                })
-              }
+              {this.state.cards.map(card => {
+                return (
+                  <Card
+                    cardClick={() => this.handleCardClick(card.id)}
+                    card={card}
+                    key={card.id}
+                  />
+                );
+              })}
             </Box>
           </div>
         </main>
@@ -125,7 +125,7 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  data: PropTypes.object,
+  data: PropTypes.object
 };
 
 export default App;

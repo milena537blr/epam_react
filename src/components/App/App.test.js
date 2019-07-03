@@ -1,7 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
 import App from "./App.js";
-// import Card from "../Card/Card";
 import { render, fireEvent } from "@testing-library/react";
 
 const card1 = {
@@ -30,27 +29,54 @@ describe("<App />", () => {
   const data = { cards: [card1, card2] };
   const component = mount(<App data={data} />);
 
+  const { getByText, getByAltText, getByTestId, queryByTestId } = render(<App data={data} />);
+
   test("snapshot test", () => {
     expect(component).toMatchSnapshot();
   });
 
   test("renders all Cards", () => {
-    const wrapper = mount(<App data={data} />);
-    expect(wrapper.find('Card').length).toBe(2);
+    expect(component.find("Card").length).toBe(2);
   });
 
-  test("generates name, date and genre of Card", () => {
-    const {getByText} = render(
-      <App data={data} />,
-    )
-
+  test("generates name, date, image and genre of Card", () => {
     expect(getByText(data.cards[0].name)).toBeInTheDocument();
     expect(getByText(data.cards[0].date.toString())).toBeInTheDocument();
     expect(getByText(data.cards[0].genre)).toBeInTheDocument();
+    expect(getByAltText(data.cards[0].name)).toBeInTheDocument();
   });
 
   test("generates images for all Cards", () => {
-    const wrapper = mount(<App data={data} />);
-    expect(wrapper.find('img').length).toBe(2);
+    expect(component.find("img").length).toBe(2);
+  });
+
+  test("generates Article instead Search after Card had been clicked", () => {
+    expect(queryByTestId("article")).toBeNull();
+    expect(getByTestId("search")).toBeInTheDocument();
+    fireEvent.click(getByAltText(data.cards[1].name));
+    expect(queryByTestId("search")).toBeNull();
+    expect(getByTestId("article")).toBeInTheDocument();
+  });
+
+  test("generates Search instead Article after search button had been clicked", () => {
+    fireEvent.click(getByAltText(data.cards[1].name));
+    fireEvent.click(getByTestId("search-switcher"));
+    expect(queryByTestId("article")).toBeNull();
+    expect(getByTestId("search")).toBeInTheDocument();
+  });
+
+  test("generates name, description, text, time and date in Article", () => {
+    fireEvent.click(getByAltText(data.cards[0].name));
+    expect(getByTestId("article")).toHaveTextContent(data.cards[0].name);
+    expect(getByTestId("article")).toHaveTextContent(data.cards[0].description);
+    expect(getByTestId("article")).toHaveTextContent(data.cards[0].text);
+    expect(getByTestId("article")).toHaveTextContent(data.cards[0].time.toString());
+    expect(getByTestId("article")).toHaveTextContent(data.cards[0].date.toString());
+
+    expect(getByTestId("article")).not.toHaveTextContent(data.cards[1].name);
+    expect(getByTestId("article")).not.toHaveTextContent(data.cards[1].description);
+    expect(getByTestId("article")).not.toHaveTextContent(data.cards[1].text);
+    expect(getByTestId("article")).not.toHaveTextContent(data.cards[1].time.toString());
+    expect(getByTestId("article")).not.toHaveTextContent(data.cards[1].date.toString());
   });
 });

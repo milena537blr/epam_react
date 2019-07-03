@@ -12,7 +12,7 @@ class Article extends Component {
         <figure>
           <img className={s.image} src={imageCard} alt={name} />
         </figure>
-        <article>
+        <article data-testid="article">
           <h1 className={s.name}>
             {name}
           </h1>

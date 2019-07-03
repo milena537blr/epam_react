@@ -19,7 +19,7 @@ class Search extends Component {
 
   render () {
     return (
-      <div className={s.search}>
+      <div className={s.search} data-testid="search">
         <form>
           <fieldset>
             <legend className={searchTitleClass}>Find your movie</legend>
