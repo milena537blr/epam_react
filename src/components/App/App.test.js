@@ -9,7 +9,8 @@ const card1 = {
   description: "American drama",
   genre: "Dramas",
   name: "Vampire diaries",
-  text: "The Vampire Diaries is an American supernatural teen drama television series developed by Kevin Williamson and Julie Plec, based on the popular book series of the same name written by L. J. Smith.",
+  text:
+    "The Vampire Diaries is an American supernatural teen drama television series developed by Kevin Williamson and Julie Plec, based on the popular book series of the same name written by L. J. Smith.",
   time: 145
 };
 
@@ -19,7 +20,8 @@ const card2 = {
   description: "Drama/Comedy-drama",
   genre: "Drama",
   name: "The Fault in Our Stars",
-  text: "Hazel Grace Lancaster (Shailene Woodley), a 16-year-old cancer patient, meets and falls in love with Gus Waters (Ansel Elgort), a similarly afflicted teen from her cancer support group. Hazel feels that Gus really understands her.",
+  text:
+    "Hazel Grace Lancaster (Shailene Woodley), a 16-year-old cancer patient, meets and falls in love with Gus Waters (Ansel Elgort), a similarly afflicted teen from her cancer support group. Hazel feels that Gus really understands her.",
   time: 133
 };
 
@@ -34,15 +36,6 @@ test("snapshot test", () => {
 
 test("renders all Cards", () => {
   expect(component.find("Card").length).toBe(2);
-});
-
-test("generates name, date, image and genre of Card", () => {
-  const { getByText, getByAltText } = render(<App data={data} />);
-
-  expect(getByText(data.cards[0].name)).toBeInTheDocument();
-  expect(getByText(data.cards[0].date.toString())).toBeInTheDocument();
-  expect(getByText(data.cards[0].genre)).toBeInTheDocument();
-  expect(getByAltText(data.cards[0].name)).toBeInTheDocument();
 });
 
 test("generates Search instead Article after search button had been clicked", () => {
