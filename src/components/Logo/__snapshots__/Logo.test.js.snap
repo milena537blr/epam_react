@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot test 1`] = `
+<Logo>
+  <a
+    className="logo"
+    href="/"
+  >
+    netflixroulette
+  </a>
+</Logo>
+`;

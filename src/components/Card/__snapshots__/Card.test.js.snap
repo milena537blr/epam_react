@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Card snapshot test 1`] = `
+exports[`snapshot test 1`] = `
 <Card
   card={
     Object {
@@ -8,7 +8,6 @@ exports[`Card snapshot test 1`] = `
       "genre": "Dramas",
       "id": 1,
       "name": "Vampire diaries",
-      "time": 145,
     }
   }
 >

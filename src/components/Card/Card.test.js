@@ -8,7 +8,6 @@ const card1 = {
   date: 2007,
   genre: "Dramas",
   name: "Vampire diaries",
-  time: 145
 };
 
 const card2 = {
@@ -16,7 +15,6 @@ const card2 = {
   date: 2014,
   genre: "Drama",
   name: "The Fault in Our Stars",
-  time: 133
 };
 
 test("snapshot test", () => {
@@ -38,4 +36,5 @@ test("generates name, date, image and genre of Card", () => {
   expect(getByText(card2.date.toString())).toBeInTheDocument();
   expect(getByText(card2.genre)).toBeInTheDocument();
   expect(getByAltText(card2.name)).toBeInTheDocument();
+
 });

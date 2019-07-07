@@ -1,13 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Article /> <Article /> snapshot test 1`] = `
+exports[`snapshot test 1`] = `
 <Article
   card={
     Object {
       "date": 2007,
       "description": "American drama",
-      "genre": "Dramas",
-      "id": 1,
       "name": "Vampire diaries",
       "text": "The Vampire Diaries is an American supernatural teen drama television series developed by Kevin Williamson and Julie Plec, based on the popular book series of the same name written by L. J. Smith.",
       "time": 145,
