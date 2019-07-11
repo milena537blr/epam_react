@@ -12,30 +12,25 @@ import PropTypes from "prop-types";
 class App extends React.Component {
   constructor(props) {
     super(props);
-
-    let data = this.props.data;
-    let cards = [];
-    for (let key in data) {
-      let card = {};
-      if (data.hasOwnProperty(key)) {
-        card = {
-          name: data[key].name,
-          date: data[key].date,
-          genre: data[key].genre,
-          id: key
-        };
-      }
-      cards.push(card);
-    }
+    this.cards = this.props.data;
 
     this.state = {
       searchText: "",
-      cards,
       isSearchActive: true,
-      currentCardId: 1,
+      currentCardId: "1",
       filterText: ""
     };
   }
+
+  /* createCardsMap() {
+    let cardMap = new Map();
+    let cards = this.props.data;
+
+    for (let key in cards) {
+      cardMap.set(key, cards[key]);
+    }
+    console.log(cardMap);
+  } */
 
   handleSearchTextChange = searchText => {
     this.setState({ searchText });
@@ -43,10 +38,9 @@ class App extends React.Component {
 
   handleCardClick = currentCardId => {
     this.setState({
-      isSearchActive: false
+      isSearchActive: false,
+      currentCardId
     });
-
-    this.setState({ currentCardId });
   };
 
   handleSearchClick = () => {
@@ -80,7 +74,7 @@ class App extends React.Component {
                 onSearchTextChange={this.handleSearchTextChange}
               />
             ) : (
-              <Article card={this.props.data[this.state.currentCardId]} />
+              <Article card={this.cards[this.state.currentCardId]} />
             )}
           </section>
         </header>
@@ -101,12 +95,12 @@ class App extends React.Component {
         <main className={s.main}>
           <div className={s.container}>
             <Box className={s.wrapper} align="center">
-              {this.state.cards.map(card => {
+              {Object.keys(this.cards).map(id => {
                 return (
                   <Card
-                    cardClick={() => this.handleCardClick(card.id)}
-                    card={card}
-                    key={card.id}
+                    cardClick={() => this.handleCardClick(id)}
+                    card={this.cards[id]}
+                    key={id}
                   />
                 );
               })}
