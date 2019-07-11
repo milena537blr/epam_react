@@ -13,22 +13,26 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    let cards = this.props.data.cards.map(item => {
-      return {
-        name: item.name,
-        date: item.date,
-        genre: item.genre,
-        id: item.id
-      };
-    });
+    let data = this.props.data;
+    let cards = [];
+    for (let key in data) {
+      let card = {};
+      if (data.hasOwnProperty(key)) {
+        card = {
+          name: data[key].name,
+          date: data[key].date,
+          genre: data[key].genre,
+          id: key
+        };
+      }
+      cards.push(card);
+    }
 
     this.state = {
-      data: this.props.data,
-      listCards: [],
       searchText: "",
       cards,
       isSearchActive: true,
-      currentCard: {},
+      currentCardId: 1,
       filterText: ""
     };
   }
@@ -42,12 +46,7 @@ class App extends React.Component {
       isSearchActive: false
     });
 
-    this.state.data.cards.forEach(currentCard => {
-      if (currentCard.id === currentCardId) {
-        this.setState({ currentCard });
-        return;
-      }
-    });
+    this.setState({ currentCardId });
   };
 
   handleSearchClick = () => {
@@ -81,7 +80,7 @@ class App extends React.Component {
                 onSearchTextChange={this.handleSearchTextChange}
               />
             ) : (
-              <Article card={this.state.currentCard} />
+              <Article card={this.props.data[this.state.currentCardId]} />
             )}
           </section>
         </header>
