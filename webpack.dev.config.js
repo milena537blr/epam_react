@@ -1,25 +1,29 @@
-const HtmlWebPackPlugin = require ('html-webpack-plugin');
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+const webpack = require("webpack");
 
 module.exports = {
-  mode: 'development',
-  name: 'client',
-  target: 'web',
-  devtool: 'source-map',
+  entry: {
+    main: ["webpack-hot-middleware/client?reload=true"]
+  },
+  mode: "development",
+  name: "client",
+  target: "web",
+  devtool: "source-map",
   module: {
     rules: [
       {
         test: /\.scss$/,
         use: [
-          'style-loader',
+          "style-loader",
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
               modules: true,
-              localIdentName: '[local]--[hash:base64:5]',
-            },
+              localIdentName: "[local]--[hash:base64:5]"
+            }
           },
-          'sass-loader',
-        ],
+          "sass-loader"
+        ]
       },
       {
         // Loads the javacript into html template provided.
@@ -27,22 +31,23 @@ module.exports = {
         test: /\.html$/,
         use: [
           {
-            loader: 'html-loader',
-          },
-        ],
+            loader: "html-loader"
+          }
+        ]
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
-        use: ['file-loader'],
-      },
-    ],
+        use: ["file-loader"]
+      }
+    ]
   },
 
   plugins: [
-    new HtmlWebPackPlugin ({
-      template: './src/index.html',
-      filename: './index.html',
-      excludeChunks: ['server'],
-    }),
-  ],
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebPackPlugin({
+      template: "./src/index.html",
+      filename: "./index.html",
+      excludeChunks: ["server"]
+    })
+  ]
 };
