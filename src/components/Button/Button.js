@@ -16,6 +16,8 @@ class Button extends React.Component {
         className={buttonClassNames}
         onClick={this.props.onHandleSearchClick}
         onKeyDown={this.handleSearchClick}
+        data-testid={this.props.dataTestId}
+        area-label={this.props.areaLabel}
       >
         {this.props.text}
       </button>
@@ -27,6 +29,8 @@ Button.propTypes = {
   text: PropTypes.string,
   size: PropTypes.string,
   color: PropTypes.string,
+  dataTestId: PropTypes.string,
+  areaLabel: PropTypes.string,
   onHandleSearchClick: PropTypes.func,
 };
 

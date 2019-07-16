@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {App} from './app.js';
+import data from "./data/data.json";
+import App from './components/App/App';
 import './styles/global.scss';
 
-ReactDOM.render (<App />, window.document.getElementById ('root'));
+ReactDOM.render (<App data={data}/>, window.document.getElementById ('root'));

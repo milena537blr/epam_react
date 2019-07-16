@@ -1,58 +1,50 @@
 {
-  "cards": [
-    {
-      "id": 1,
-      "date": 2007,
-      "description": "American drama",
-      "genre": "Dramas",
-      "name": "Vampire diaries",
-      "text": "The Vampire Diaries is an American supernatural teen drama television series developed by Kevin Williamson and Julie Plec, based on the popular book series of the same name written by L. J. Smith.",
-      "time": 145
-    },
-    {
-      "id": 2,
-      "date": 2014,
-      "description": "Drama/Comedy-drama",
-      "genre": "Drama",
-      "name": "The Fault in Our Stars",
-      "text": "Hazel Grace Lancaster (Shailene Woodley), a 16-year-old cancer patient, meets and falls in love with Gus Waters (Ansel Elgort), a similarly afflicted teen from her cancer support group. Hazel feels that Gus really understands her. ",
-      "time": 133
-    },
-    {
-      "id": 3,
-      "date": 2010,
-      "description": "Drama/Thriller",
-      "genre": "Thriller",
-      "name": "Never Let Me Go",
-      "text": "Never Let Me Go is a 2010 British dystopian romantic tragedy film based on Kazuo Ishiguro's 2005 novel Never Let Me Go. The film was directed by Mark Romanek from a screenplay by Alex Garland.",
-      "time": 103
-    },
-    {
-      "id": 4,
-      "date": 2004,
-      "description": "Drama/Musical",
-      "genre": "Dramas",
-      "name": "The Chorus",
-      "text": "Pierre (Jean-Baptiste Maunier) is an aimless child at an austere boarding school in France. The students and faculty are constantly at odds with one another, until a music teacher, Clément Mathieu (Gérard Jugnot), arrives and starts a choir.",
-      "time": 145
-    },
-    {
-      "id": 5,
-      "date": 2009,
-      "description": "American drama",
-      "genre": "Drama",
-      "name": "My Sister's Keeper",
-      "text": "Conceived as a marrow donor for her gravely ill sister, Anna Fitzgerald (Abigail Breslin) has undergone countless surgeries and medical procedures in her short life. ",
-      "time": 109
-    },
-    {
-      "id": 6,
-      "date": 2008,
-      "description": "TV show",
-      "genre": "Drama/Fantasy",
-      "name": "Twilight",
-      "text": "Twilight is a 2008 American romantic fantasy film based on Stephenie Meyer's novel of the same name. Directed by Catherine Hardwicke, the film stars Kristen Stewart and Robert Pattinson. It is the first film in The Twilight Saga film series.",
-      "time": 165
-    }
-  ]
+  "1": {
+    "date": 2007,
+    "description": "American drama",
+    "genre": "Dramas",
+    "name": "Vampire diaries",
+    "text": "The Vampire Diaries is an American supernatural teen drama television series developed by Kevin Williamson and Julie Plec, based on the popular book series of the same name written by L. J. Smith.",
+    "time": 145
+  },
+  "2": {
+    "date": 2014,
+    "description": "Drama/Comedy-drama",
+    "genre": "Drama",
+    "name": "The Fault in Our Stars",
+    "text": "Hazel Grace Lancaster (Shailene Woodley), a 16-year-old cancer patient, meets and falls in love with Gus Waters (Ansel Elgort), a similarly afflicted teen from her cancer support group. Hazel feels that Gus really understands her.",
+    "time": 133
+  },
+  "3": {
+    "date": 2010,
+    "description": "Drama/Thriller",
+    "genre": "Thriller",
+    "name": "Never Let Me Go",
+    "text": "Never Let Me Go is a 2010 British dystopian romantic tragedy film based on Kazuo Ishiguro's 2005 novel Never Let Me Go. The film was directed by Mark Romanek from a screenplay by Alex Garland.",
+    "time": 103
+  },
+  "4": {
+    "date": 2004,
+    "description": "Drama/Musical",
+    "genre": "Dramas",
+    "name": "The Chorus",
+    "text": "Pierre (Jean-Baptiste Maunier) is an aimless child at an austere boarding school in France. The students and faculty are constantly at odds with one another, until a music teacher, Clément Mathieu (Gérard Jugnot), arrives and starts a choir.",
+    "time": 145
+  },
+  "5": {
+    "date": 2009,
+    "description": "American drama",
+    "genre": "Drama",
+    "name": "My Sister's Keeper",
+    "text": "Conceived as a marrow donor for her gravely ill sister, Anna Fitzgerald (Abigail Breslin) has undergone countless surgeries and medical procedures in her short life. ",
+    "time": 109
+  },
+  "6": {
+    "date": 2008,
+    "description": "TV show",
+    "genre": "Drama/Fantasy",
+    "name": "Twilight",
+    "text": "Twilight is a 2008 American romantic fantasy film based on Stephenie Meyer's novel of the same name. Directed by Catherine Hardwicke, the film stars Kristen Stewart and Robert Pattinson. It is the first film in The Twilight Saga film series.",
+    "time": 165
+  }
 }

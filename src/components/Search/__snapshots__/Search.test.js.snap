@@ -1,0 +1,223 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot test 1`] = `
+<Search>
+  <div
+    className="search"
+    data-testid="search"
+  >
+    <form>
+      <fieldset>
+        <legend
+          className="searchTitle header__searchTitle"
+        >
+          Find your movie
+        </legend>
+        <Box
+          direction="horizontal"
+          inline={false}
+          marginBottom={4}
+        >
+          <div
+            className="root horizontal"
+            style={
+              Object {
+                "height": "undefined",
+                "margin": "undefined",
+                "marginBottom": 24,
+                "marginLeft": "undefined",
+                "marginRight": "undefined",
+                "marginTop": "undefined",
+                "maxHeight": "undefined",
+                "maxWidth": "undefined",
+                "minHeight": "undefined",
+                "minWidth": "undefined",
+                "padding": "undefined",
+                "paddingBottom": "undefined",
+                "paddingLeft": "undefined",
+                "paddingRight": "undefined",
+                "paddingTop": "undefined",
+                "width": "undefined",
+              }
+            }
+          >
+            <input
+              aria-label="Search"
+              aria-labelledby="searchButton"
+              className="searchInput"
+              name="search"
+              onChange={[Function]}
+              placeholder="Quentin Tarantino"
+              type="text"
+            />
+          </div>
+        </Box>
+        <Box
+          align="space-between"
+          direction="horizontal"
+          inline={false}
+          verticalAlign="middle"
+        >
+          <div
+            className="root horizontal spaceBetween middle"
+            style={
+              Object {
+                "height": "undefined",
+                "margin": "undefined",
+                "marginBottom": "undefined",
+                "marginLeft": "undefined",
+                "marginRight": "undefined",
+                "marginTop": "undefined",
+                "maxHeight": "undefined",
+                "maxWidth": "undefined",
+                "minHeight": "undefined",
+                "minWidth": "undefined",
+                "padding": "undefined",
+                "paddingBottom": "undefined",
+                "paddingLeft": "undefined",
+                "paddingRight": "undefined",
+                "paddingTop": "undefined",
+                "width": "undefined",
+              }
+            }
+          >
+            <Box
+              align="space-between"
+              direction="horizontal"
+              inline={false}
+              verticalAlign="middle"
+            >
+              <div
+                className="root horizontal spaceBetween middle"
+                style={
+                  Object {
+                    "height": "undefined",
+                    "margin": "undefined",
+                    "marginBottom": "undefined",
+                    "marginLeft": "undefined",
+                    "marginRight": "undefined",
+                    "marginTop": "undefined",
+                    "maxHeight": "undefined",
+                    "maxWidth": "undefined",
+                    "minHeight": "undefined",
+                    "minWidth": "undefined",
+                    "padding": "undefined",
+                    "paddingBottom": "undefined",
+                    "paddingLeft": "undefined",
+                    "paddingRight": "undefined",
+                    "paddingTop": "undefined",
+                    "width": "undefined",
+                  }
+                }
+              >
+                <div
+                  className="searchLabel"
+                >
+                  search by
+                </div>
+                <Box
+                  direction="horizontal"
+                  inline={false}
+                  marginRight={2}
+                >
+                  <div
+                    className="root horizontal"
+                    style={
+                      Object {
+                        "height": "undefined",
+                        "margin": "undefined",
+                        "marginBottom": "undefined",
+                        "marginLeft": "undefined",
+                        "marginRight": 12,
+                        "marginTop": "undefined",
+                        "maxHeight": "undefined",
+                        "maxWidth": "undefined",
+                        "minHeight": "undefined",
+                        "minWidth": "undefined",
+                        "padding": "undefined",
+                        "paddingBottom": "undefined",
+                        "paddingLeft": "undefined",
+                        "paddingRight": "undefined",
+                        "paddingTop": "undefined",
+                        "width": "undefined",
+                      }
+                    }
+                  >
+                    <Button
+                      color="red"
+                      size="medium"
+                      text="title"
+                    >
+                      <button
+                        className="button medium red"
+                        type="submit"
+                      >
+                        title
+                      </button>
+                    </Button>
+                  </div>
+                </Box>
+                <Box
+                  direction="horizontal"
+                  inline={false}
+                  marginRight={2}
+                >
+                  <div
+                    className="root horizontal"
+                    style={
+                      Object {
+                        "height": "undefined",
+                        "margin": "undefined",
+                        "marginBottom": "undefined",
+                        "marginLeft": "undefined",
+                        "marginRight": 12,
+                        "marginTop": "undefined",
+                        "maxHeight": "undefined",
+                        "maxWidth": "undefined",
+                        "minHeight": "undefined",
+                        "minWidth": "undefined",
+                        "padding": "undefined",
+                        "paddingBottom": "undefined",
+                        "paddingLeft": "undefined",
+                        "paddingRight": "undefined",
+                        "paddingTop": "undefined",
+                        "width": "undefined",
+                      }
+                    }
+                  >
+                    <Button
+                      color="gray"
+                      size="medium"
+                      text="genre"
+                    >
+                      <button
+                        className="button medium gray"
+                        type="submit"
+                      >
+                        genre
+                      </button>
+                    </Button>
+                  </div>
+                </Box>
+              </div>
+            </Box>
+            <Button
+              color="red"
+              id="searchButton"
+              size="large"
+              text="SEARCH"
+            >
+              <button
+                className="button large red"
+                type="submit"
+              >
+                SEARCH
+              </button>
+            </Button>
+          </div>
+        </Box>
+      </fieldset>
+    </form>
+  </div>
+</Search>
+`;

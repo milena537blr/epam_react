@@ -1,25 +1,25 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import s from './Search.module.scss';
-import classNames from 'classnames';
-import Box from '../Box/Box';
-import Button from '../Button/Button';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import s from "./Search.module.scss";
+import classNames from "classnames";
+import Box from "../Box/Box";
+import Button from "../Button/Button";
 
-let searchTitleClass = classNames (s.searchTitle, s.header__searchTitle);
+let searchTitleClass = classNames(s.searchTitle, s.header__searchTitle);
 
 class Search extends Component {
-  constructor (props) {
-    super (props);
-    this.handleSearchTextChange = this.handleSearchTextChange.bind (this);
+  constructor(props) {
+    super(props);
+    this.handleSearchTextChange = this.handleSearchTextChange.bind(this);
   }
 
-  handleSearchTextChange (e) {
-    this.props.onSearchTextChange (e.target.value);
+  handleSearchTextChange(e) {
+    this.props.onSearchTextChange(e.target.value);
   }
 
-  render () {
+  render() {
     return (
-      <div className={s.search}>
+      <div className={s.search} data-testid="search">
         <form>
           <fieldset>
             <legend className={searchTitleClass}>Find your movie</legend>
@@ -61,7 +61,7 @@ class Search extends Component {
 
 Search.propTypes = {
   searchText: PropTypes.string,
-  onSearchTextChange: PropTypes.func,
+  onSearchTextChange: PropTypes.func
 };
 
 export default Search;
