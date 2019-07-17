@@ -21,15 +21,8 @@ app.use(
 app.use(webpackHotMiddleware(compiler));
 app.use(favicon(path.join('assets','public','favicon.ico')));
 
-app.get("*", (req, res, next) => {
-  compiler.outputFileSystem.readFile(HTML_FILE, (err, result) => {
-    if (err) {
-      return next(err);
-    }
-    res.set("content-type", "text/html");
-    res.send(result);
-    res.end();
-  });
+app.get("*", (req, res) => {
+  res.sendFile(HTML_FILE);
 });
 
 const PORT = process.env.PORT || 8080;

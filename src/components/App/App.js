@@ -8,6 +8,9 @@ import Box from "../Box/Box";
 import Button from "../Button/Button";
 import Card from "../Card/Card";
 import PropTypes from "prop-types";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import NotFound from "../NotFound/NotFound";
+import CardsList from "../CardsList/CardsList";
 
 class App extends React.Component {
   constructor(props) {
@@ -17,30 +20,20 @@ class App extends React.Component {
     this.state = {
       searchText: "",
       isSearchActive: true,
-      currentCardId: "1",
+      // currentCardId: "1",
       filterText: ""
     };
   }
-
-  /* createCardsMap() {
-    let cardMap = new Map();
-    let cards = this.props.data;
-
-    for (let key in cards) {
-      cardMap.set(key, cards[key]);
-    }
-    console.log(cardMap);
-  } */
-
-  handleSearchTextChange = searchText => {
-    this.setState({ searchText });
-  };
 
   handleCardClick = currentCardId => {
     this.setState({
       isSearchActive: false,
       currentCardId
     });
+  };
+
+  handleSearchTextChange = searchText => {
+    this.setState({ searchText });
   };
 
   handleSearchClick = () => {
@@ -95,15 +88,11 @@ class App extends React.Component {
         <main className={s.main}>
           <div className={s.container}>
             <Box className={s.wrapper} align="center">
-              {Object.keys(this.cards).map(id => {
-                return (
-                  <Card
-                    cardClick={() => this.handleCardClick(id)}
-                    card={this.cards[id]}
-                    key={id}
-                  />
-                );
-              })}
+              <Route path="/" exact component={NotFound} />
+              <Route
+                path="/search"
+                render={(props) => <CardsList {...props} cards={this.cards} handleCardClick={this.handleCardClick} />}
+              />
             </Box>
           </div>
         </main>
@@ -118,7 +107,8 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  data: PropTypes.object
+  data: PropTypes.object,
+  children: PropTypes.object.isRequired
 };
 
 export default App;

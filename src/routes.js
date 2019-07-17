@@ -1,12 +1,11 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import { BrowserRouter as Route } from "react-router-dom";
 import App from './components/App/App';
-import Article from './components/Article/Article';
-import Card from './components/Card/Card';
+// import Article from './components/Article/Article';
+import NotFound from './components/NotFound/NotFound';
 
 export default (
-  <Route path="/" component={App}>
-    <IndexRoute component={Card} />
-    <Route path="/cats" component={Article} />
+  <Route path="/" component={NotFound}>
+    <Route exact component={NotFound} />
   </Route>
 );

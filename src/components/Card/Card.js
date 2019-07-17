@@ -5,13 +5,6 @@ import s from "./Card.module.scss";
 import Box from "../Box/Box";
 import imageCard from "../../images/card.jpg";
 
-/* type Props = {
-  id: Number,
-  name: String,
-  date: Number,
-  genre: String,
-}; */
-
 class Card extends React.Component {
   constructor(props: any) {
     super(props);
