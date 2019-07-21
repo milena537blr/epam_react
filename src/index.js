@@ -6,12 +6,20 @@ import "./styles/global.scss";
 import { BrowserRouter as Router } from "react-router-dom";
 // import routes from "./routes";
 import { createBrowserHistory } from "history";
+import configureStore from "./store/configureStore";
+import { Provider } from "react-redux";
+import { loadMovies } from "./actions/movieActions";
 
 const history = createBrowserHistory();
+const store = configureStore();
+
+store.dispatch(loadMovies());
 
 ReactDOM.render(
-  <Router history={history}>
-    <App data={data} />
-  </Router>,
+  <Provider store={store}>
+    <Router history={history}>
+      <App data={data} />
+    </Router>
+  </Provider>,
   window.document.getElementById("root")
 );

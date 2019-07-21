@@ -6,7 +6,6 @@ import s from "./app.module.scss";
 import Logo from "../Logo/Logo";
 import Box from "../Box/Box";
 import Button from "../Button/Button";
-import Card from "../Card/Card";
 import PropTypes from "prop-types";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import NotFound from "../NotFound/NotFound";
