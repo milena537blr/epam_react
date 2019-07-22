@@ -10,6 +10,8 @@ import PropTypes from "prop-types";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import NotFound from "../NotFound/NotFound";
 import CardsList from "../CardsList/CardsList";
+import { connect } from "react-redux";
+import * as movieActions from "../../actions/movieActions";
 
 class App extends React.Component {
   constructor(props) {
@@ -90,7 +92,13 @@ class App extends React.Component {
               <Route path="/" exact component={NotFound} />
               <Route
                 path="/search"
-                render={(props) => <CardsList {...props} cards={this.cards} handleCardClick={this.handleCardClick} />}
+                render={props => (
+                  <CardsList
+                    {...props}
+                    cards={this.cards}
+                    handleCardClick={this.handleCardClick}
+                  />
+                )}
               />
             </Box>
           </div>
@@ -110,4 +118,11 @@ App.propTypes = {
   children: PropTypes.object.isRequired
 };
 
+function mapStateToProps(state, ownProps) {
+  return {
+    movies: state.movies
+  };
+}
+
+// export default connect(mapStateToProps)(App);
 export default App;
