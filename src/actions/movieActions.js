@@ -22,6 +22,6 @@ export function loadMovies() {
   };
 }
 
-export function toggleTodo(index) {
-  return { type: types.TOGGLE_TODO, index }
+export function addTodo(text) {
+  return { type: types.ADD_TODO, text };
 }

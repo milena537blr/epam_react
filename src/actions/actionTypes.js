@@ -1,2 +1,2 @@
 export const LOAD_MOVIES_SUCCESS = 'LOAD_MOVIES_SUCCESS';
-export const TOGGLE_TODO = 'TOGGLE_TODO';
+export const ADD_TODO = 'ADD_TODO';

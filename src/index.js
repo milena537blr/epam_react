@@ -8,7 +8,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import configureStore from "./store/configureStore";
 import { Provider } from "react-redux";
-import { loadMovies, toggleTodo } from "./actions/movieActions";
+import { loadMovies, addTodo } from "./actions/movieActions";
 
 const history = createBrowserHistory();
 const store = configureStore();
@@ -16,8 +16,8 @@ const store = configureStore();
 console.log(store.getState());
 const unsubscribe = store.subscribe(() => console.log(store.getState()));
 store.dispatch(loadMovies());
-store.dispatch(loadMovies());
-store.dispatch(toggleTodo(0));
+// store.dispatch(loadMovies());
+// store.dispatch(addTodo('Learn about store'));
 
 unsubscribe();
 
