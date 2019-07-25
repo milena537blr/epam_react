@@ -14,7 +14,7 @@ export function loadMovies() {
     return movieApi
       .getAllMovies()
       .then(movies => {
-        dispatch(loadMoviesSuccess(movies));
+        dispatch(loadMoviesSuccess(movies.data));
       })
       .catch(error => {
         throw error;

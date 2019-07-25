@@ -16,8 +16,9 @@ const store = configureStore();
 console.log(store.getState());
 const unsubscribe = store.subscribe(() => console.log(store.getState()));
 store.dispatch(loadMovies());
-// store.dispatch(loadMovies());
-// store.dispatch(addTodo('Learn about store'));
+// console.log(loadMovies());
+// console.log(addTodo('Learn about store'));
+store.dispatch(addTodo('Learn about store'));
 
 unsubscribe();
 

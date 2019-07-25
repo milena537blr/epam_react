@@ -119,10 +119,10 @@ App.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
+  console.log(state);
   return {
-    movies: state.movies
+    movies: state
   };
 }
 
-// export default connect(mapStateToProps)(App);
-export default App;
+export default connect(mapStateToProps)(App);
