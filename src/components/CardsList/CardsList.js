@@ -5,7 +5,7 @@ import React, { Component } from "react";
 class CardsList extends Component {
   constructor(props) {
     super(props);
-    this.cards = this.props.cards;
+    // this.cards = this.props.cards;
 
     this.state = {
       currentCardId: "1"
@@ -20,12 +20,12 @@ class CardsList extends Component {
     return (
       <React.Fragment>
         {console.log(this.props.cards)}
-        {Object.keys(this.cards).map(id => {
+        {this.props.cards.map(card => {
           return (
             <Card
-              cardClick={() => this.handleCardClick(id)}
-              card={this.cards[id]}
-              key={id}
+              cardClick={() => this.handleCardClick(card)}
+              card={card}
+              key={card.id}
             />
           );
         })}
@@ -35,7 +35,7 @@ class CardsList extends Component {
 }
 
 CardsList.propTypes = {
-  cards: PropTypes.object,
+  cards: PropTypes.array,
   handleCardClick: PropTypes.func
 };
 

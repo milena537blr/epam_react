@@ -13,13 +13,13 @@ import { loadMovies, addTodo } from "./actions/movieActions";
 const history = createBrowserHistory();
 const store = configureStore();
 
-console.log(store.getState());
+// console.log(store.getState());
 // const unsubscribe = store.subscribe(() => console.log(store.getState()));
-store.subscribe(() => console.log(store.getState()));
-store.dispatch(loadMovies());
+// store.subscribe(() => console.log(store.getState()));
+// store.dispatch(loadMovies());
 // console.log(loadMovies());
 // console.log(addTodo('Learn about store'));
-store.dispatch(addTodo('Learn about store'));
+// store.dispatch(addTodo('Learn about store'));
 
 // unsubscribe();
 
