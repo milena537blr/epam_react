@@ -11,7 +11,9 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import NotFound from "../NotFound/NotFound";
 import CardsList from "../CardsList/CardsList";
 import { connect } from "react-redux";
-import * as movieActions from "../../actions/movieActions";
+// import * as movieActions from "../../actions/movieActions";
+// import CatList from "../CatList/CatList";
+import { loadMovies } from "../../actions/movieActions";
 
 class App extends React.Component {
   constructor(props) {
@@ -24,6 +26,11 @@ class App extends React.Component {
       // currentCardId: "1",
       filterText: ""
     };
+  }
+
+  componentDidMount() {
+    this.props.dispatch(loadMovies());
+    console.log(this.props);
   }
 
   handleCardClick = currentCardId => {
@@ -45,12 +52,14 @@ class App extends React.Component {
 
   render() {
     const isSearchActive = this.state.isSearchActive;
-
+    console.log(this.props);
     return (
       <ErrorBoundary>
         <header className={s.header}>
           <div className={s.overlay} />
           <section className={s.container}>
+            {console.log(this.props.movies)}
+            {console.log(this.state)}
             <Box align="space-between" verticalAlign="middle" marginBottom={8}>
               <Logo />
               <Button
@@ -62,6 +71,7 @@ class App extends React.Component {
                 dataTestId="search-switcher"
               />
             </Box>
+            {/* <CatList cats={this.props.movies}/> */}
             {isSearchActive ? (
               <Search
                 searchText={this.state.searchText}
@@ -95,7 +105,8 @@ class App extends React.Component {
                 render={props => (
                   <CardsList
                     {...props}
-                    cards={this.cards}
+                    // cards={this.cards}
+                    cards={this.props.movies}
                     handleCardClick={this.handleCardClick}
                   />
                 )}

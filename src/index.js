@@ -14,18 +14,19 @@ const history = createBrowserHistory();
 const store = configureStore();
 
 console.log(store.getState());
-const unsubscribe = store.subscribe(() => console.log(store.getState()));
+// const unsubscribe = store.subscribe(() => console.log(store.getState()));
+store.subscribe(() => console.log(store.getState()));
 store.dispatch(loadMovies());
 // console.log(loadMovies());
 // console.log(addTodo('Learn about store'));
 store.dispatch(addTodo('Learn about store'));
 
-unsubscribe();
+// unsubscribe();
 
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
-      <App data={data} />
+      <App />
     </Router>
   </Provider>,
   window.document.getElementById("root")

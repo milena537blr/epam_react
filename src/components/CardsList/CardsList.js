@@ -19,6 +19,7 @@ class CardsList extends Component {
   render() {
     return (
       <React.Fragment>
+        {console.log(this.props.cards)}
         {Object.keys(this.cards).map(id => {
           return (
             <Card

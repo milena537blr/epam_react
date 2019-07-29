@@ -1,5 +1,5 @@
 import * as types from "./actionTypes";
-import movieApi from "../api/moviesApi";
+import { MoviesApi as movieApi } from "../api/moviesApi";
 
 //action creator
 export function loadMoviesSuccess(movies) {
