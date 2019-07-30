@@ -9,10 +9,10 @@ module.exports = {
     publicPath: "/",
     filename: "[name].js"
   },
-  resolve: { extensions: ["*", ".js", ".jsx", ".tsx", ".ts", ".json"] },
+  resolve: { extensions: [".js", ".jsx"] },
   module: {
     rules: [
-      {
+      /* {
         enforce: "pre",
         test: /\.js$/,
         exclude: /node_modules/,
@@ -22,18 +22,18 @@ module.exports = {
           failOnError: false,
           failOnWarning: false
         }
-      },
+      }, */
       {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules)/,
         loader: "babel-loader",
-        options: { presets: ["@babel/env"] }
+        // options: { presets: ["@babel/env"] }
       },
-      {
+     /*  {
         test: /\.tsx?$/,
         use: "ts-loader",
         exclude: /node_modules/
-      }
+      } */
     ]
   }
 };

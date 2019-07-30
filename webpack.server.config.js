@@ -1,6 +1,6 @@
 const path = require ('path');
 const nodeExternals = require ('webpack-node-externals');
-const CleanWebpackPlugin = require ('clean-webpack-plugin');
+// const CleanWebpackPlugin = require ('clean-webpack-plugin');
 
 module.exports = env => {
   const SERVER_PATH = env.production
@@ -16,6 +16,7 @@ module.exports = env => {
       publicPath: '/',
       filename: '[name].js',
     },
+    mode: "development", // FIXME
     name: 'server',
     target: 'node',
     node: {
@@ -35,6 +36,6 @@ module.exports = env => {
       ],
     },
 
-    plugins: [new CleanWebpackPlugin ()],
+    // plugins: [new CleanWebpackPlugin ()],
   };
 };
