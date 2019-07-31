@@ -9,8 +9,7 @@ module.exports = {
   ],
   parser: "babel-eslint",
   globals: {
-    window: true,
-    fetch: false
+    window: true
   },
   env: {
     es6: true

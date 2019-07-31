@@ -1,17 +1,17 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-// const webpack = require("webpack");
+const webpack = require("webpack");
 
 module.exports = {
-/*   entry: {
+  entry: {
     main: ["webpack-hot-middleware/client?reload=true"]
-  }, */
+  },
   mode: "development",
   name: "client",
   target: "web",
   devtool: "source-map",
   module: {
     rules: [
-     /*  {
+      {
         test: /\.scss$/,
         use: [
           "style-loader",
@@ -24,7 +24,7 @@ module.exports = {
           },
           "sass-loader"
         ]
-      }, */
+      },
       {
         // Loads the javacript into html template provided.
         // Entry point is set below in HtmlWebPackPlugin in Plugins
@@ -43,7 +43,7 @@ module.exports = {
   },
 
   plugins: [
-    // new webpack.HotModuleReplacementPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
     new HtmlWebPackPlugin({
       template: "./src/index.html",
       filename: "./index.html",
