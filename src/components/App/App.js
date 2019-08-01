@@ -7,49 +7,22 @@ import Logo from "../Logo/Logo";
 import Box from "../Box/Box";
 import Button from "../Button/Button";
 import PropTypes from "prop-types";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import NotFound from "../NotFound/NotFound";
 import CardsList from "../CardsList/CardsList";
 import { connect } from "react-redux";
 import { loadMovies } from "../../actions/movieActions";
-import Card from "../Card/Card";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.cards = this.props.data;
-
-    this.state = {
-      searchText: "",
-      isSearchActive: true,
-      // currentCardId: "1",
-      filterText: ""
-    };
   }
 
   componentDidMount() {
     this.props.dispatch(loadMovies());
   }
 
-  handleCardClick = currentCardId => {
-    this.setState({
-      isSearchActive: false,
-      currentCardId
-    });
-  };
-
-  handleSearchTextChange = searchText => {
-    this.setState({ searchText });
-  };
-
-  handleSearchClick = () => {
-    this.setState({
-      isSearchActive: true
-    });
-  };
-
   render() {
-    const isSearchActive = this.state.isSearchActive;
     return (
       <ErrorBoundary>
         <header className={s.header}>
@@ -57,27 +30,22 @@ class App extends React.Component {
           <section className={s.container}>
             <Box align="space-between" verticalAlign="middle" marginBottom={8}>
               <Logo />
-              <Button
-                onHandleSearchClick={this.handleSearchClick}
-                text="SEARCH"
-                areaLabel="Display search area"
-                size="large"
-                color="white"
-                dataTestId="search-switcher"
-              />
+              <Link to={"/search"}>
+                <Button
+                  text="SEARCH"
+                  areaLabel="Display search area"
+                  size="large"
+                  color="white"
+                  dataTestId="search-switcher"
+                />
+              </Link>
             </Box>
-            {isSearchActive ? (
-              <Search
-                searchText={this.state.searchText}
-                onSearchTextChange={this.handleSearchTextChange}
-              />
-            ) : (
-              <Article
-                card={this.props.movies.find(el => {
-                  return el["id"] === this.state.currentCardId;
-                })}
-              />
-            )}
+            <Switch>
+              <Route path="/" exact component={Search} />
+              <Route path="/search" component={Search} />
+              <Route path="/film/:id" component={Article} />
+              <Route component={Search} />
+            </Switch>
           </section>
         </header>
         <section className={s.panel}>
@@ -97,16 +65,13 @@ class App extends React.Component {
         <main className={s.main}>
           <div className={s.container}>
             <Box className={s.wrapper} align="center">
-              <Route path="/" exact component={NotFound} />
-              <Route
-                path="/search"
-                render={() => (
-                  <CardsList
-                    cards={this.props.movies}
-                    handleCardClick={this.handleCardClick}
-                  />
-                )}
-              />
+              <Switch>
+                <Route
+                  path="/(search?|film?)"
+                  render={() => <CardsList cards={this.props.movies} />}
+                />
+                <Route component={NotFound} />
+              </Switch>
             </Box>
           </div>
         </main>
@@ -121,7 +86,8 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  movies: PropTypes.array
+  movies: PropTypes.array,
+  dispatch: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {

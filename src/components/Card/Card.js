@@ -3,6 +3,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import s from "./Card.module.scss";
 import Box from "../Box/Box";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 
 class Card extends React.Component {
   constructor(props) {
@@ -14,16 +15,12 @@ class Card extends React.Component {
   };
 
   render() {
-    const { poster_path, title, release_date, genres } = this.props.card;
+    const { poster_path, title, release_date, genres, id } = this.props.card;
     return (
       <figure className={s.card}>
-        <button
-          onClick={this.handleCardClick}
-          onKeyDown={this.props.cardClick}
-          area-label={this.props.card.name}
-        >
+        <Link to={'/film/' + id}>
           <img className={s.image} src={poster_path} alt={title} />
-        </button>
+        </Link>
         <figcaption>
           <Box align="space-between" verticalAlign="middle">
             <div className={s.name}>{title}</div>
