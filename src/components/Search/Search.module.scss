@@ -1,5 +1,9 @@
 @import "../../styles/core.scss";
 
+.search {
+  margin-bottom: rem(40);
+}
+
 .searchTitle {
   color: $color--white;
   text-transform: uppercase;

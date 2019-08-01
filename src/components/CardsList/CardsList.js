@@ -5,7 +5,6 @@ import React, { Component } from "react";
 class CardsList extends Component {
   constructor(props) {
     super(props);
-    // this.cards = this.props.cards;
 
     this.state = {
       currentCardId: "1"
@@ -19,11 +18,10 @@ class CardsList extends Component {
   render() {
     return (
       <React.Fragment>
-        {console.log(this.props.cards)}
         {this.props.cards.map(card => {
           return (
             <Card
-              cardClick={() => this.handleCardClick(card)}
+              cardClick={() => this.handleCardClick(card.id)}
               card={card}
               key={card.id}
             />

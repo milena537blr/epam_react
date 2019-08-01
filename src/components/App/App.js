@@ -11,9 +11,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import NotFound from "../NotFound/NotFound";
 import CardsList from "../CardsList/CardsList";
 import { connect } from "react-redux";
-import * as movieActions from "../../actions/movieActions";
-import CatList from "../CatList/CatList";
 import { loadMovies } from "../../actions/movieActions";
+import Card from "../Card/Card";
 
 class App extends React.Component {
   constructor(props) {
@@ -56,8 +55,6 @@ class App extends React.Component {
         <header className={s.header}>
           <div className={s.overlay} />
           <section className={s.container}>
-            {console.log(this.props.movies)}
-            {console.log(this.state)}
             <Box align="space-between" verticalAlign="middle" marginBottom={8}>
               <Logo />
               <Button
@@ -69,14 +66,17 @@ class App extends React.Component {
                 dataTestId="search-switcher"
               />
             </Box>
-            <CatList cats={this.props.movies}/>
             {isSearchActive ? (
               <Search
                 searchText={this.state.searchText}
                 onSearchTextChange={this.handleSearchTextChange}
               />
             ) : (
-              <Article card={this.cards[this.state.currentCardId]} />
+              <Article
+                card={this.props.movies.find(el => {
+                  return el["id"] === this.state.currentCardId;
+                })}
+              />
             )}
           </section>
         </header>
@@ -100,10 +100,8 @@ class App extends React.Component {
               <Route path="/" exact component={NotFound} />
               <Route
                 path="/search"
-                render={props => (
+                render={() => (
                   <CardsList
-                    {...props}
-                    // cards={this.cards}
                     cards={this.props.movies}
                     handleCardClick={this.handleCardClick}
                   />
@@ -122,13 +120,11 @@ class App extends React.Component {
   }
 }
 
-/* App.propTypes = {
-  data: PropTypes.object,
-  children: PropTypes.object.isRequired
-}; */
+App.propTypes = {
+  movies: PropTypes.array
+};
 
 function mapStateToProps(state) {
-  // console.log(state);
   return {
     movies: state.movies
   };
