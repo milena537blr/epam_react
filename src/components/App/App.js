@@ -42,7 +42,10 @@ class App extends React.Component {
             </Box>
             <Switch>
               <Route path="/" exact component={Search} />
-              <Route path="/search" component={Search} />
+              <Route
+                path="/search"
+                render={() => <Search />}
+              />
               <Route path="/film/:id" component={Article} />
               <Route component={Search} />
             </Switch>
@@ -92,7 +95,7 @@ App.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    movies: state.movies
+    movies: state.movies,
   };
 }
 

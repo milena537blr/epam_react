@@ -12,10 +12,10 @@ class Button extends React.Component {
     );
     return (
       <button
-        type="submit"
+        type="button"
         className={buttonClassNames}
-        onClick={this.props.onHandleSearchClick}
-        onKeyDown={this.handleSearchClick}
+        onClick={this.props.handleClick}
+        onKeyDown={this.props.handleClick}
         data-testid={this.props.dataTestId}
         area-label={this.props.areaLabel}
       >
@@ -31,7 +31,7 @@ Button.propTypes = {
   color: PropTypes.string,
   dataTestId: PropTypes.string,
   areaLabel: PropTypes.string,
-  onHandleSearchClick: PropTypes.func,
+  handleClick: PropTypes.func,
 };
 
 export default Button;
