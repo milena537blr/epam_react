@@ -1,4 +1,8 @@
 export default {
   movies: [],
-  searchText: ''
-}
+  filters: {
+    text: "",
+    sortBy: "rating",
+    searchBy: "title"
+  }
+};

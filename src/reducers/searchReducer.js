@@ -1,10 +1,23 @@
 import * as types from "../actions/actionTypes";
 import initialState from "./initialState";
 
-export default function searchReducer(state = initialState.movies, action) {
+export default function searchReducer(state = initialState.filters, action) {
   switch (action.type) {
-    case types.SET_VISIBILITY_FILTER:
-      return action.filter;
+    case types.FILTER_TEXT:
+      return {
+        ...state,
+        text: action.text
+      };
+    case types.SORT_BY:
+      return {
+        ...state,
+        sortBy: action.sortType
+      };
+    case types.SEARCH_BY:
+      return {
+        ...state,
+        searchBy: action.searchType
+      };
     default:
       return state;
   }

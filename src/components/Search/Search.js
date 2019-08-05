@@ -5,26 +5,20 @@ import classNames from "classnames";
 import Box from "../Box/Box";
 import Button from "../Button/Button";
 import { connect } from "react-redux";
-import { setVisibilityFilter } from "../../actions/movieActions";
+import { filterText } from "../../actions/movieActions";
 
 let searchTitleClass = classNames(s.searchTitle, s.header__searchTitle);
 
 class Search extends Component {
   constructor(props) {
     super(props);
-    // this.handleSearchTextChange = this.handleSearchTextChange.bind(this);
   }
 
-  /*   handleSearchTextChange(e) {
-    this.props.onSearchTextChange(e.target.value);
-  } */
-
-  findMovies() {
-    this.props.onFindMovie(this.searchInput.value);
-  }
+  findMovies = () => {
+    this.props.dispatch(filterText(this.searchInput.value));
+  };
 
   render() {
-    console.log(this.props.filteredMovies);
     return (
       <div className={s.search} data-testid="search">
         <form>
@@ -39,7 +33,7 @@ class Search extends Component {
                 type="text"
                 placeholder="Quentin Tarantino"
                 name="search"
-                value={this.props.searchText}
+                // value={this.props.searchText}
                 // onChange={this.handleSearchTextChange}
                 aria-label="Search"
                 aria-labelledby="searchButton"
@@ -56,7 +50,7 @@ class Search extends Component {
                 </Box>
               </Box>
               <Button
-                handleClick={this.findMovies.bind(this)}
+                handleClick={this.findMovies}
                 id="searchButton"
                 text="SEARCH"
                 size="large"
@@ -74,26 +68,7 @@ Search.propTypes = {
   searchText: PropTypes.string,
   onSearchTextChange: PropTypes.func,
   onFindMovie: PropTypes.func,
+  dispatch: PropTypes.func.isRequired
 };
 
-const getVisibleMovies = (movies, filter) => {
-  console.log(filter);
-  return movies.filter(movie => movie.title.includes(filter));
-};
-
-function mapDispatchToProps(dispatch) {
-  return {
-    onFindMovie: filter => dispatch(setVisibilityFilter(filter))
-  };
-}
-
-function mapStateToProps(state) {
-  return {
-    filteredMovies: getVisibleMovies(state.movies, "Fifty")
-  };
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Search);
+export default connect()(Search);

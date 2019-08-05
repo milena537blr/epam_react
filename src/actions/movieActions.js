@@ -9,10 +9,24 @@ export function loadMoviesSuccess(movies) {
   };
 }
 
-export function setVisibilityFilter(filter) {
+export function filterText(text) {
   return {
-    type: types.SET_VISIBILITY_FILTER,
-    filter
+    type: types.FILTER_TEXT,
+    text
+  };
+}
+
+export function sortBy(sortType) {
+  return {
+    type: types.SORT_BY,
+    sortType
+  };
+}
+
+export function searchBy(searchType) {
+  return {
+    type: types.SEARCH_BY,
+    searchType
   };
 }
 

@@ -11,7 +11,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import NotFound from "../NotFound/NotFound";
 import CardsList from "../CardsList/CardsList";
 import { connect } from "react-redux";
-import { loadMovies } from "../../actions/movieActions";
+import { loadMovies, sortBy } from "../../actions/movieActions";
 
 class App extends React.Component {
   constructor(props) {
@@ -21,6 +21,10 @@ class App extends React.Component {
   componentDidMount() {
     this.props.dispatch(loadMovies());
   }
+
+  setSorter = event => {
+    this.props.dispatch(sortBy(event.currentTarget.value));
+  };
 
   render() {
     return (
@@ -42,10 +46,7 @@ class App extends React.Component {
             </Box>
             <Switch>
               <Route path="/" exact component={Search} />
-              <Route
-                path="/search"
-                render={() => <Search />}
-              />
+              <Route path="/search" render={() => <Search />} />
               <Route path="/film/:id" component={Article} />
               <Route component={Search} />
             </Switch>
@@ -57,11 +58,19 @@ class App extends React.Component {
             verticalAlign="middle"
             className={s.container}
           >
-            <div>7 movies found</div>
+            <div>{this.props.movies.length} movies found</div>
             <div>
               <span>Sort by </span>
-              <span>release date </span>
-              <span>rating</span>
+              <Button
+                text="release date"
+                buttonValue="release_date"
+                handleClick={this.setSorter}
+              />
+              <Button
+                text="rating"
+                buttonValue="rating"
+                handleClick={this.setSorter}
+              />
             </div>
           </Box>
         </section>
@@ -93,9 +102,24 @@ App.propTypes = {
   dispatch: PropTypes.func.isRequired
 };
 
+const getVisibleMovies = (movies, { text, sortBy }) => {
+  return movies
+    .filter(movie => movie.title.includes(text))
+    .sort((movie1, movie2) => {
+      switch (sortBy) {
+        case "rating":
+          return movie1.vote_average - movie2.vote_average;
+        case "release_date":
+          return new Date(movie1.release_date) - new Date(movie2.release_date);
+        default:
+          return movie1.vote_average - movie2.vote_average;
+      }
+    });
+};
+
 function mapStateToProps(state) {
   return {
-    movies: state.movies,
+    movies: getVisibleMovies(state.movies, state.filters)
   };
 }
 
