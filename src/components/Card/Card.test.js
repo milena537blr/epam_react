@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import Card from "./Card.js";
+import { Card } from "./Card.js";
 import { render } from "@testing-library/react";
 
 const card1 = {

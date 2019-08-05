@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import Card from "../Card/Card";
+import { Card } from "../Card/Card";
 import React, { Component } from "react";
 
 class CardsList extends Component {
@@ -37,4 +37,4 @@ CardsList.propTypes = {
   handleCardClick: PropTypes.func
 };
 
-export default CardsList;
+export { CardsList };

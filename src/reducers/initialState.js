@@ -1,4 +1,4 @@
-export default {
+const initialState = {
   movies: [],
   filters: {
     text: "",
@@ -6,3 +6,5 @@ export default {
     searchBy: "title"
   }
 };
+
+export { initialState };

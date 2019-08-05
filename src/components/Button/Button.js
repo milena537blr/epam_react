@@ -13,6 +13,7 @@ class Button extends React.Component {
     return (
       <button
         type="button"
+        disabled={this.props.disabled}
         className={buttonClassNames}
         onClick={this.props.handleClick}
         value={this.props.buttonValue}
@@ -33,7 +34,8 @@ Button.propTypes = {
   color: PropTypes.string,
   dataTestId: PropTypes.string,
   areaLabel: PropTypes.string,
-  handleClick: PropTypes.func
+  handleClick: PropTypes.func,
+  disabled: PropTypes.bool
 };
 
-export default Button;
+export { Button };

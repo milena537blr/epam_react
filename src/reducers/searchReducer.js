@@ -1,7 +1,7 @@
 import * as types from "../actions/actionTypes";
-import initialState from "./initialState";
+import { initialState } from "./initialState";
 
-export default function searchReducer(state = initialState.filters, action) {
+const searchReducer = (state = initialState.filters, action) => {
   switch (action.type) {
     case types.FILTER_TEXT:
       return {
@@ -22,3 +22,5 @@ export default function searchReducer(state = initialState.filters, action) {
       return state;
   }
 }
+
+export { searchReducer };

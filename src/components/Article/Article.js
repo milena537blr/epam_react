@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import s from "./Article.module.scss";
-import Box from "../Box/Box";
+import { Box } from "../Box/Box";
 import { connect } from "react-redux";
 
 class Article extends Component {

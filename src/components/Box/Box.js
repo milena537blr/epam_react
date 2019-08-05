@@ -189,4 +189,4 @@ Box.defaultProps = {
   inline: false,
 };
 
-export default Box;
+export { Box };

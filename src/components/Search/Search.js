@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import s from "./Search.module.scss";
 import classNames from "classnames";
-import Box from "../Box/Box";
-import Button from "../Button/Button";
+import { Box } from "../Box/Box";
+import { Button } from "../Button/Button";
 import { connect } from "react-redux";
-import { filterText } from "../../actions/movieActions";
+import { filterText, searchBy } from "../../actions/movieActions";
 
 let searchTitleClass = classNames(s.searchTitle, s.header__searchTitle);
 
@@ -16,6 +16,10 @@ class Search extends Component {
 
   findMovies = () => {
     this.props.dispatch(filterText(this.searchInput.value));
+  };
+
+  setSearchBy = event => {
+    this.props.dispatch(searchBy(event.currentTarget.value));
   };
 
   render() {
@@ -33,8 +37,6 @@ class Search extends Component {
                 type="text"
                 placeholder="Quentin Tarantino"
                 name="search"
-                // value={this.props.searchText}
-                // onChange={this.handleSearchTextChange}
                 aria-label="Search"
                 aria-labelledby="searchButton"
               />
@@ -43,10 +45,10 @@ class Search extends Component {
               <Box align="space-between" verticalAlign="middle">
                 <div className={s.searchLabel}>search by</div>
                 <Box marginRight={2}>
-                  <Button text="title" size="medium" color="red" />
+                  <Button buttonValue="title" handleClick={this.setSearchBy} text="title" size="medium" color={this.props.searchBy === "title" ? 'red' : 'gray'} />
                 </Box>
                 <Box marginRight={2}>
-                  <Button text="genre" size="medium" color="gray" />
+                  <Button buttonValue="genre" handleClick={this.setSearchBy} text="genre" size="medium" color={this.props.searchBy === "genre" ? 'red' : 'gray'} />
                 </Box>
               </Box>
               <Button
@@ -71,4 +73,10 @@ Search.propTypes = {
   dispatch: PropTypes.func.isRequired
 };
 
-export default connect()(Search);
+function mapStateToProps(state) {
+  return {
+    searchBy: state.filters.searchBy
+  };
+}
+
+export default connect(mapStateToProps)(Search);

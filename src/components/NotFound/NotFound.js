@@ -1,6 +1,5 @@
 import React from "react";
 import s from "./NotFound.module.scss";
-// import PropTypes from "prop-types";
 
 class NotFound extends React.Component {
   render() {
@@ -8,4 +7,4 @@ class NotFound extends React.Component {
   }
 }
 
-export default NotFound;
+export { NotFound };

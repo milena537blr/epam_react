@@ -1,18 +1,17 @@
 import React from "react";
 import Article from "../Article/Article";
 import Search from "../Search/Search";
-import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
+import { ErrorBoundary } from "../ErrorBoundary/ErrorBoundary";
 import s from "./app.module.scss";
-import Logo from "../Logo/Logo";
-import Box from "../Box/Box";
-import Button from "../Button/Button";
+import { Logo } from "../Logo/Logo";
+import { Box } from "../Box/Box";
+import  { Button } from "../Button/Button";
 import PropTypes from "prop-types";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import NotFound from "../NotFound/NotFound";
-import CardsList from "../CardsList/CardsList";
+import { NotFound } from "../NotFound/NotFound";
+import { CardsList } from "../CardsList/CardsList";
 import { connect } from "react-redux";
 import { loadMovies, sortBy } from "../../actions/movieActions";
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -102,9 +101,18 @@ App.propTypes = {
   dispatch: PropTypes.func.isRequired
 };
 
-const getVisibleMovies = (movies, { text, sortBy }) => {
+const getVisibleMovies = (movies, { text, sortBy, searchBy }) => {
   return movies
-    .filter(movie => movie.title.includes(text))
+    .filter(movie => {
+      switch (searchBy) {
+        case "title":
+          return movie.title.includes(text);
+        case "genre":
+          return text ? movie.genres.find(genre => genre === text) : movie;
+        default:
+          return movie.title.includes(text);
+      }
+    })
     .sort((movie1, movie2) => {
       switch (sortBy) {
         case "rating":

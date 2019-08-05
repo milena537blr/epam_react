@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import Button from "./Button.js";
+import { Button } from "./Button.js";
 import { render } from "@testing-library/react";
 
 const button1 = {

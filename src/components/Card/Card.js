@@ -2,7 +2,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import s from "./Card.module.scss";
-import Box from "../Box/Box";
+import { Box } from "../Box/Box";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 
 class Card extends React.Component {
@@ -43,4 +43,4 @@ Card.propTypes = {
   cardClick: PropTypes.func
 };
 
-export default Card;
+export { Card };

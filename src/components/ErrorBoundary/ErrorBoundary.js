@@ -39,4 +39,4 @@ ErrorBoundary.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default ErrorBoundary;
+export { ErrorBoundary };
