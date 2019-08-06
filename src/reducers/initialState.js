@@ -1,5 +1,9 @@
 const initialState = {
-  movies: [],
+  data: {
+    movies: [],
+    loading: false,
+    error: ""
+  },
   filters: {
     text: "",
     sortBy: "rating",

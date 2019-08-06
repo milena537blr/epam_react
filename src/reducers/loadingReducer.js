@@ -1,13 +1,13 @@
 import * as types from "../actions/actionTypes";
 import { initialState } from "./initialState";
 
-const movieReducer = (state = initialState.movies, action) => {
+const loadingReducer = (state = initialState.isLoading, action) => {
   switch (action.type) {
-    case types.LOAD_MOVIES_SUCCESS:
-      return action.movies;
+    case types.LOADING:
+      return action.isLoading;
     default:
       return state;
   }
-}
+};
 
-export { movieReducer };
+export { loadingReducer };

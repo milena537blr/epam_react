@@ -5,7 +5,7 @@ import { ErrorBoundary } from "../ErrorBoundary/ErrorBoundary";
 import s from "./app.module.scss";
 import { Logo } from "../Logo/Logo";
 import { Box } from "../Box/Box";
-import  { Button } from "../Button/Button";
+import { Button } from "../Button/Button";
 import PropTypes from "prop-types";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import { NotFound } from "../NotFound/NotFound";
@@ -76,13 +76,18 @@ class App extends React.Component {
         <main className={s.main}>
           <div className={s.container}>
             <Box className={s.wrapper} align="center">
-              <Switch>
-                <Route
-                  path="/(search?|film?)"
-                  render={() => <CardsList cards={this.props.movies} />}
-                />
-                <Route component={NotFound} />
-              </Switch>
+              {this.props.error? (<div style={{ color: "#f95a6d", fontSize: "50px" }}>ERROR: {this.props.error}</div>): ('')}
+              {this.props.loading ? (
+                <div style={{ fontSize: "100px" }}>Loading...</div>
+              ) : (
+                <Switch>
+                  <Route
+                    path="/(search?|film?)"
+                    render={() => <CardsList cards={this.props.movies} />}
+                  />
+                  <Route component={NotFound} />
+                </Switch>
+              )}
             </Box>
           </div>
         </main>
@@ -98,7 +103,9 @@ class App extends React.Component {
 
 App.propTypes = {
   movies: PropTypes.array,
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  loading: PropTypes.bool,
+  error: PropTypes.string
 };
 
 const getVisibleMovies = (movies, { text, sortBy, searchBy }) => {
@@ -125,10 +132,10 @@ const getVisibleMovies = (movies, { text, sortBy, searchBy }) => {
     });
 };
 
-function mapStateToProps(state) {
-  return {
-    movies: getVisibleMovies(state.movies, state.filters)
-  };
-}
+const mapStateToProps = state => ({
+  movies: getVisibleMovies(state.data.movies, state.filters),
+  loading: state.data.loading,
+  error: state.data.error
+});
 
 export default connect(mapStateToProps)(App);

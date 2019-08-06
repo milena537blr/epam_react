@@ -1,11 +1,18 @@
 import * as types from "./actionTypes";
-import { MoviesApi as movieApi } from "../api/moviesApi";
+const FILMS_SOURCE = "http://react-cdp-api.herokuapp.com";
 
 // action creators
 export function loadMoviesSuccess(movies) {
   return {
     type: types.LOAD_MOVIES_SUCCESS,
     movies
+  };
+}
+
+export function loadMoviesFailure(error) {
+  return {
+    type: types.LOAD_MOVIES_FAILURE,
+    error
   };
 }
 
@@ -30,20 +37,18 @@ export function searchBy(searchType) {
   };
 }
 
-// actions
-export function loadMovies() {
-  return function(dispatch) {
-    return movieApi
-      .getAllMovies()
-      .then(movies => {
-        dispatch(loadMoviesSuccess(movies.data));
-      })
-      .catch(error => {
-        throw error;
-      });
-  };
-}
+export const loadMovies = () => dispatch => {
+  dispatch({ type: types.LOAD_MOVIES_LOADING });
 
-export function addTodo(text) {
-  return { type: types.ADD_TODO, text };
-}
+  fetch(`${FILMS_SOURCE}/movies`)
+    .then(response => {
+      return response.json();
+    })
+    .then(movies => {
+      dispatch(loadMoviesSuccess(movies.data));
+    })
+    .catch(error => {
+      dispatch(loadMoviesFailure(error.message));
+    });
+};
+

@@ -45,10 +45,10 @@ function mapStateToProps(state, ownProps) {
     genres: []
   };
   const currentCardId = ownProps.match.params.id;
-  if (state.movies.length > 0) {
+  if (state.data.movies.length > 0) {
     currentMovie = Object.assign(
       {},
-      state.movies.find(movie => movie.id == currentCardId)
+      state.data.movies.find(movie => movie.id == currentCardId)
     );
   }
   return {

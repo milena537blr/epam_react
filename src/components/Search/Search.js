@@ -67,10 +67,9 @@ class Search extends Component {
 }
 
 Search.propTypes = {
-  searchText: PropTypes.string,
-  onSearchTextChange: PropTypes.func,
   onFindMovie: PropTypes.func,
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  searchBy: PropTypes.string
 };
 
 function mapStateToProps(state) {
