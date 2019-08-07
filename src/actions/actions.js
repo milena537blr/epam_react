@@ -16,6 +16,12 @@ export function loadMoviesFailure(error) {
   };
 }
 
+export function loadMoviesLoading() {
+  return {
+    type: types.LOAD_MOVIES_LOADING
+  };
+}
+
 export function filterText(text) {
   return {
     type: types.FILTER_TEXT,
@@ -38,7 +44,7 @@ export function searchBy(searchType) {
 }
 
 export const loadMovies = () => dispatch => {
-  dispatch({ type: types.LOAD_MOVIES_LOADING });
+  dispatch(loadMoviesLoading());
 
   fetch(`${FILMS_SOURCE}/movies`)
     .then(response => {
@@ -51,4 +57,3 @@ export const loadMovies = () => dispatch => {
       dispatch(loadMoviesFailure(error.message));
     });
 };
-

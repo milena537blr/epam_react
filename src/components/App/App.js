@@ -11,7 +11,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import { NotFound } from "../NotFound/NotFound";
 import { CardsList } from "../CardsList/CardsList";
 import { connect } from "react-redux";
-import { loadMovies, sortBy } from "../../actions/movieActions";
+import { loadMovies, sortBy } from "../../actions/actions";
 class App extends React.Component {
   constructor(props) {
     super(props);

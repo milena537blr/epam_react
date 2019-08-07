@@ -5,7 +5,7 @@ import classNames from "classnames";
 import { Box } from "../Box/Box";
 import { Button } from "../Button/Button";
 import { connect } from "react-redux";
-import { filterText, searchBy } from "../../actions/movieActions";
+import { filterText, searchBy } from "../../actions/actions";
 
 let searchTitleClass = classNames(s.searchTitle, s.header__searchTitle);
 

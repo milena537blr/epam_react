@@ -5,10 +5,6 @@ import React, { Component } from "react";
 class CardsList extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      currentCardId: "1"
-    };
   }
 
   handleCardClick = currentCardId => {
