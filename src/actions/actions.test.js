@@ -96,15 +96,28 @@ describe("async actions", () => {
         ]
       }
     ];
-    console.log("1111111111111111");
-    console.log(expectedActions);
     const store = mockStore();
-    console.log(store.dispatch(actions.searchBy));
-    console.log(store.dispatch(actions.loadMovies()));
 
     return store.dispatch(actions.loadMovies()).then(() => {
       // return of async actions
       expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+
+  it("creates LOAD_MOVIES_FAILURE when fetching movies hasn't been done", () => {
+    fetchMock.getOnce(`${FILMS_SOURCE}/movies`, 404);
+
+    const expectedActions = [
+      types.LOAD_MOVIES_LOADING,
+      types.LOAD_MOVIES_FAILURE
+    ];
+    const store = mockStore();
+
+    return store.dispatch(actions.loadMovies()).then(() => {
+      // return of async actions
+      expect(store.getActions().map(action => action.type)).toEqual(
+        expectedActions
+      );
     });
   });
 });

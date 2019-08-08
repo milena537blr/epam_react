@@ -46,14 +46,8 @@ export function searchBy(searchType) {
 export const loadMovies = () => dispatch => {
   dispatch(loadMoviesLoading());
 
-  fetch(`${FILMS_SOURCE}/movies`)
-    .then(response => {
-      return response.json();
-    })
-    .then(movies => {
-      dispatch(loadMoviesSuccess(movies.data));
-    })
-    .catch(error => {
-      dispatch(loadMoviesFailure(error.message));
-    });
-};
+  return fetch(`${FILMS_SOURCE}/movies`)
+    .then(response => response.json())
+    .then(movies => dispatch(loadMoviesSuccess(movies.data)))
+    .catch(error => dispatch(loadMoviesFailure(error.message)));
+}
