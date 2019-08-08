@@ -18,6 +18,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    console.log(loadMovies());
     this.props.dispatch(loadMovies());
   }
 
