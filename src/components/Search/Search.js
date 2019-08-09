@@ -9,7 +9,7 @@ import { filterText, searchBy } from "../../actions/actions";
 
 let searchTitleClass = classNames(s.searchTitle, s.header__searchTitle);
 
-class Search extends Component {
+export class Search extends Component {
   constructor(props) {
     super(props);
   }
@@ -67,8 +67,7 @@ class Search extends Component {
 }
 
 Search.propTypes = {
-  onFindMovie: PropTypes.func,
-  dispatch: PropTypes.func.isRequired,
+  // dispatch: PropTypes.func.isRequired,
   searchBy: PropTypes.string
 };
 
