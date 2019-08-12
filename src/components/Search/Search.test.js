@@ -1,6 +1,5 @@
 import React from "react";
 import { mount } from "enzyme";
-import Search from "./Search.js";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import { render, fireEvent, cleanup } from "@testing-library/react";
@@ -11,15 +10,12 @@ import ConnectedSearch from "./Search";
 const activeButtonClass = "red";
 const inactiveButtonClass = "gray";
 
-// afterEach(cleanup);
+afterEach(cleanup);
 
-console.log(initialState);
 function renderWithRedux(
   ui,
   { initialState, store = createStore(searchReducer, initialState) } = {}
 ) {
-  console.log(initialState);
-  console.log(store);
   return {
     ...render(<Provider store={store}>{ui}</Provider>),
     // adding `store` to the returned utilities to allow us
@@ -29,8 +25,22 @@ function renderWithRedux(
   };
 }
 
-test("can render with redux with defaults", () => {
-  const { getByTestId, getByText } = renderWithRedux(<ConnectedSearch />, {
+test("sets up active genre button", () => {
+  const { getByTestId } = renderWithRedux(<ConnectedSearch />, {
+    initialState: {
+      filters: {
+        text: "",
+        sortBy: "rating",
+        searchBy: "genre"
+      }
+    }
+  });
+  expect(getByTestId("search-by-genre")).toHaveClass(activeButtonClass);
+  expect(getByTestId("search-by-title")).toHaveClass(inactiveButtonClass);
+});
+
+test("sets up active title button", () => {
+  const { getByTestId } = renderWithRedux(<ConnectedSearch />, {
     initialState: {
       filters: {
         text: "",
@@ -39,12 +49,27 @@ test("can render with redux with defaults", () => {
       }
     }
   });
-  fireEvent.click(getByText("title"));
-  expect(getByText("title")).toHaveClass(activeButtonClass);
-  expect(getByText("genre")).toHaveClass(inactiveButtonClass);
- /*  fireEvent.click(getByText("genre"));
-  expect(getByText("genre")).toHaveClass(activeButtonClass);
-  expect(getByText("title")).toHaveClass(inactiveButtonClass); */
+
+  // fireEvent.click(getByTestId("search-by-genre"));
+
+  expect(getByTestId("search-by-title")).toHaveClass(activeButtonClass);
+  expect(getByTestId("search-by-genre")).toHaveClass(inactiveButtonClass);
+});
+
+test("can render with redux with custom store", () => {
+  // this is a silly store that can never be changed
+  const store = createStore(() => ({
+    filters: {
+      text: "",
+      sortBy: "rating",
+      searchBy: "title"
+    }
+  }));
+  const { getByTestId } = renderWithRedux(<ConnectedSearch />, {
+    store
+  });
+  expect(getByTestId("search-by-title")).toHaveClass(activeButtonClass);
+  expect(getByTestId("search-by-genre")).toHaveClass(inactiveButtonClass);
 });
 
 /* test("snapshot test", () => {

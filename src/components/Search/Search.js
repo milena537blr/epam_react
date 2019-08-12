@@ -45,10 +45,10 @@ export class Search extends Component {
               <Box align="space-between" verticalAlign="middle">
                 <div className={s.searchLabel}>search by</div>
                 <Box marginRight={2}>
-                  <Button buttonValue="title" handleClick={this.setSearchBy} text="title" size="medium" color={this.props.searchBy === "title" ? 'red' : 'gray'} />
+                  <Button dataTestId="search-by-title" buttonValue="title" handleClick={this.setSearchBy} text="title" size="medium" color={this.props.searchBy === "title" ? 'red' : 'gray'} />
                 </Box>
                 <Box marginRight={2}>
-                  <Button buttonValue="genre" handleClick={this.setSearchBy} text="genre" size="medium" color={this.props.searchBy === "genre" ? 'red' : 'gray'} />
+                  <Button dataTestId="search-by-genre" buttonValue="genre" handleClick={this.setSearchBy} text="genre" size="medium" color={this.props.searchBy === "genre" ? 'red' : 'gray'} />
                 </Box>
               </Box>
               <Button
