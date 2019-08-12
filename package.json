@@ -12,6 +12,7 @@
     "flow": "flow"
   },
   "jest": {
+    "automock": false,
     "moduleNameMapper": {
       "\\.(css|scss)$": "identity-obj-proxy",
       "\\.(gif|ttf|eot|svg|jpg)$": "<rootDir>/__mocks__/fileMock.js",

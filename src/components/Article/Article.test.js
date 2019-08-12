@@ -31,7 +31,7 @@ function renderWithRedux(
     history
   };
 }
-
+  
 const card1 = {
   id: 447365,
   release_date: "2020-05-01",
