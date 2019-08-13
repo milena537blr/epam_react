@@ -1,24 +1,30 @@
 import React from "react";
-import { mount } from "enzyme";
 import ConnectedApp from "./App.js";
 import { Provider } from "react-redux";
-import { render, fireEvent, cleanup } from "@testing-library/react";
+import {
+  render,
+  fireEvent,
+  cleanup,
+  waitForElement
+} from "@testing-library/react";
 import { rootReducer } from "../../reducers/rootReducer";
 import { createStore, applyMiddleware } from "redux";
-import { Link, Route, Router, Switch } from "react-router-dom";
+import { Route, Router } from "react-router-dom";
 import { createMemoryHistory } from "history";
 import thunk from "redux-thunk";
 
-afterEach(cleanup);
-
 function renderWithRedux(
   ui,
-  { initialState, store = createStore(rootReducer, initialState, applyMiddleware(thunk)) } = {},
+  {
+    initialState,
+    store = createStore(rootReducer, initialState, applyMiddleware(thunk))
+  } = {},
   {
     route = "/search",
     history = createMemoryHistory({ initialEntries: [route] })
   } = {}
 ) {
+  console.log(store.getState());
   return {
     ...render(
       <Provider store={store}>
@@ -36,14 +42,14 @@ const card1 = {
   id: 447365,
   release_date: "2020-05-01",
   genres: ["Action", "Adventure", "Science Fiction"],
-  title: "Guardians of the Galaxy Vol. 3",
-  tagline: "",
+  title: "1Guardians of the Galaxy Vol. 3",
+  tagline: "Life finds a way",
   overview: "The third film based on Marvel's Guardians of the Galaxy.",
   runtime: null
 };
 
 const card2 = {
-  id: 447365,
+  id: 337167,
   release_date: "2018-04-07",
   genres: ["TV Movie", "Drama"],
   title: "Paterno",
@@ -52,9 +58,6 @@ const card2 = {
     "After becoming the winningest coach in college football history, Joe Paterno is embroiled in Penn State's Jerry Sandusky sexual abuse scandal, challenging his legacy and forcing him to face questions of institutional failure regarding the victims.",
   runtime: null
 };
-
-const data = { cards: [card1, card2] };
-// const component = mount(<App data={data} />);
 
 afterEach(cleanup);
 
@@ -66,52 +69,60 @@ afterEach(cleanup);
   expect(component.find("Card").length).toBe(2);
 }); */
 
-test("generates Search instead Article after search button had been clicked", () => {
-  /*   const { getByAltText, getByTestId, queryByTestId } = render(
-    <ConnectedApp data={data} />
-  ); */
+test("generates Loading text before fetching data", async () => {
+  const { getByText } = renderWithRedux(<ConnectedApp />);
 
-  const { getByAltText, getByTestId, queryByTestId } = renderWithRedux(
-    <ConnectedApp />,
-    {
-      initialState: {
-        data: {
-          movies: [
-            {
-              id: 447365,
-              release_date: "2020-05-01",
-              genres: ["Action", "Adventure", "Science Fiction"],
-              title: "Guardians of the Galaxy Vol. 3",
-              tagline: "",
-              overview:
-                "The third film based on Marvel's Guardians of the Galaxy.",
-              runtime: null
-            },
-            {
-              id: 447365,
-              release_date: "2018-04-07",
-              genres: ["TV Movie", "Drama"],
-              title: "Paterno",
-              tagline: "The greater the legend, the harder the fall.",
-              overview:
-                "After becoming the winningest coach in college football history, Joe Paterno is embroiled in Penn State's Jerry Sandusky sexual abuse scandal, challenging his legacy and forcing him to face questions of institutional failure regarding the victims.",
-              runtime: null
-            }
-          ],
-          loading: false,
-          error: ""
-        }
+  const loading = await waitForElement(() => getByText("Loading..."));
+  expect(loading).toHaveTextContent("Loading...");
+});
+
+test("generates Search instead Article after search button had been clicked", async () => {
+  const store = createStore(
+    () => ({
+      data: {
+        movies: [
+          {
+            id: 447365,
+            release_date: "2020-05-01",
+            genres: ["Action", "Adventure", "Science Fiction"],
+            title: "1Guardians of the Galaxy Vol. 3",
+            tagline: "Life finds a way",
+            overview:
+              "The third film based on Marvel's Guardians of the Galaxy.",
+            runtime: null
+          },
+          {
+            id: 337167,
+            release_date: "2018-04-07",
+            genres: ["TV Movie", "Drama"],
+            title: "Paterno",
+            tagline: "The greater the legend, the harder the fall.",
+            overview:
+              "After becoming the winningest coach in college football history, Joe Paterno is embroiled in Penn State's Jerry Sandusky sexual abuse scandal, challenging his legacy and forcing him to face questions of institutional failure regarding the victims.",
+            runtime: null
+          }
+        ],
+        loading: false,
+        error: ""
+      },
+      filters: {
+        text: "",
+        sortBy: "rating",
+        searchBy: "title"
       }
-    },
-    {
-      route: "/search"
-    }
+    }),
+    applyMiddleware(thunk)
+  );
+
+  const { getByAltText, queryByTestId, getByTestId } = renderWithRedux(
+    <ConnectedApp />,
+    { store }
   );
 
   expect(queryByTestId("article")).toBeNull();
   expect(getByTestId("search")).toBeInTheDocument();
 
-  fireEvent.click(getByAltText(data.cards[1].title));
+  fireEvent.click(getByAltText(card1.title));
   expect(getByTestId("article")).toBeInTheDocument();
   expect(queryByTestId("search")).toBeNull();
 
@@ -120,55 +131,70 @@ test("generates Search instead Article after search button had been clicked", ()
   expect(getByTestId("search")).toBeInTheDocument();
 });
 
-/* test("generates name, description, text, time and date in Article", () => {
-  const { getByAltText, getByTestId } = render(<App data={data} />);
+test("generates name, overview, text, time and date in Article", () => {
+  const store = createStore(
+    () => ({
+      data: {
+        movies: [
+          {
+            id: 447365,
+            release_date: "2020-05-01",
+            genres: ["Action", "Adventure", "Science Fiction"],
+            title: "1Guardians of the Galaxy Vol. 3",
+            tagline: "Life finds a way",
+            overview:
+              "The third film based on Marvel's Guardians of the Galaxy.",
+            runtime: null
+          },
+          {
+            id: 337167,
+            release_date: "2018-04-07",
+            genres: ["TV Movie", "Drama"],
+            title: "Paterno",
+            tagline: "The greater the legend, the harder the fall.",
+            overview:
+              "After becoming the winningest coach in college football history, Joe Paterno is embroiled in Penn State's Jerry Sandusky sexual abuse scandal, challenging his legacy and forcing him to face questions of institutional failure regarding the victims.",
+            runtime: null
+          }
+        ],
+        loading: false,
+        error: ""
+      },
+      filters: {
+        text: "",
+        sortBy: "rating",
+        searchBy: "title"
+      }
+    }),
+    applyMiddleware(thunk)
+  );
 
-  fireEvent.click(getByAltText(data.cards[0].name));
-  expect(getByTestId("article")).toHaveTextContent(data.cards[0].name);
-  expect(getByTestId("article")).toHaveTextContent(data.cards[0].description);
-  expect(getByTestId("article")).toHaveTextContent(data.cards[0].text);
-  expect(getByTestId("article")).toHaveTextContent(
-    data.cards[0].time.toString()
-  );
-  expect(getByTestId("article")).toHaveTextContent(
-    data.cards[0].date.toString()
-  );
+  const { getByAltText, getByTestId } = renderWithRedux(<ConnectedApp />, {
+    store
+  });
 
-  expect(getByTestId("article")).not.toHaveTextContent(data.cards[1].name);
-  expect(getByTestId("article")).not.toHaveTextContent(
-    data.cards[1].description
-  );
-  expect(getByTestId("article")).not.toHaveTextContent(data.cards[1].text);
-  expect(getByTestId("article")).not.toHaveTextContent(
-    data.cards[1].time.toString()
-  );
-  expect(getByTestId("article")).not.toHaveTextContent(
-    data.cards[1].date.toString()
-  );
+  fireEvent.click(getByAltText(card2.title));
+  expect(getByTestId("article")).toHaveTextContent(card2.title);
+  expect(getByTestId("article")).toHaveTextContent(card2.overview);
+  expect(getByTestId("article")).toHaveTextContent(card2.tagline);
+  expect(getByTestId("article")).toHaveTextContent(card2.release_date);
+
+  expect(getByTestId("article")).not.toHaveTextContent(card1.title);
+  expect(getByTestId("article")).not.toHaveTextContent(card1.overview);
+  expect(getByTestId("article")).not.toHaveTextContent(card1.tagline);
+  expect(getByTestId("article")).not.toHaveTextContent(card1.release_date);
 
   // after search-switcher button had been clicked
   fireEvent.click(getByTestId("search-switcher"));
 
-  fireEvent.click(getByAltText(data.cards[1].name));
-  expect(getByTestId("article")).toHaveTextContent(data.cards[1].name);
-  expect(getByTestId("article")).toHaveTextContent(data.cards[1].description);
-  expect(getByTestId("article")).toHaveTextContent(data.cards[1].text);
-  expect(getByTestId("article")).toHaveTextContent(
-    data.cards[1].time.toString()
-  );
-  expect(getByTestId("article")).toHaveTextContent(
-    data.cards[1].date.toString()
-  );
+  fireEvent.click(getByAltText(card1.title));
+  expect(getByTestId("article")).toHaveTextContent(card1.title);
+  expect(getByTestId("article")).toHaveTextContent(card1.overview);
+  expect(getByTestId("article")).toHaveTextContent(card1.tagline);
+  expect(getByTestId("article")).toHaveTextContent(card1.release_date);
 
-  expect(getByTestId("article")).not.toHaveTextContent(data.cards[0].name);
-  expect(getByTestId("article")).not.toHaveTextContent(
-    data.cards[0].description
-  );
-  expect(getByTestId("article")).not.toHaveTextContent(data.cards[0].text);
-  expect(getByTestId("article")).not.toHaveTextContent(
-    data.cards[0].time.toString()
-  );
-  expect(getByTestId("article")).not.toHaveTextContent(
-    data.cards[0].date.toString()
-  );
-}); */
+  expect(getByTestId("article")).not.toHaveTextContent(card2.title);
+  expect(getByTestId("article")).not.toHaveTextContent(card2.overview);
+  expect(getByTestId("article")).not.toHaveTextContent(card2.tagline);
+  expect(getByTestId("article")).not.toHaveTextContent(card2.release_date);
+});

@@ -1,5 +1,6 @@
 import * as types from "./actionTypes";
 const FILMS_SOURCE = "http://react-cdp-api.herokuapp.com";
+import fetch from 'node-fetch';
 
 // action creators
 export function loadMoviesSuccess(movies) {

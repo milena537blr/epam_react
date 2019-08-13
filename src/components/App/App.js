@@ -18,7 +18,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log(loadMovies());
     this.props.dispatch(loadMovies());
   }
 
@@ -75,7 +74,7 @@ class App extends React.Component {
           </Box>
         </section>
         <main className={s.main}>
-          <div className={s.container}>
+          <div className={s.container} data-testid="resolved">
             <Box className={s.wrapper} align="center">
               {this.props.error? (<div style={{ color: "#f95a6d", fontSize: "50px" }}>ERROR: {this.props.error}</div>): ('')}
               {this.props.loading ? (
