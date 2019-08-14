@@ -6,6 +6,7 @@ import { render, fireEvent, cleanup } from "@testing-library/react";
 import { initialState } from "../../reducers/initialState";
 import { searchReducer } from "../../reducers/searchReducer";
 import ConnectedSearch from "./Search";
+import { act } from 'react-dom/test-utils';
 
 const activeButtonClass = "red";
 const inactiveButtonClass = "gray";
@@ -50,10 +51,15 @@ test("sets up active title button", () => {
     }
   });
 
-  // fireEvent.click(getByTestId("search-by-genre"));
-
   expect(getByTestId("search-by-title")).toHaveClass(activeButtonClass);
   expect(getByTestId("search-by-genre")).toHaveClass(inactiveButtonClass);
+
+  act(() => {
+    fireEvent.click(getByTestId("search-by-genre"));
+  });
+
+  expect(getByTestId("search-by-title")).toHaveClass(inactiveButtonClass);
+  expect(getByTestId("search-by-genre")).toHaveClass(activeButtonClass);
 });
 
 test("can render with redux with custom store", () => {

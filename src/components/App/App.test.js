@@ -24,7 +24,6 @@ function renderWithRedux(
     history = createMemoryHistory({ initialEntries: [route] })
   } = {}
 ) {
-  console.log(store.getState());
   return {
     ...render(
       <Provider store={store}>

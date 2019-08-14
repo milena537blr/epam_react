@@ -4,17 +4,21 @@ import ConnectedArticle from "./Article";
 import { Provider } from "react-redux";
 import { render, cleanup } from "@testing-library/react";
 import { moviesReducer } from "../../reducers/moviesReducer";
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import { Link, Route, Router, Switch } from "react-router-dom";
 import { createMemoryHistory } from "history";
+import thunk from "redux-thunk";
 
 afterEach(cleanup);
 
 function renderWithRedux(
   ui,
-  { initialState, store = createStore(moviesReducer, initialState) },
   {
-    route = "/film/447365",
+    initialState,
+    store = createStore(moviesReducer, initialState, applyMiddleware(thunk))
+  } = {},
+  {
+    route = "/film/299534",
     history = createMemoryHistory({ initialEntries: [route] })
   } = {}
 ) {
@@ -31,9 +35,9 @@ function renderWithRedux(
     history
   };
 }
-  
+
 const card1 = {
-  id: 447365,
+  id: 299534,
   release_date: "2020-05-01",
   genres: ["Action", "Adventure", "Science Fiction"],
   title: "Guardians of the Galaxy Vol. 3",
@@ -63,22 +67,22 @@ test("generates title, overview, date, runtime, tagline of Article", () => {
     <Article card={card1} />
   ); */
 
-  const { getByText, getByAltText } = renderWithRedux(<ConnectedArticle />, {
-    initialState: {
+  const store = createStore(
+    () => ({
       data: {
         movies: [
           {
-            id: 447365,
+            id: 299534,
             release_date: "2020-05-01",
             genres: ["Action", "Adventure", "Science Fiction"],
-            title: "Guardians of the Galaxy Vol. 3",
-            tagline: "",
+            title: "1Guardians of the Galaxy Vol. 3",
+            tagline: "Life finds a way",
             overview:
               "The third film based on Marvel's Guardians of the Galaxy.",
             runtime: null
           },
           {
-            id: 447365,
+            id: 337167,
             release_date: "2018-04-07",
             genres: ["TV Movie", "Drama"],
             title: "Paterno",
@@ -90,12 +94,25 @@ test("generates title, overview, date, runtime, tagline of Article", () => {
         ],
         loading: false,
         error: ""
+      },
+      filters: {
+        text: "",
+        sortBy: "rating",
+        searchBy: "title"
       }
+    }),
+    applyMiddleware(thunk)
+  );
+
+  const { getByText, getByAltText } = renderWithRedux(
+    <ConnectedArticle />,
+    {
+      store
+    },
+    {
+      route: "/film/299534"
     }
-  },
-  {
-    route: '/film/447365',
-  });
+  );
 
   expect(getByText(card1.title)).toBeInTheDocument();
   expect(getByText(card1.overview)).toBeInTheDocument();
