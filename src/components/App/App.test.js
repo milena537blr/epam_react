@@ -60,9 +60,10 @@ const card2 = {
 
 afterEach(cleanup);
 
-/* test("snapshot test", () => {
+test("snapshot test", () => {
+  const component = renderWithRedux(<ConnectedApp />);
   expect(component).toMatchSnapshot();
-}); */
+});
 
 /* test("renders all Cards", () => {
   expect(component.find("Card").length).toBe(2);

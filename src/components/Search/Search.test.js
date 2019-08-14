@@ -6,7 +6,7 @@ import { render, fireEvent, cleanup } from "@testing-library/react";
 import { initialState } from "../../reducers/initialState";
 import { searchReducer } from "../../reducers/searchReducer";
 import ConnectedSearch from "./Search";
-import { act } from 'react-dom/test-utils';
+import { act } from "react-dom/test-utils";
 
 const activeButtonClass = "red";
 const inactiveButtonClass = "gray";

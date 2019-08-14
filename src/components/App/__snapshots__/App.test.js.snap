@@ -1,582 +1,419 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`snapshot test 1`] = `
-<App
-  data={
-    Object {
-      "cards": Array [
-        Object {
-          "date": 2007,
-          "description": "American drama",
-          "genre": "Dramas",
-          "id": 1,
-          "name": "Vampire diaries",
-          "text": "The Vampire Diaries is an American supernatural teen drama television series developed by Kevin Williamson and Julie Plec, based on the popular book series of the same name written by L. J. Smith.",
-          "time": 145,
-        },
-        Object {
-          "date": 2014,
-          "description": "Drama/Comedy-drama",
-          "genre": "Drama",
-          "id": 2,
-          "name": "The Fault in Our Stars",
-          "text": "Hazel Grace Lancaster (Shailene Woodley), a 16-year-old cancer patient, meets and falls in love with Gus Waters (Ansel Elgort), a similarly afflicted teen from her cancer support group. Hazel feels that Gus really understands her.",
-          "time": 133,
-        },
-      ],
-    }
-  }
->
-  <ErrorBoundary>
-    <header
-      className="header"
-    >
-      <div
-        className="overlay"
-      />
-      <section
-        className="container"
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <header
+        class="header"
       >
-        <Box
-          align="space-between"
-          direction="horizontal"
-          inline={false}
-          marginBottom={8}
-          verticalAlign="middle"
+        <div
+          class="overlay"
+        />
+        <section
+          class="container"
         >
           <div
-            className="root horizontal spaceBetween middle"
-            style={
-              Object {
-                "height": "undefined",
-                "margin": "undefined",
-                "marginBottom": 48,
-                "marginLeft": "undefined",
-                "marginRight": "undefined",
-                "marginTop": "undefined",
-                "maxHeight": "undefined",
-                "maxWidth": "undefined",
-                "minHeight": "undefined",
-                "minWidth": "undefined",
-                "padding": "undefined",
-                "paddingBottom": "undefined",
-                "paddingLeft": "undefined",
-                "paddingRight": "undefined",
-                "paddingTop": "undefined",
-                "width": "undefined",
-              }
-            }
+            class="root horizontal spaceBetween middle"
+            style="margin-bottom: 48px; min-width: undefined; max-width: undefined; min-height: undefined; max-height: undefined;"
           >
-            <Logo>
-              <a
-                className="logo"
-                href="/"
-              >
-                netflixroulette
-              </a>
-            </Logo>
-            <Button
-              areaLabel="Display search area"
-              color="white"
-              dataTestId="search-switcher"
-              onHandleSearchClick={[Function]}
-              size="large"
-              text="SEARCH"
+            <a
+              class="logo"
+              href="/"
+            >
+              netflixroulette
+            </a>
+            <a
+              href="/search"
             >
               <button
                 area-label="Display search area"
-                className="button large white"
+                class="button large white"
                 data-testid="search-switcher"
-                onClick={[Function]}
-                type="submit"
+                type="button"
               >
                 SEARCH
               </button>
-            </Button>
+            </a>
           </div>
-        </Box>
-        <Search
-          onSearchTextChange={[Function]}
-          searchText=""
-        >
           <div
-            className="search"
+            class="search"
             data-testid="search"
           >
             <form>
               <fieldset>
                 <legend
-                  className="searchTitle header__searchTitle"
+                  class="searchTitle header__searchTitle"
                 >
                   Find your movie
                 </legend>
-                <Box
-                  direction="horizontal"
-                  inline={false}
-                  marginBottom={4}
+                <div
+                  class="root horizontal"
+                  style="margin-bottom: 24px; min-width: undefined; max-width: undefined; min-height: undefined; max-height: undefined;"
+                >
+                  <input
+                    aria-label="Search"
+                    aria-labelledby="searchButton"
+                    class="searchInput"
+                    name="search"
+                    placeholder="Quentin Tarantino"
+                    type="text"
+                  />
+                </div>
+                <div
+                  class="root horizontal spaceBetween middle"
+                  style="min-width: undefined; max-width: undefined; min-height: undefined; max-height: undefined;"
                 >
                   <div
-                    className="root horizontal"
-                    style={
-                      Object {
-                        "height": "undefined",
-                        "margin": "undefined",
-                        "marginBottom": 24,
-                        "marginLeft": "undefined",
-                        "marginRight": "undefined",
-                        "marginTop": "undefined",
-                        "maxHeight": "undefined",
-                        "maxWidth": "undefined",
-                        "minHeight": "undefined",
-                        "minWidth": "undefined",
-                        "padding": "undefined",
-                        "paddingBottom": "undefined",
-                        "paddingLeft": "undefined",
-                        "paddingRight": "undefined",
-                        "paddingTop": "undefined",
-                        "width": "undefined",
-                      }
-                    }
+                    class="root horizontal spaceBetween middle"
+                    style="min-width: undefined; max-width: undefined; min-height: undefined; max-height: undefined;"
                   >
-                    <input
-                      aria-label="Search"
-                      aria-labelledby="searchButton"
-                      className="searchInput"
-                      name="search"
-                      onChange={[Function]}
-                      placeholder="Quentin Tarantino"
-                      type="text"
-                      value=""
-                    />
-                  </div>
-                </Box>
-                <Box
-                  align="space-between"
-                  direction="horizontal"
-                  inline={false}
-                  verticalAlign="middle"
-                >
-                  <div
-                    className="root horizontal spaceBetween middle"
-                    style={
-                      Object {
-                        "height": "undefined",
-                        "margin": "undefined",
-                        "marginBottom": "undefined",
-                        "marginLeft": "undefined",
-                        "marginRight": "undefined",
-                        "marginTop": "undefined",
-                        "maxHeight": "undefined",
-                        "maxWidth": "undefined",
-                        "minHeight": "undefined",
-                        "minWidth": "undefined",
-                        "padding": "undefined",
-                        "paddingBottom": "undefined",
-                        "paddingLeft": "undefined",
-                        "paddingRight": "undefined",
-                        "paddingTop": "undefined",
-                        "width": "undefined",
-                      }
-                    }
-                  >
-                    <Box
-                      align="space-between"
-                      direction="horizontal"
-                      inline={false}
-                      verticalAlign="middle"
+                    <div
+                      class="searchLabel"
                     >
-                      <div
-                        className="root horizontal spaceBetween middle"
-                        style={
-                          Object {
-                            "height": "undefined",
-                            "margin": "undefined",
-                            "marginBottom": "undefined",
-                            "marginLeft": "undefined",
-                            "marginRight": "undefined",
-                            "marginTop": "undefined",
-                            "maxHeight": "undefined",
-                            "maxWidth": "undefined",
-                            "minHeight": "undefined",
-                            "minWidth": "undefined",
-                            "padding": "undefined",
-                            "paddingBottom": "undefined",
-                            "paddingLeft": "undefined",
-                            "paddingRight": "undefined",
-                            "paddingTop": "undefined",
-                            "width": "undefined",
-                          }
-                        }
-                      >
-                        <div
-                          className="searchLabel"
-                        >
-                          search by
-                        </div>
-                        <Box
-                          direction="horizontal"
-                          inline={false}
-                          marginRight={2}
-                        >
-                          <div
-                            className="root horizontal"
-                            style={
-                              Object {
-                                "height": "undefined",
-                                "margin": "undefined",
-                                "marginBottom": "undefined",
-                                "marginLeft": "undefined",
-                                "marginRight": 12,
-                                "marginTop": "undefined",
-                                "maxHeight": "undefined",
-                                "maxWidth": "undefined",
-                                "minHeight": "undefined",
-                                "minWidth": "undefined",
-                                "padding": "undefined",
-                                "paddingBottom": "undefined",
-                                "paddingLeft": "undefined",
-                                "paddingRight": "undefined",
-                                "paddingTop": "undefined",
-                                "width": "undefined",
-                              }
-                            }
-                          >
-                            <Button
-                              color="red"
-                              size="medium"
-                              text="title"
-                            >
-                              <button
-                                className="button medium red"
-                                type="submit"
-                              >
-                                title
-                              </button>
-                            </Button>
-                          </div>
-                        </Box>
-                        <Box
-                          direction="horizontal"
-                          inline={false}
-                          marginRight={2}
-                        >
-                          <div
-                            className="root horizontal"
-                            style={
-                              Object {
-                                "height": "undefined",
-                                "margin": "undefined",
-                                "marginBottom": "undefined",
-                                "marginLeft": "undefined",
-                                "marginRight": 12,
-                                "marginTop": "undefined",
-                                "maxHeight": "undefined",
-                                "maxWidth": "undefined",
-                                "minHeight": "undefined",
-                                "minWidth": "undefined",
-                                "padding": "undefined",
-                                "paddingBottom": "undefined",
-                                "paddingLeft": "undefined",
-                                "paddingRight": "undefined",
-                                "paddingTop": "undefined",
-                                "width": "undefined",
-                              }
-                            }
-                          >
-                            <Button
-                              color="gray"
-                              size="medium"
-                              text="genre"
-                            >
-                              <button
-                                className="button medium gray"
-                                type="submit"
-                              >
-                                genre
-                              </button>
-                            </Button>
-                          </div>
-                        </Box>
-                      </div>
-                    </Box>
-                    <Button
-                      color="red"
-                      id="searchButton"
-                      size="large"
-                      text="SEARCH"
+                      search by
+                    </div>
+                    <div
+                      class="root horizontal"
+                      style="margin-right: 12px; min-width: undefined; max-width: undefined; min-height: undefined; max-height: undefined;"
                     >
                       <button
-                        className="button large red"
-                        type="submit"
+                        class="button medium red"
+                        data-testid="search-by-title"
+                        type="button"
+                        value="title"
                       >
-                        SEARCH
+                        title
                       </button>
-                    </Button>
+                    </div>
+                    <div
+                      class="root horizontal"
+                      style="margin-right: 12px; min-width: undefined; max-width: undefined; min-height: undefined; max-height: undefined;"
+                    >
+                      <button
+                        class="button medium gray"
+                        data-testid="search-by-genre"
+                        type="button"
+                        value="genre"
+                      >
+                        genre
+                      </button>
+                    </div>
                   </div>
-                </Box>
+                  <button
+                    class="button large red"
+                    type="button"
+                  >
+                    SEARCH
+                  </button>
+                </div>
               </fieldset>
             </form>
           </div>
-        </Search>
-      </section>
-    </header>
-    <section
-      className="panel"
-    >
-      <Box
-        align="space-between"
-        className="container"
-        direction="horizontal"
-        inline={false}
-        verticalAlign="middle"
+        </section>
+      </header>
+      <section
+        class="panel"
       >
         <div
-          className="root container horizontal spaceBetween middle"
-          style={
-            Object {
-              "height": "undefined",
-              "margin": "undefined",
-              "marginBottom": "undefined",
-              "marginLeft": "undefined",
-              "marginRight": "undefined",
-              "marginTop": "undefined",
-              "maxHeight": "undefined",
-              "maxWidth": "undefined",
-              "minHeight": "undefined",
-              "minWidth": "undefined",
-              "padding": "undefined",
-              "paddingBottom": "undefined",
-              "paddingLeft": "undefined",
-              "paddingRight": "undefined",
-              "paddingTop": "undefined",
-              "width": "undefined",
-            }
-          }
+          class="root container horizontal spaceBetween middle"
+          style="min-width: undefined; max-width: undefined; min-height: undefined; max-height: undefined;"
         >
           <div>
-            7 movies found
+            0
+             movies found
           </div>
           <div>
             <span>
               Sort by 
             </span>
-            <span>
-              release date 
-            </span>
-            <span>
+            <button
+              class="button"
+              type="button"
+              value="release_date"
+            >
+              release date
+            </button>
+            <button
+              class="button"
+              type="button"
+              value="rating"
+            >
               rating
-            </span>
+            </button>
           </div>
         </div>
-      </Box>
-    </section>
-    <main
-      className="main"
-    >
-      <div
-        className="container"
+      </section>
+      <main
+        class="main"
       >
-        <Box
-          align="center"
-          className="wrapper"
-          direction="horizontal"
-          inline={false}
+        <div
+          class="container"
+          data-testid="resolved"
         >
           <div
-            className="root wrapper horizontal center"
-            style={
-              Object {
-                "height": "undefined",
-                "margin": "undefined",
-                "marginBottom": "undefined",
-                "marginLeft": "undefined",
-                "marginRight": "undefined",
-                "marginTop": "undefined",
-                "maxHeight": "undefined",
-                "maxWidth": "undefined",
-                "minHeight": "undefined",
-                "minWidth": "undefined",
-                "padding": "undefined",
-                "paddingBottom": "undefined",
-                "paddingLeft": "undefined",
-                "paddingRight": "undefined",
-                "paddingTop": "undefined",
-                "width": "undefined",
-              }
-            }
+            class="root wrapper horizontal center"
+            style="min-width: undefined; max-width: undefined; min-height: undefined; max-height: undefined;"
           >
-            <Card
-              card={
-                Object {
-                  "date": 2007,
-                  "genre": "Dramas",
-                  "id": 1,
-                  "name": "Vampire diaries",
-                }
-              }
-              cardClick={[Function]}
-              key="1"
+            
+            <div
+              style="font-size: 100px;"
             >
-              <figure
-                className="card"
-              >
-                <button
-                  area-label="Vampire diaries"
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                >
-                  <img
-                    alt="Vampire diaries"
-                    className="image"
-                    src="test-file-stub"
-                  />
-                </button>
-                <figcaption>
-                  <Box
-                    align="space-between"
-                    direction="horizontal"
-                    inline={false}
-                    verticalAlign="middle"
-                  >
-                    <div
-                      className="root horizontal spaceBetween middle"
-                      style={
-                        Object {
-                          "height": "undefined",
-                          "margin": "undefined",
-                          "marginBottom": "undefined",
-                          "marginLeft": "undefined",
-                          "marginRight": "undefined",
-                          "marginTop": "undefined",
-                          "maxHeight": "undefined",
-                          "maxWidth": "undefined",
-                          "minHeight": "undefined",
-                          "minWidth": "undefined",
-                          "padding": "undefined",
-                          "paddingBottom": "undefined",
-                          "paddingLeft": "undefined",
-                          "paddingRight": "undefined",
-                          "paddingTop": "undefined",
-                          "width": "undefined",
-                        }
-                      }
-                    >
-                      <div
-                        className="name"
-                      >
-                        Vampire diaries
-                      </div>
-                      <div
-                        className="date"
-                      >
-                        2007
-                      </div>
-                    </div>
-                  </Box>
-                  <div
-                    className="genre"
-                  >
-                    Dramas
-                  </div>
-                </figcaption>
-              </figure>
-            </Card>
-            <Card
-              card={
-                Object {
-                  "date": 2014,
-                  "genre": "Drama",
-                  "id": 2,
-                  "name": "The Fault in Our Stars",
-                }
-              }
-              cardClick={[Function]}
-              key="2"
-            >
-              <figure
-                className="card"
-              >
-                <button
-                  area-label="The Fault in Our Stars"
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                >
-                  <img
-                    alt="The Fault in Our Stars"
-                    className="image"
-                    src="test-file-stub"
-                  />
-                </button>
-                <figcaption>
-                  <Box
-                    align="space-between"
-                    direction="horizontal"
-                    inline={false}
-                    verticalAlign="middle"
-                  >
-                    <div
-                      className="root horizontal spaceBetween middle"
-                      style={
-                        Object {
-                          "height": "undefined",
-                          "margin": "undefined",
-                          "marginBottom": "undefined",
-                          "marginLeft": "undefined",
-                          "marginRight": "undefined",
-                          "marginTop": "undefined",
-                          "maxHeight": "undefined",
-                          "maxWidth": "undefined",
-                          "minHeight": "undefined",
-                          "minWidth": "undefined",
-                          "padding": "undefined",
-                          "paddingBottom": "undefined",
-                          "paddingLeft": "undefined",
-                          "paddingRight": "undefined",
-                          "paddingTop": "undefined",
-                          "width": "undefined",
-                        }
-                      }
-                    >
-                      <div
-                        className="name"
-                      >
-                        The Fault in Our Stars
-                      </div>
-                      <div
-                        className="date"
-                      >
-                        2014
-                      </div>
-                    </div>
-                  </Box>
-                  <div
-                    className="genre"
-                  >
-                    Drama
-                  </div>
-                </figcaption>
-              </figure>
-            </Card>
+              Loading...
+            </div>
           </div>
-        </Box>
-      </div>
-    </main>
-    <footer
-      className="footer"
-    >
-      <div
-        className="container"
+        </div>
+      </main>
+      <footer
+        class="footer"
       >
-        <Logo>
+        <div
+          class="container"
+        >
           <a
-            className="logo"
+            class="logo"
             href="/"
           >
             netflixroulette
           </a>
-        </Logo>
+        </div>
+      </footer>
+    </div>
+  </body>,
+  "container": <div>
+    <header
+      class="header"
+    >
+      <div
+        class="overlay"
+      />
+      <section
+        class="container"
+      >
+        <div
+          class="root horizontal spaceBetween middle"
+          style="margin-bottom: 48px; min-width: undefined; max-width: undefined; min-height: undefined; max-height: undefined;"
+        >
+          <a
+            class="logo"
+            href="/"
+          >
+            netflixroulette
+          </a>
+          <a
+            href="/search"
+          >
+            <button
+              area-label="Display search area"
+              class="button large white"
+              data-testid="search-switcher"
+              type="button"
+            >
+              SEARCH
+            </button>
+          </a>
+        </div>
+        <div
+          class="search"
+          data-testid="search"
+        >
+          <form>
+            <fieldset>
+              <legend
+                class="searchTitle header__searchTitle"
+              >
+                Find your movie
+              </legend>
+              <div
+                class="root horizontal"
+                style="margin-bottom: 24px; min-width: undefined; max-width: undefined; min-height: undefined; max-height: undefined;"
+              >
+                <input
+                  aria-label="Search"
+                  aria-labelledby="searchButton"
+                  class="searchInput"
+                  name="search"
+                  placeholder="Quentin Tarantino"
+                  type="text"
+                />
+              </div>
+              <div
+                class="root horizontal spaceBetween middle"
+                style="min-width: undefined; max-width: undefined; min-height: undefined; max-height: undefined;"
+              >
+                <div
+                  class="root horizontal spaceBetween middle"
+                  style="min-width: undefined; max-width: undefined; min-height: undefined; max-height: undefined;"
+                >
+                  <div
+                    class="searchLabel"
+                  >
+                    search by
+                  </div>
+                  <div
+                    class="root horizontal"
+                    style="margin-right: 12px; min-width: undefined; max-width: undefined; min-height: undefined; max-height: undefined;"
+                  >
+                    <button
+                      class="button medium red"
+                      data-testid="search-by-title"
+                      type="button"
+                      value="title"
+                    >
+                      title
+                    </button>
+                  </div>
+                  <div
+                    class="root horizontal"
+                    style="margin-right: 12px; min-width: undefined; max-width: undefined; min-height: undefined; max-height: undefined;"
+                  >
+                    <button
+                      class="button medium gray"
+                      data-testid="search-by-genre"
+                      type="button"
+                      value="genre"
+                    >
+                      genre
+                    </button>
+                  </div>
+                </div>
+                <button
+                  class="button large red"
+                  type="button"
+                >
+                  SEARCH
+                </button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </section>
+    </header>
+    <section
+      class="panel"
+    >
+      <div
+        class="root container horizontal spaceBetween middle"
+        style="min-width: undefined; max-width: undefined; min-height: undefined; max-height: undefined;"
+      >
+        <div>
+          0
+           movies found
+        </div>
+        <div>
+          <span>
+            Sort by 
+          </span>
+          <button
+            class="button"
+            type="button"
+            value="release_date"
+          >
+            release date
+          </button>
+          <button
+            class="button"
+            type="button"
+            value="rating"
+          >
+            rating
+          </button>
+        </div>
+      </div>
+    </section>
+    <main
+      class="main"
+    >
+      <div
+        class="container"
+        data-testid="resolved"
+      >
+        <div
+          class="root wrapper horizontal center"
+          style="min-width: undefined; max-width: undefined; min-height: undefined; max-height: undefined;"
+        >
+          
+          <div
+            style="font-size: 100px;"
+          >
+            Loading...
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer
+      class="footer"
+    >
+      <div
+        class="container"
+      >
+        <a
+          class="logo"
+          href="/"
+        >
+          netflixroulette
+        </a>
       </div>
     </footer>
-  </ErrorBoundary>
-</App>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "store": Object {
+    "dispatch": [Function],
+    "getState": [Function],
+    "replaceReducer": [Function],
+    "subscribe": [Function],
+    Symbol(observable): [Function],
+  },
+  "unmount": [Function],
+}
 `;
