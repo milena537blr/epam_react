@@ -64,10 +64,6 @@ test("snapshot test", () => {
 });
 
 test("generates title, overview, date, runtime, tagline of Article", () => {
-  /*   const { getByText, getByAltText, rerender } = render(
-    <Article card={card1} />
-  ); */
-
   const store = createStore(
     () => ({
       data: {
