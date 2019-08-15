@@ -57,15 +57,6 @@ const card2 = {
   runtime: null
 };
 
-// let storeWithData;
-
-afterEach(cleanup);
-
-/* test("snapshot test", () => {
-  const component = renderWithRedux(<ConnectedApp />);
-  expect(component).toMatchSnapshot();
-}); */
-
 const storeWithError = createStore(
   () => ({
     data: {
@@ -118,6 +109,27 @@ const storeWithData = createStore(
   applyMiddleware(thunk)
 );
 
+afterEach(cleanup);
+
+test("landing on a bad page", () => {
+  const { container } = renderWithRedux(
+    <ConnectedApp />,
+    {
+      store: storeWithData
+    },
+    {
+      route: "/something-that-does-not-match"
+    }
+  );
+
+  expect(container.innerHTML).toMatch("No films found");
+});
+
+test("snapshot test", () => {
+  const component = renderWithRedux(<ConnectedApp />);
+  expect(component).toMatchSnapshot();
+});
+
 test("renders cards content", () => {
   const { getByText, getByAltText } = renderWithRedux(<ConnectedApp />, {
     store: storeWithData
@@ -136,7 +148,9 @@ test("generates Loading text before fetching data", async () => {
 });
 
 test("generates Error message if data hadn't been fetched", async () => {
-  const { getByTestId } = renderWithRedux(<ConnectedApp />, { store: storeWithError });
+  const { getByTestId } = renderWithRedux(<ConnectedApp />, {
+    store: storeWithError
+  });
 
   const error = await waitForElement(() => getByTestId("errorMessage"));
   expect(error).toHaveTextContent("Error message");
