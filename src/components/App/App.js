@@ -74,9 +74,9 @@ class App extends React.Component {
           </Box>
         </section>
         <main className={s.main}>
-          <div className={s.container} data-testid="resolved">
+          <div className={s.container}>
             <Box className={s.wrapper} align="center">
-              {this.props.error? (<div style={{ color: "#f95a6d", fontSize: "50px" }}>ERROR: {this.props.error}</div>): ('')}
+              {this.props.error? (<div data-testid="errorMessage" style={{ color: "#f95a6d", fontSize: "50px" }}>ERROR: {this.props.error}</div>): ('')}
               {this.props.loading ? (
                 <div style={{ fontSize: "100px" }}>Loading...</div>
               ) : (

@@ -1,5 +1,4 @@
 import React from "react";
-import { mount } from "enzyme";
 import { Card } from "./Card.js";
 import { render } from "@testing-library/react";
 
@@ -18,7 +17,7 @@ const card2 = {
 };
 
 test("snapshot test", () => {
-  const component = mount(<Card card={card1} />);
+  const component = render(<Card card={card1} />);
   expect(component).toMatchSnapshot();
 });
 

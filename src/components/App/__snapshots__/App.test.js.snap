@@ -150,7 +150,6 @@ Object {
       >
         <div
           class="container"
-          data-testid="resolved"
         >
           <div
             class="root wrapper horizontal center"
@@ -327,7 +326,6 @@ Object {
     >
       <div
         class="container"
-        data-testid="resolved"
       >
         <div
           class="root wrapper horizontal center"

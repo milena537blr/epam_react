@@ -1,5 +1,4 @@
 import React from "react";
-import { mount } from "enzyme";
 import ConnectedArticle from "./Article";
 import { Provider } from "react-redux";
 import { render, cleanup } from "@testing-library/react";
@@ -57,10 +56,12 @@ const card2 = {
   runtime: null
 };
 
-/* test("snapshot test", () => {
-  const component = mount(<Article card={card1} />);
+test("snapshot test", () => {
+  const component = renderWithRedux(
+    <ConnectedArticle />
+  );
   expect(component).toMatchSnapshot();
-}); */
+});
 
 test("generates title, overview, date, runtime, tagline of Article", () => {
   /*   const { getByText, getByAltText, rerender } = render(

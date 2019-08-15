@@ -76,6 +76,29 @@ test("generates Loading text before fetching data", async () => {
   expect(loading).toHaveTextContent("Loading...");
 });
 
+test("generates Error message if data hadn't been fetched", async () => {
+  const store = createStore(
+    () => ({
+      data: {
+        movies: [],
+        loading: false,
+        error: "Error message"
+      },
+      filters: {
+        text: "",
+        sortBy: "rating",
+        searchBy: "title"
+      }
+    }),
+    applyMiddleware(thunk)
+  );
+
+  const { getByTestId } = renderWithRedux(<ConnectedApp />, { store });
+
+  const error = await waitForElement(() => getByTestId("errorMessage"));
+  expect(error).toHaveTextContent("Error message");
+});
+
 test("generates Search instead Article after search button had been clicked", async () => {
   const store = createStore(
     () => ({
