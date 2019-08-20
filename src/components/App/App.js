@@ -12,6 +12,7 @@ import { NotFound } from "../NotFound/NotFound";
 import { CardsList } from "../CardsList/CardsList";
 import { connect } from "react-redux";
 import { loadMovies, sortBy } from "../../actions/actions";
+import { Loading } from "../../components/Loading/Loading";
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -78,7 +79,7 @@ class App extends React.Component {
             <Box className={s.wrapper} align="center">
               {this.props.error? (<div data-testid="errorMessage" style={{ color: "#f95a6d", fontSize: "50px" }}>ERROR: {this.props.error}</div>): ('')}
               {this.props.loading ? (
-                <div style={{ fontSize: "100px" }}>Loading...</div>
+                <Loading />
               ) : (
                 <Switch>
                   <Route
