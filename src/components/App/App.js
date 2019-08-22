@@ -13,6 +13,8 @@ import { CardsList } from "../CardsList/CardsList";
 import { connect } from "react-redux";
 import { loadMovies, sortBy } from "../../actions/actions";
 import { Loading } from "../../components/Loading/Loading";
+import registerServiceWorker from '../../registerServiceWorker';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -20,6 +22,8 @@ class App extends React.Component {
 
   componentDidMount() {
     this.props.dispatch(loadMovies());
+    console.log(caches);
+    registerServiceWorker();
   }
 
   setSorter = event => {
@@ -27,6 +31,7 @@ class App extends React.Component {
   };
 
   render() {
+    console.log(caches);
     return (
       <ErrorBoundary>
         <header className={s.header}>
