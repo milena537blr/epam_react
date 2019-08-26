@@ -25,6 +25,11 @@ app.get("*", (req, res) => {
   res.sendFile(HTML_FILE);
 });
 
+app.get('/service-worker.js', (req, res) => {
+  res.setHeader('Cache-Control', 'max-age=0, no-cache, no-store, must-revalidate');
+  res.sendFile('service-worker.js', { root: path.join(__dirname, 'dist') });
+});
+
 const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, () => {

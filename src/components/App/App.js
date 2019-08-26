@@ -31,7 +31,6 @@ class App extends React.Component {
   };
 
   render() {
-    console.log(caches);
     return (
       <ErrorBoundary>
         <header className={s.header}>
