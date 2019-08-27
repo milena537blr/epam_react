@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import Box from "./Box.js";
+import { Box } from "./Box.js";
 import { render } from "@testing-library/react";
 
 const text = "Box text";

@@ -2,18 +2,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import s from "./Card.module.scss";
-import Box from "../Box/Box";
-import imageCard from "../../images/card.jpg";
-
-/* type Props = {
-  id: Number,
-  name: String,
-  date: Number,
-  genre: String,
-}; */
+import { Box } from "../Box/Box";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 
 class Card extends React.Component {
-  constructor(props: any) {
+  constructor(props) {
     super(props);
   }
 
@@ -22,21 +15,23 @@ class Card extends React.Component {
   };
 
   render() {
+    const { poster_path, title, release_date, genres, id } = this.props.card;
     return (
       <figure className={s.card}>
-        <button
-          onClick={this.handleCardClick}
-          onKeyDown={this.props.cardClick}
-          area-label={this.props.card.name}
-        >
-          <img className={s.image} src={imageCard} alt={this.props.card.name} />
-        </button>
+        <Link to={'/film/' + id}>
+          <img className={s.image} src={poster_path} alt={title} />
+        </Link>
         <figcaption>
           <Box align="space-between" verticalAlign="middle">
-            <div className={s.name}>{this.props.card.name}</div>
-            <div className={s.date}>{this.props.card.date}</div>
+            <div className={s.name}>{title}</div>
+            <div className={s.date}>{release_date}</div>
           </Box>
-          <div className={s.genre}>{this.props.card.genre}</div>
+          {genres.map((genre, index) => (
+            <span key={genre.toString()} className={s.genre}>
+              {genre}
+              {index === genres.length - 1 ? "" : ", "}
+            </span>
+          ))}
         </figcaption>
       </figure>
     );
@@ -45,11 +40,7 @@ class Card extends React.Component {
 
 Card.propTypes = {
   card: PropTypes.object,
-  date: PropTypes.string,
-  name: PropTypes.string,
-  genre: PropTypes.string,
-  image: PropTypes.string,
   cardClick: PropTypes.func
 };
 
-export default Card;
+export { Card };

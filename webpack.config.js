@@ -1,7 +1,7 @@
-const merge = require ('webpack-merge');
-const common = require ('./webpack.common.config');
-const webpackProdConfig = require ('./webpack.prod.config');
-const webpackDevConfig = require ('./webpack.dev.config');
+const merge = require("webpack-merge");
+const common = require("./webpack.common.config");
+const webpackProdConfig = require("./webpack.prod.config");
+const webpackDevConfig = require("./webpack.dev.config");
 
 module.exports = env => {
   let config;
@@ -10,5 +10,5 @@ module.exports = env => {
   } else {
     config = webpackDevConfig;
   }
-  return merge (common, config);
+  return merge(common, config);
 };

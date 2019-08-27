@@ -3,7 +3,7 @@
 .header {
   padding: rem(20) rem(40);
   background-image: url("../../images/header-bg.jpg");
-  min-height: 400px;
+  // min-height: 400px;
   position: relative;
 
   .overlay {
@@ -47,6 +47,7 @@
 
 .main {
   background-color: $color--white;
+  flex-grow: 1;
 }
 
 .wrapper {

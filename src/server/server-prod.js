@@ -1,14 +1,21 @@
 import path from 'path';
 import express from 'express';
+import favicon from 'serve-favicon';
 
 const app = express (),
   DIST_DIR = __dirname,
-  HTML_FILE = path.join (DIST_DIR, './dist/index.html');
+  HTML_FILE = path.join (DIST_DIR, 'index.html');
 
 app.use (express.static (DIST_DIR));
+app.use(favicon(path.join('assets','public','favicon.ico')));
 
 app.get ('*', (req, res) => {
   res.sendFile (HTML_FILE);
+});
+
+app.get('/service-worker.js', (req, res) => {
+  res.setHeader('Cache-Control', 'max-age=0, no-cache, no-store, must-revalidate');
+  res.sendFile('service-worker.js', { root: path.join(__dirname, 'dist') });
 });
 
 const PORT = process.env.PORT || 8080;
