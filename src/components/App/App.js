@@ -22,7 +22,6 @@ class App extends React.Component {
 
   componentDidMount() {
     this.props.dispatch(loadMovies());
-    console.log(caches);
     registerServiceWorker();
   }
 

@@ -10,7 +10,8 @@ module.exports = {
   parser: "babel-eslint",
   globals: {
     window: true,
-    fetch: false
+    fetch: false,
+    workbox: true
   },
   env: {
     es6: true

@@ -15,8 +15,6 @@ class Card extends React.Component {
   };
 
   render() {
-    console.log(caches);
-
     const { poster_path, title, release_date, genres, id } = this.props.card;
     return (
       <figure className={s.card}>

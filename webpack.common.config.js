@@ -1,5 +1,4 @@
 const path = require("path");
-const WorkboxPlugin = require("workbox-webpack-plugin");
 
 module.exports = {
   entry: {
@@ -36,12 +35,5 @@ module.exports = {
         exclude: /node_modules/
       }
     ]
-  },
-  plugins: [
-    new WorkboxPlugin.InjectManifest({
-      globPatterns: ["dist/*.{jpg,js,png,html,css}"],
-      swDest: "service-worker.js",
-      swSrc: path.join(__dirname, "service-worker.js")
-    })
-  ]
+  }
 };

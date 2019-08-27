@@ -10,5 +10,5 @@ module.exports = env => {
   } else {
     config = webpackDevConfig;
   }
-  return merge.smartStrategy({ plugins: "prepend" })(common, config);
+  return merge(common, config);
 };
