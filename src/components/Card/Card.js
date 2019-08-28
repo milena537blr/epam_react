@@ -10,10 +10,6 @@ class Card extends React.Component {
     super(props);
   }
 
-  handleCardClick = () => {
-    this.props.cardClick();
-  };
-
   render() {
     const { poster_path, title, release_date, genres, id } = this.props.card;
     return (

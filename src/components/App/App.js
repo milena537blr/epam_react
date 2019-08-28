@@ -14,6 +14,7 @@ import { connect } from "react-redux";
 import { loadMovies, sortBy } from "../../actions/actions";
 import { Loading } from "../../components/Loading/Loading";
 import registerServiceWorker from "../../registerServiceWorker";
+import { filterText, searchBy } from "../../actions/actions";
 
 class App extends React.Component {
   constructor(props) {
@@ -23,6 +24,12 @@ class App extends React.Component {
   componentDidMount() {
     this.props.dispatch(loadMovies());
     registerServiceWorker();
+  }
+
+  componentDidUpdate() {
+    const { pathname } = this.props.location;
+    console.log(pathname);
+    // this.props.dispatch(filterText(this.searchInput.value));
   }
 
   setSorter = event => {
@@ -37,15 +44,20 @@ class App extends React.Component {
           <section className={s.container}>
             <Box align="space-between" verticalAlign="middle" marginBottom={8}>
               <Logo />
-              <Link to={"/search"}>
-                <Button
-                  text="SEARCH"
-                  areaLabel="Display search area"
-                  size="large"
-                  color="white"
-                  dataTestId="search-switcher"
-                />
-              </Link>
+              <Route
+                path="/(film?)"
+                render={() => (
+                  <Link to={"/search"}>
+                    <Button
+                      text="SEARCH"
+                      areaLabel="Display search area"
+                      size="large"
+                      color="white"
+                      dataTestId="search-switcher"
+                    />
+                  </Link>
+                )}
+              />
             </Box>
             <Switch>
               <Route path="/" exact component={Search} />

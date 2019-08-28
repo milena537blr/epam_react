@@ -7,17 +7,12 @@ class CardsList extends Component {
     super(props);
   }
 
-  handleCardClick = currentCardId => {
-    this.props.handleCardClick(currentCardId);
-  };
-
   render() {
     return (
       <React.Fragment>
         {this.props.cards.map(card => {
           return (
             <Card
-              cardClick={() => this.handleCardClick(card.id)}
               card={card}
               key={card.id}
             />
@@ -30,7 +25,6 @@ class CardsList extends Component {
 
 CardsList.propTypes = {
   cards: PropTypes.array,
-  handleCardClick: PropTypes.func
 };
 
 export { CardsList };
