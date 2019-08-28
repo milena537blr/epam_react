@@ -13,7 +13,7 @@ import { CardsList } from "../CardsList/CardsList";
 import { connect } from "react-redux";
 import { loadMovies, sortBy } from "../../actions/actions";
 import { Loading } from "../../components/Loading/Loading";
-import registerServiceWorker from '../../registerServiceWorker';
+import registerServiceWorker from "../../registerServiceWorker";
 
 class App extends React.Component {
   constructor(props) {
@@ -95,10 +95,15 @@ class App extends React.Component {
               ) : (
                 <Switch>
                   <Route
+                    path="/"
+                    exact
+                    render={() => <NotFound text="No films found" />}
+                  />
+                  <Route
                     path="/(search?|film?)"
                     render={() => <CardsList cards={this.props.movies} />}
                   />
-                  <Route component={NotFound} />
+                  <Route render={() => <NotFound text="Page not found" />} />
                 </Switch>
               )}
             </Box>
