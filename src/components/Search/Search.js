@@ -6,7 +6,13 @@ import { Box } from "../Box/Box";
 import { Button } from "../Button/Button";
 import { connect } from "react-redux";
 import { filterText, searchBy } from "../../actions/actions";
-import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  NavLink
+} from "react-router-dom";
+import { parseUrl } from "../../utils/parseUrl";
 
 let searchTitleClass = classNames(s.searchTitle, s.header__searchTitle);
 
@@ -24,6 +30,22 @@ export class Search extends Component {
   };
 
   render() {
+    /* if (this.showSearch === true) {
+      this.showSearch = false;
+      return (
+        <Redirect
+          to={
+            "/search/Search searchBy=" +
+            this.props.searchBy +
+            "&sortBy=" +
+            this.props.sortBy +
+            "&text=" +
+            this.searchInput.value
+          }
+        />
+      );
+    } */
+
     return (
       <div className={s.search} data-testid="search">
         <form>
@@ -68,20 +90,12 @@ export class Search extends Component {
               </Box>
 
               <div className={s.searchButton}>
-                <NavLink
-                  activeClassName={s.active}
-                  onClick={this.findMovies}
-                  to={
-                    "/search/Search searchBy=" +
-                    this.props.sortBy +
-                    "&sortBy=" +
-                    this.props.searchBy +
-                    "&text=" +
-                    this.props.text
-                  }
-                >
-                  Search
-                </NavLink>
+                <Button
+                  text="Search"
+                  size="large"
+                  color="red"
+                  handleClick={this.findMovies}
+                />
               </div>
             </Box>
           </fieldset>

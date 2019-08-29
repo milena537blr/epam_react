@@ -11,10 +11,15 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import { NotFound } from "../NotFound/NotFound";
 import { CardsList } from "../CardsList/CardsList";
 import { connect } from "react-redux";
-import { loadMovies, sortBy } from "../../actions/actions";
+import {
+  loadMovies,
+  sortBy,
+  filterText,
+  searchBy
+} from "../../actions/actions";
 import { Loading } from "../../components/Loading/Loading";
 import registerServiceWorker from "../../registerServiceWorker";
-import { filterText, searchBy } from "../../actions/actions";
+import { parseUrl } from "../../utils/parseUrl";
 
 class App extends React.Component {
   constructor(props) {
@@ -24,12 +29,22 @@ class App extends React.Component {
   componentDidMount() {
     this.props.dispatch(loadMovies());
     registerServiceWorker();
-  }
 
-  componentDidUpdate() {
     const { pathname } = this.props.location;
-    console.log(pathname);
-    // this.props.dispatch(filterText(this.searchInput.value));
+
+    const params = parseUrl(pathname);
+
+    if (params["text"]) {
+      this.props.dispatch(filterText(params["text"]));
+    }
+
+    if (params["searchBy"]) {
+      this.props.dispatch(searchBy(params["searchBy"]));
+    }
+
+    if (params["sortBy"]) {
+      this.props.dispatch(sortBy(params["sortBy"]));
+    }
   }
 
   setSorter = event => {
