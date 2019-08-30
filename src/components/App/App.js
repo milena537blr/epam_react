@@ -76,7 +76,7 @@ class App extends React.Component {
             </Box>
             <Switch>
               <Route path="/" exact component={Search} />
-              <Route path="/search" render={() => <Search />} />
+              <Route path="/search/Search?" render={() => <Search />} />
               <Route path="/film/:id" component={Article} />
               <Route component={Search} />
             </Switch>
