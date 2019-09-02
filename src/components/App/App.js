@@ -30,24 +30,42 @@ class App extends React.Component {
     this.props.dispatch(loadMovies());
     registerServiceWorker();
 
-    const { pathname } = this.props.location;
+    if (this.props.location) {
+      const { pathname } = this.props.location;
 
-    const params = parseUrl(pathname);
+      const params = parseUrl(pathname);
 
-    if (params["text"]) {
-      this.props.dispatch(filterText(params["text"]));
-    }
+      if (params) {
+        if (params["text"]) {
+          this.props.dispatch(filterText(params["text"]));
+        }
 
-    if (params["searchBy"]) {
-      this.props.dispatch(searchBy(params["searchBy"]));
-    }
+        if (params["searchBy"]) {
+          this.props.dispatch(searchBy(params["searchBy"]));
+        }
 
-    if (params["sortBy"]) {
-      this.props.dispatch(sortBy(params["sortBy"]));
+        if (params["sortBy"]) {
+          this.props.dispatch(sortBy(params["sortBy"]));
+        }
+      } else {
+        this.props.dispatch(filterText(false));
+
+        this.props.dispatch(searchBy("title"));
+
+        this.props.dispatch(sortBy("rating"));
+      }
     }
   }
 
   setSorter = event => {
+    this.props.history.push(
+      "/search/Search searchBy=" +
+        this.props.searchBy +
+        "&sortBy=" +
+        event.currentTarget.value +
+        "&text=" +
+        this.props.text
+    );
     this.props.dispatch(sortBy(event.currentTarget.value));
   };
 
@@ -95,11 +113,13 @@ class App extends React.Component {
                 text="release date"
                 buttonValue="release_date"
                 handleClick={this.setSorter}
+                theme={this.props.sortBy === "release_date" ? "active" : ""}
               />
               <Button
                 text="rating"
                 buttonValue="rating"
                 handleClick={this.setSorter}
+                theme={this.props.sortBy === "rating" ? "active" : ""}
               />
             </div>
           </Box>
@@ -180,7 +200,10 @@ const getVisibleMovies = (movies, { text, sortBy, searchBy }) => {
 const mapStateToProps = state => ({
   movies: getVisibleMovies(state.data.movies, state.filters),
   loading: state.data.loading,
-  error: state.data.error
+  error: state.data.error,
+  searchBy: state.filters.searchBy,
+  sortBy: state.filters.sortBy,
+  text: state.filters.text
 });
 
 export default connect(mapStateToProps)(App);

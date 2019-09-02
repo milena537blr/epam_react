@@ -19,31 +19,31 @@ let searchTitleClass = classNames(s.searchTitle, s.header__searchTitle);
 export class Search extends Component {
   constructor(props) {
     super(props);
+    this.textInput = React.createRef();
+    this.state = { urlText: "", urlSearchBy: "title", urlSortBy: "" };
   }
 
-  findMovies = event => {
-      this.props.dispatch(filterText(event.target.value));
-  };
-
   setSearchBy = event => {
-    this.props.dispatch(searchBy(event.currentTarget.value));
+    this.setState({ urlSearchBy: event.currentTarget.value });
   };
 
-  componentDidMount() {
-    const { pathname } = this.props.location;
+  componentDidUpdate() {
+    if (this.props.location) {
+      const { pathname } = this.props.location;
 
-    const params = parseUrl(pathname);
+      const params = parseUrl(pathname);
 
-    if (params["text"]) {
-      this.props.dispatch(filterText(params["text"]));
-    }
+      if (params) {
+        if (params["text"]) {
+          this.props.dispatch(filterText(params["text"]));
+        } else {
+          this.props.dispatch(filterText(""));
+        }
 
-    if (params["searchBy"]) {
-      this.props.dispatch(searchBy(params["searchBy"]));
-    }
-
-    if (params["sortBy"]) {
-      this.props.dispatch(sortBy(params["sortBy"]));
+        if (params["searchBy"]) {
+          this.props.dispatch(searchBy(params["searchBy"]));
+        }
+      }
     }
   }
 
@@ -55,10 +55,14 @@ export class Search extends Component {
             <legend className={searchTitleClass}>Find your movie</legend>
             <Box marginBottom={4}>
               <input
-                ref={input => {
-                  this.searchInput = input;
+                ref={this.textInput}
+                onChange={() => {
+                  this.setState({
+                    urlText: this.textInput.current
+                      ? this.textInput.current.value
+                      : ""
+                  });
                 }}
-                onChange={this.findMovies.bind(this)}
                 className={s.searchInput}
                 type="text"
                 placeholder="Quentin Tarantino"
@@ -77,7 +81,7 @@ export class Search extends Component {
                     handleClick={this.setSearchBy}
                     text="title"
                     size="medium"
-                    color={this.props.searchBy === "title" ? "red" : "gray"}
+                    color={this.state.urlSearchBy === "title" ? "red" : "gray"}
                   />
                 </Box>
                 <Box marginRight={2}>
@@ -87,7 +91,7 @@ export class Search extends Component {
                     handleClick={this.setSearchBy}
                     text="genre"
                     size="medium"
-                    color={this.props.searchBy === "genre" ? "red" : "gray"}
+                    color={this.state.urlSearchBy === "genre" ? "red" : "gray"}
                   />
                 </Box>
               </Box>
@@ -95,19 +99,14 @@ export class Search extends Component {
               <Link
                 to={
                   "/search/Search searchBy=" +
-                  this.props.searchBy +
+                  this.state.urlSearchBy +
                   "&sortBy=" +
                   this.props.sortBy +
                   "&text=" +
-                  this.props.text
+                  this.state.urlText
                 }
               >
-                <Button
-                  text="Search"
-                  size="large"
-                  color="red"
-                  // handleClick={this.findMovies}
-                />
+                <Button text="Search" size="large" color="red" />
               </Link>
             </Box>
           </fieldset>
@@ -118,7 +117,7 @@ export class Search extends Component {
 }
 
 Search.propTypes = {
-  // dispatch: PropTypes.func.isRequired,
+  dispatch: PropTypes.func,
   searchBy: PropTypes.string,
   sortBy: PropTypes.string,
   text: PropTypes.string
