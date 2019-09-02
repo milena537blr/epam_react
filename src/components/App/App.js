@@ -48,7 +48,7 @@ class App extends React.Component {
           this.props.dispatch(sortBy(params["sortBy"]));
         }
       } else {
-        this.props.dispatch(filterText(false));
+        this.props.dispatch(filterText(""));
 
         this.props.dispatch(searchBy("title"));
 
@@ -178,9 +178,9 @@ const getVisibleMovies = (movies, { text, sortBy, searchBy }) => {
     .filter(movie => {
       switch (searchBy) {
         case "title":
-          return movie.title.includes(text);
+          return (text && text !== "") ? movie.title.includes(text) : false;
         case "genre":
-          return text ? movie.genres.find(genre => genre === text) : movie;
+          return (text && text !== "") ? movie.genres.find(genre => genre === text) : false;
         default:
           return movie.title.includes(text);
       }
