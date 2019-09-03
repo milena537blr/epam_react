@@ -25,3 +25,31 @@
   text-transform: uppercase;
   margin-right: rem(10);
 }
+
+.searchButton {
+  a {
+    cursor: pointer;
+    padding: rem(10) rem(10);
+    border-radius: rem(2);
+    font-size: rem(16);
+    text-transform: uppercase;
+    text-align: center;
+    padding: rem(10) rem(30);
+    min-width: 150px;
+    background-color: $color--gray;
+    color: $color--white;
+
+    &:hover {
+      background-color: lighten($color--gray, 10%);
+    }
+
+    &.active {
+      background-color: $color--red;
+      color: $color--white;
+
+      &:hover {
+        background-color: lighten($color--red, 10%);
+      }
+    }
+  }
+}

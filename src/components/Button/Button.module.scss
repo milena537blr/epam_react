@@ -44,4 +44,9 @@
     padding: rem(10) rem(30);
     min-width: 150px;
   }
+
+  &.active {
+    font-weight: bold;
+    cursor: default;
+  }
 }

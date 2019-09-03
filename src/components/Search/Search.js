@@ -5,22 +5,47 @@ import classNames from "classnames";
 import { Box } from "../Box/Box";
 import { Button } from "../Button/Button";
 import { connect } from "react-redux";
-import { filterText, searchBy } from "../../actions/actions";
+import { filterText, searchBy, sortBy } from "../../actions/actions";
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Link
+} from "react-router-dom";
+import { parseUrl } from "../../utils/parseUrl";
 
 let searchTitleClass = classNames(s.searchTitle, s.header__searchTitle);
 
 export class Search extends Component {
   constructor(props) {
     super(props);
+    this.textInput = React.createRef();
+    this.state = { urlText: "", urlSearchBy: "title", urlSortBy: "" };
   }
 
-  findMovies = () => {
-    this.props.dispatch(filterText(this.searchInput.value));
+  setSearchBy = event => {
+    this.setState({ urlSearchBy: event.currentTarget.value });
   };
 
-  setSearchBy = event => {
-    this.props.dispatch(searchBy(event.currentTarget.value));
-  };
+  componentDidUpdate() {
+    if (this.props.location) {
+      const { pathname } = this.props.location;
+
+      const params = parseUrl(pathname);
+
+      if (params) {
+        if (params["text"]) {
+          this.props.dispatch(filterText(params["text"]));
+        } else {
+          this.props.dispatch(filterText(""));
+        }
+
+        if (params["searchBy"]) {
+          this.props.dispatch(searchBy(params["searchBy"]));
+        }
+      }
+    }
+  }
 
   render() {
     return (
@@ -30,8 +55,13 @@ export class Search extends Component {
             <legend className={searchTitleClass}>Find your movie</legend>
             <Box marginBottom={4}>
               <input
-                ref={input => {
-                  this.searchInput = input;
+                ref={this.textInput}
+                onChange={() => {
+                  this.setState({
+                    urlText: this.textInput.current
+                      ? this.textInput.current.value
+                      : ""
+                  });
                 }}
                 className={s.searchInput}
                 type="text"
@@ -45,19 +75,39 @@ export class Search extends Component {
               <Box align="space-between" verticalAlign="middle">
                 <div className={s.searchLabel}>search by</div>
                 <Box marginRight={2}>
-                  <Button dataTestId="search-by-title" buttonValue="title" handleClick={this.setSearchBy} text="title" size="medium" color={this.props.searchBy === "title" ? 'red' : 'gray'} />
+                  <Button
+                    dataTestId="search-by-title"
+                    buttonValue="title"
+                    handleClick={this.setSearchBy}
+                    text="title"
+                    size="medium"
+                    color={this.state.urlSearchBy === "title" ? "red" : "gray"}
+                  />
                 </Box>
                 <Box marginRight={2}>
-                  <Button dataTestId="search-by-genre" buttonValue="genre" handleClick={this.setSearchBy} text="genre" size="medium" color={this.props.searchBy === "genre" ? 'red' : 'gray'} />
+                  <Button
+                    dataTestId="search-by-genre"
+                    buttonValue="genre"
+                    handleClick={this.setSearchBy}
+                    text="genre"
+                    size="medium"
+                    color={this.state.urlSearchBy === "genre" ? "red" : "gray"}
+                  />
                 </Box>
               </Box>
-              <Button
-                handleClick={this.findMovies}
-                id="searchButton"
-                text="SEARCH"
-                size="large"
-                color="red"
-              />
+
+              <Link
+                to={
+                  "/search/Search searchBy=" +
+                  this.state.urlSearchBy +
+                  "&sortBy=" +
+                  this.props.sortBy +
+                  "&text=" +
+                  this.state.urlText
+                }
+              >
+                <Button text="Search" size="large" color="red" />
+              </Link>
             </Box>
           </fieldset>
         </form>
@@ -67,13 +117,17 @@ export class Search extends Component {
 }
 
 Search.propTypes = {
-  // dispatch: PropTypes.func.isRequired,
-  searchBy: PropTypes.string
+  dispatch: PropTypes.func,
+  searchBy: PropTypes.string,
+  sortBy: PropTypes.string,
+  text: PropTypes.string
 };
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
   return {
-    searchBy: state.filters.searchBy
+    searchBy: state.filters.searchBy,
+    sortBy: state.filters.sortBy,
+    text: state.filters.text
   };
 }
 

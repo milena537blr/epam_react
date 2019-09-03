@@ -8,7 +8,8 @@ class Button extends React.Component {
     let buttonClassNames = classNames(
       s.button,
       this.props.size ? s[this.props.size] : null,
-      this.props.color ? s[this.props.color] : null
+      this.props.color ? s[this.props.color] : null,
+      this.props.theme ? s[this.props.theme] : null
     );
     return (
       <button
@@ -32,6 +33,7 @@ Button.propTypes = {
   buttonValue: PropTypes.string,
   size: PropTypes.string,
   color: PropTypes.string,
+  theme: PropTypes.string,
   dataTestId: PropTypes.string,
   areaLabel: PropTypes.string,
   handleClick: PropTypes.func,

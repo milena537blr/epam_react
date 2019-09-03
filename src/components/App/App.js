@@ -11,9 +11,15 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import { NotFound } from "../NotFound/NotFound";
 import { CardsList } from "../CardsList/CardsList";
 import { connect } from "react-redux";
-import { loadMovies, sortBy } from "../../actions/actions";
+import {
+  loadMovies,
+  sortBy,
+  filterText,
+  searchBy
+} from "../../actions/actions";
 import { Loading } from "../../components/Loading/Loading";
-import registerServiceWorker from '../../registerServiceWorker';
+import registerServiceWorker from "../../registerServiceWorker";
+import { parseUrl } from "../../utils/parseUrl";
 
 class App extends React.Component {
   constructor(props) {
@@ -23,9 +29,43 @@ class App extends React.Component {
   componentDidMount() {
     this.props.dispatch(loadMovies());
     registerServiceWorker();
+
+    if (this.props.location) {
+      const { pathname } = this.props.location;
+
+      const params = parseUrl(pathname);
+
+      if (params) {
+        if (params["text"]) {
+          this.props.dispatch(filterText(params["text"]));
+        }
+
+        if (params["searchBy"]) {
+          this.props.dispatch(searchBy(params["searchBy"]));
+        }
+
+        if (params["sortBy"]) {
+          this.props.dispatch(sortBy(params["sortBy"]));
+        }
+      } else {
+        this.props.dispatch(filterText(""));
+
+        this.props.dispatch(searchBy("title"));
+
+        this.props.dispatch(sortBy("rating"));
+      }
+    }
   }
 
   setSorter = event => {
+    this.props.history.push(
+      "/search/Search searchBy=" +
+        this.props.searchBy +
+        "&sortBy=" +
+        event.currentTarget.value +
+        "&text=" +
+        this.props.text
+    );
     this.props.dispatch(sortBy(event.currentTarget.value));
   };
 
@@ -37,19 +77,24 @@ class App extends React.Component {
           <section className={s.container}>
             <Box align="space-between" verticalAlign="middle" marginBottom={8}>
               <Logo />
-              <Link to={"/search"}>
-                <Button
-                  text="SEARCH"
-                  areaLabel="Display search area"
-                  size="large"
-                  color="white"
-                  dataTestId="search-switcher"
-                />
-              </Link>
+              <Route
+                path="/(film?)"
+                render={() => (
+                  <Link to={"/search"}>
+                    <Button
+                      text="SEARCH"
+                      areaLabel="Display search area"
+                      size="large"
+                      color="white"
+                      dataTestId="search-switcher"
+                    />
+                  </Link>
+                )}
+              />
             </Box>
             <Switch>
               <Route path="/" exact component={Search} />
-              <Route path="/search" render={() => <Search />} />
+              <Route path="/search/Search?" render={() => <Search />} />
               <Route path="/film/:id" component={Article} />
               <Route component={Search} />
             </Switch>
@@ -68,11 +113,13 @@ class App extends React.Component {
                 text="release date"
                 buttonValue="release_date"
                 handleClick={this.setSorter}
+                theme={this.props.sortBy === "release_date" ? "active" : ""}
               />
               <Button
                 text="rating"
                 buttonValue="rating"
                 handleClick={this.setSorter}
+                theme={this.props.sortBy === "rating" ? "active" : ""}
               />
             </div>
           </Box>
@@ -95,10 +142,15 @@ class App extends React.Component {
               ) : (
                 <Switch>
                   <Route
+                    path="/"
+                    exact
+                    render={() => <NotFound text="No films found" />}
+                  />
+                  <Route
                     path="/(search?|film?)"
                     render={() => <CardsList cards={this.props.movies} />}
                   />
-                  <Route component={NotFound} />
+                  <Route render={() => <NotFound text="Page not found" />} />
                 </Switch>
               )}
             </Box>
@@ -126,9 +178,9 @@ const getVisibleMovies = (movies, { text, sortBy, searchBy }) => {
     .filter(movie => {
       switch (searchBy) {
         case "title":
-          return movie.title.includes(text);
+          return (text && text !== "") ? movie.title.includes(text) : false;
         case "genre":
-          return text ? movie.genres.find(genre => genre === text) : movie;
+          return (text && text !== "") ? movie.genres.find(genre => genre === text) : false;
         default:
           return movie.title.includes(text);
       }
@@ -148,7 +200,10 @@ const getVisibleMovies = (movies, { text, sortBy, searchBy }) => {
 const mapStateToProps = state => ({
   movies: getVisibleMovies(state.data.movies, state.filters),
   loading: state.data.loading,
-  error: state.data.error
+  error: state.data.error,
+  searchBy: state.filters.searchBy,
+  sortBy: state.filters.sortBy,
+  text: state.filters.text
 });
 
 export default connect(mapStateToProps)(App);
