@@ -12,9 +12,9 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ["*", ".js", ".jsx", ".tsx", ".ts", ".json"],
     alias: {
-      'react-dom': '@hot-loader/react-dom',
+      // 'react-dom': '@hot-loader/react-dom',
     },
   },
 
