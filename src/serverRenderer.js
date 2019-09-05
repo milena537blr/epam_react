@@ -4,6 +4,7 @@ import { StaticRouter } from 'react-router-dom';
 import Root from './Root';
 import { configureStore } from './store/configureStore';
 import { configurePersistor } from './store/configureStore';
+import { createBrowserHistory } from "history";
   
 function renderHTML(html, preloadedState) {
   return `
@@ -41,11 +42,13 @@ export default function serverRenderer() {
     const persistor = configurePersistor();
     // This context object contains the results of the render
     const context = {};
+    // const history = createBrowserHistory();
 
     const renderRoot = () => (
       <Root
         context={context}
         location={req.url}
+        // history={history}
         Router={StaticRouter}
         store={store}
         persistor={persistor}
