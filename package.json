@@ -42,6 +42,7 @@
   },
   "homepage": "https://github.com/milena537blr/epam_react#readme",
   "dependencies": {
+    "@hot-loader/react-dom": "^16.8.6",
     "classnames": "^2.2.6",
     "cross-env": "^5.1.6",
     "express": "^4.16.3",

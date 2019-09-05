@@ -11,4 +11,21 @@ module.exports = merge(common, {
     filename: 'js/serverRenderer.js',
     libraryTarget: 'commonjs2',
   },
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: "css-loader/locals",
+            options: {
+              modules: true,
+              localIdentName: "[local]--[hash:base64:5]"
+            }
+          },
+          "sass-loader"
+        ]
+      },
+    ],
+  },
 });
