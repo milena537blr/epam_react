@@ -10,10 +10,10 @@ import "./styles/global.scss";
 import { Loading } from "./components/Loading/Loading";
 import { PersistGate } from "redux-persist/lib/integration/react";
 
-const Root = ({ Router, persistor, context, store, history }) => (
+const Root = ({ Router, location, persistor, context, store, history }) => (
   <Provider store={store}>
     <PersistGate persistor={persistor} loading={<Loading />}>
-      <Router history={history} context={context}>
+      <Router location={location} history={history} context={context}>
         <Route component={App} />
       </Router>
     </PersistGate>
