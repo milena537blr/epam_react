@@ -52,3 +52,17 @@ export const loadMovies = () => dispatch => {
     .then(movies => dispatch(loadMoviesSuccess(movies.data)))
     .catch(error => dispatch(loadMoviesFailure(error.message)));
 }
+
+export const updateMovies = movies => ({
+  type: types.UPDATE_MOVIES,
+  payload: movies,
+});
+
+export const fetchMovies = () => ({
+  type: types.FETCH_MOVIES,
+});
+
+export const updateCurrentMovie = user => ({
+  type: types.UPDATE_CURRENT_MOVIE,
+  payload: user,
+});

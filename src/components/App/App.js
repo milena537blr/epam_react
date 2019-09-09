@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Article from "../Article/Article";
 import Search from "../Search/Search";
 import { ErrorBoundary } from "../ErrorBoundary/ErrorBoundary";
@@ -27,10 +27,10 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(loadMovies());
+    // this.props.dispatch(loadMovies());
     registerServiceWorker();
 
-    if (this.props.location) {
+   /*  if (this.props.location) {
       const { pathname } = this.props.location;
 
       const params = parseUrl(pathname);
@@ -54,7 +54,7 @@ class App extends React.Component {
 
         this.props.dispatch(sortBy("rating"));
       }
-    }
+    } */
   }
 
   setSorter = event => {
@@ -70,6 +70,10 @@ class App extends React.Component {
   };
 
   render() {
+    useEffect(() => {
+      // fetchMovies();
+    }, []);
+
     return (
       <ErrorBoundary>
         <header className={s.header}>
