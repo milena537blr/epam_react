@@ -1,38 +1,38 @@
-import "isomorphic-fetch";
-import "babel-polyfill";
-import React from "react";
+import 'isomorphic-fetch';
+import 'babel-polyfill';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { hot } from "react-hot-loader";
-import { Provider } from "react-redux";
-import { Route, Switch } from "react-router-dom";
-import App from "./components/App/App";
-import "./styles/global.scss";
-import { Loading } from "./components/Loading/Loading";
-import { PersistGate } from "redux-persist/lib/integration/react";
+import { hot } from 'react-hot-loader';
+import { Route, Link, Switch, Redirect } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
-const Root = ({ Router, location, persistor, context, store, history }) => (
+const Root = ({
+  Router, location, context, store,
+}) => (
   <Provider store={store}>
-    <PersistGate persistor={persistor} loading={<Loading />}>
-      <Router location={location} history={history} context={context}>
-        <Route component={App} />
-      </Router>
-    </PersistGate>
+    <Router location={location} context={context}>
+      <div>
+        <h1>Server Side Renderig</h1>
+      </div>
+    </Router>
   </Provider>
 );
 
 Root.propTypes = {
   Router: PropTypes.func.isRequired,
+  location: PropTypes.string,
   context: PropTypes.shape({
-    url: PropTypes.string
+    url: PropTypes.string,
   }),
   store: PropTypes.shape({
     dispatch: PropTypes.func.isRequired,
-    getState: PropTypes.func.isRequired
-  }).isRequired
+    getState: PropTypes.func.isRequired,
+  }).isRequired,
 };
-
 Root.defaultProps = {
-  context: null
+  location: null,
+  context: null,
 };
 
 export default hot(module)(Root);
+

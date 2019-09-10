@@ -1,40 +1,24 @@
-import React from "react";
-import { renderToString } from "react-dom/server";
-import { StaticRouter } from "react-router-dom";
-import Root from "./Root";
-import { configureStore } from "./store/configureStore";
-import { configurePersistor } from "./store/configureStore";
-import { createBrowserHistory } from "history";
+import React from 'react';
+import { renderToString } from 'react-dom/server';
+import { StaticRouter } from 'react-router-dom';
+import Root from './Root';
+import configureStore from '../src/store/configureStore';
 
 function renderHTML(html, preloadedState) {
   return `
-      <!DOCTYPE html>
-      <html lang="en">
+      <!doctype html>
+      <html>
         <head>
-          <meta charset="UTF-8" />
-          <title>React App</title>
-          <style>
-            .app {
-              height: 100%;
-              display: flex;
-              flex-direction: column;
-            }
-          </style>
-          ${
-            process.env.NODE_ENV === "development"
-              ? ""
-              : '<link href="main.css" rel="stylesheet" type="text/css">'
-          }
+          <meta charset=utf-8>
+          <title>React Server Side Rendering</title>
+          ${process.env.NODE_ENV === 'development' ? '' : '<link href="/css/main.css" rel="stylesheet" type="text/css">'}
         </head>
         <body>
-          <div id="root" role="application" class="app">${html}</div>
+          <div id="root">${html}</div>
           <script>
             // WARNING: See the following for security issues around embedding JSON in HTML:
             // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
-            window.PRELOADED_STATE = ${JSON.stringify(preloadedState).replace(
-              /</g,
-              "\\u003c"
-            )}
+            window.PRELOADED_STATE = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
           </script>
           <script src="/js/main.js"></script>
         </body>
@@ -45,25 +29,17 @@ function renderHTML(html, preloadedState) {
 export default function serverRenderer() {
   return (req, res) => {
     const store = configureStore();
-    const persistor = configurePersistor();
     // This context object contains the results of the render
     const context = {};
-    // const history = createBrowserHistory();
 
     const renderRoot = () => (
       <Root
         context={context}
         location={req.url}
-        // history={history}
         Router={StaticRouter}
         store={store}
-        persistor={persistor}
       />
     );
-
-    console.log("serverRenderer!!!!!!!!!!!!!!!!!!!!!!!!!!");
-    console.log("store!!!!!!!!!!!!!!!!!!!!!!!!!!");
-    console.log(store);
 
     store.runSaga().done.then(() => {
       const htmlString = renderToString(renderRoot());
@@ -71,7 +47,7 @@ export default function serverRenderer() {
       // context.url will contain the URL to redirect to if a <Redirect> was used
       if (context.url) {
         res.writeHead(302, {
-          Location: context.url
+          Location: context.url,
         });
         res.end();
         return;
@@ -82,8 +58,9 @@ export default function serverRenderer() {
       res.send(renderHTML(htmlString, preloadedState));
     });
 
+    // Do first render, starts initial actions.
     renderToString(renderRoot());
-
+    // When the first render is finished, send the END action to redux-saga.
     store.close();
   };
 }

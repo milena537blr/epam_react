@@ -1,6 +1,6 @@
 import * as types from "./actionTypes";
 const FILMS_SOURCE = "http://react-cdp-api.herokuapp.com";
-import fetch from 'node-fetch';
+import fetch from "node-fetch";
 
 // action creators
 export function loadMoviesSuccess(movies) {
@@ -51,18 +51,23 @@ export const loadMovies = () => dispatch => {
     .then(response => response.json())
     .then(movies => dispatch(loadMoviesSuccess(movies.data)))
     .catch(error => dispatch(loadMoviesFailure(error.message)));
-}
+};
+
+export const fetchMovies = () => ({
+  type: types.FETCH_MOVIES
+});
+
+export const fetchMovieById = movieId => ({
+  type: types.FETCH_MOVIE_BY_ID,
+  payload: movieId
+});
 
 export const updateMovies = movies => ({
   type: types.UPDATE_MOVIES,
-  payload: movies,
+  payload: movies
 });
 
-export const fetchMovies = () => ({
-  type: types.FETCH_MOVIES,
-});
-
-export const updateCurrentMovie = user => ({
+export const updateCurrentMovie = movie => ({
   type: types.UPDATE_CURRENT_MOVIE,
-  payload: user,
+  payload: movie
 });

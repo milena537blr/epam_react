@@ -43,7 +43,9 @@
   },
   "homepage": "https://github.com/milena537blr/epam_react#readme",
   "dependencies": {
+    "@babel/polyfill": "^7.6.0",
     "@hot-loader/react-dom": "^16.8.6",
+    "babel-polyfill": "^6.26.0",
     "classnames": "^2.2.6",
     "cross-env": "^5.1.6",
     "express": "^4.16.3",

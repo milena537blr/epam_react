@@ -37,7 +37,32 @@ export function* moviesSaga() {
   yield all([watchFetchMovies(), watchFetchMovieById()]);
 }
 
-const moviesReducer = (state = initialState.data, action) => {
+export const moviesReducer = (state = initialState.data, action = {}) => {
+  switch (action.type) {
+    case types.FETCH_MOVIES:
+    case types.FETCH_MOVIE_BY_ID:
+      return {
+        ...state,
+        loading: true,
+      };
+    case types.UPDATE_MOVIES:
+      return {
+        ...state,
+        loading: false,
+        items: action.payload,
+      };
+    case types.UPDATE_CURRENT_MOVIE:
+      return {
+        ...state,
+        loading: false,
+        current: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
+/* const moviesReducer = (state = initialState.data, action = {}) => {
   switch (action.type) {
     case types.LOAD_MOVIES_LOADING:
       return { ...state, loading: true, error: "" };
@@ -48,6 +73,6 @@ const moviesReducer = (state = initialState.data, action) => {
     default:
       return state;
   }
-};
+}; */
 
-export { moviesReducer };
+// export { moviesReducer };
