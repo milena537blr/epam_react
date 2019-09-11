@@ -5,7 +5,9 @@ import { searchReducer as filters } from "./searchReducer";
 import { moviesSaga } from "./moviesReducer";
 
 function* rootSaga() {
-  yield all([moviesSaga()]);
+  yield all([
+    moviesSaga()
+  ]);
 }
 
 const rootReducer = combineReducers({

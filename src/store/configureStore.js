@@ -1,12 +1,11 @@
 import { createStore, applyMiddleware } from "redux";
-import { rootReducer, rootSaga } from "../reducers/rootReducer";
-import thunk from "redux-thunk";
-import logger from "redux-logger";
-import { persistStore, persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
-import autoMergeLevel2 from "redux-persist/lib/stateReconciler/autoMergeLevel2";
 import createSagaMiddleware, { END } from "redux-saga";
-
+// import thunk from "redux-thunk";
+// import logger from "redux-logger";
+// import { persistStore, persistReducer } from "redux-persist";
+// import storage from "redux-persist/lib/storage";
+// import autoMergeLevel2 from "redux-persist/lib/stateReconciler/autoMergeLevel2";
+import { rootReducer, rootSaga } from "../reducers/rootReducer";
 
 /* const persistConfig = {
   key: "root",

@@ -2,7 +2,7 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import Root from './Root';
-import configureStore from '../src/store/configureStore';
+import configureStore from "./store/configureStore";
 
 function renderHTML(html, preloadedState) {
   return `
@@ -11,7 +11,7 @@ function renderHTML(html, preloadedState) {
         <head>
           <meta charset=utf-8>
           <title>React Server Side Rendering</title>
-          ${process.env.NODE_ENV === 'development' ? '' : '<link href="/css/main.css" rel="stylesheet" type="text/css">'}
+          ${process.env.NODE_ENV === 'development' ? '' : '<link href="main.css" rel="stylesheet" type="text/css">'}
         </head>
         <body>
           <div id="root">${html}</div>

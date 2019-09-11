@@ -1,7 +1,33 @@
-import * as types from "../actions/actionTypes";
+// import * as types from "../actions/actionTypes";
 import { initialState } from "./initialState";
 import { call, put, all, takeLatest } from "redux-saga/effects";
-import { updateMovies, updateCurrentMovie } from "../actions/actions";
+// import { updateMovies, updateCurrentMovie } from "../actions/actions";
+
+// Actions
+const UPDATE_MOVIES = 'UPDATE_MOVIES';
+const FETCH_MOVIES = 'FETCH_MOVIES';
+const FETCH_MOVIE_BY_ID = 'FETCH_MOVIE_BY_ID';
+const UPDATE_CURRENT_MOVIE = 'UPDATE_CURRENT_MOVIE';
+
+// Action Creators
+export const fetchMovies = () => ({
+  type: FETCH_MOVIES
+});
+
+export const fetchMovieById = movieId => ({
+  type: FETCH_MOVIE_BY_ID,
+  payload: movieId
+});
+
+export const updateMovies = movies => ({
+  type: UPDATE_MOVIES,
+  payload: movies
+});
+
+export const updateCurrentMovie = movie => ({
+  type: UPDATE_CURRENT_MOVIE,
+  payload: movie
+});
 
 // Sagas
 export function* fetchMoviesAsync() {
@@ -15,7 +41,7 @@ export function* fetchMoviesAsync() {
 }
 
 export function* watchFetchMovies() {
-  yield takeLatest(types.FETCH_MOVIES, fetchMoviesAsync);
+  yield takeLatest(FETCH_MOVIES, fetchMoviesAsync);
 }
 
 export function* fetchMovieByIdAsync(action) {
@@ -29,7 +55,7 @@ export function* fetchMovieByIdAsync(action) {
 }
 
 export function* watchFetchMovieById() {
-  yield takeLatest(types.FETCH_MOVIE_BY_ID, fetchMovieByIdAsync);
+  yield takeLatest(FETCH_MOVIE_BY_ID, fetchMovieByIdAsync);
 }
 
 // Movies Saga
@@ -39,19 +65,19 @@ export function* moviesSaga() {
 
 export const moviesReducer = (state = initialState.data, action = {}) => {
   switch (action.type) {
-    case types.FETCH_MOVIES:
-    case types.FETCH_MOVIE_BY_ID:
+    case FETCH_MOVIES:
+    case FETCH_MOVIE_BY_ID:
       return {
         ...state,
         loading: true,
       };
-    case types.UPDATE_MOVIES:
+    case UPDATE_MOVIES:
       return {
         ...state,
         loading: false,
         items: action.payload,
       };
-    case types.UPDATE_CURRENT_MOVIE:
+    case UPDATE_CURRENT_MOVIE:
       return {
         ...state,
         loading: false,
@@ -64,11 +90,11 @@ export const moviesReducer = (state = initialState.data, action = {}) => {
 
 /* const moviesReducer = (state = initialState.data, action = {}) => {
   switch (action.type) {
-    case types.LOAD_MOVIES_LOADING:
+    case LOAD_MOVIES_LOADING:
       return { ...state, loading: true, error: "" };
-    case types.LOAD_MOVIES_SUCCESS:
+    case LOAD_MOVIES_SUCCESS:
       return { ...state, loading: false, movies: action.movies };
-    case types.LOAD_MOVIES_FAILURE:
+    case LOAD_MOVIES_FAILURE:
       return { ...state, loading: false, error: action.error };
     default:
       return state;
