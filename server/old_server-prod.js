@@ -6,7 +6,10 @@ const app = express (),
   DIST_DIR = __dirname,
   HTML_FILE = path.join (DIST_DIR, 'index.html');
 
+const serverRenderer = require('../js/serverRenderer').default;
 app.use (express.static (DIST_DIR));
+app.use(serverRenderer());
+
 app.use(favicon(path.join('assets','public','favicon.ico')));
 
 app.get ('*', (req, res) => {

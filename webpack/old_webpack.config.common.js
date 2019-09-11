@@ -1,15 +1,26 @@
 const path = require("path");
+const webpack = require('webpack');
+
+// const isDevMod = process.env.NODE_ENV === 'development';
 
 module.exports = {
-  entry: {
+  mode: process.env.NODE_ENV,
+/*   entry: {
     main: ["./src/index.js"]
-  },
+  }, */
   output: {
-    path: path.join(__dirname, "dist"),
-    publicPath: "/",
     filename: "[name].js"
+    path: path.join(__dirname, "dist"),
+    // publicPath: "/",
   },
-  resolve: { extensions: ["*", ".js", ".jsx", ".tsx", ".ts", ".json"] },
+
+  resolve: {
+    extensions: ["*", ".js", ".jsx", ".tsx", ".ts", ".json"],
+    alias: {
+      "react-dom": "@hot-loader/react-dom"
+    }
+  },
+
   module: {
     rules: [
       {

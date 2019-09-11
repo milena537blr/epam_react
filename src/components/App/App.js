@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Article from "../Article/Article";
 import Search from "../Search/Search";
 import { ErrorBoundary } from "../ErrorBoundary/ErrorBoundary";
@@ -70,6 +70,10 @@ class App extends React.Component {
   };
 
   render() {
+    /* useEffect(() => {
+      // fetchMovies();
+    }, []); */
+
     return (
       <ErrorBoundary>
         <header className={s.header}>

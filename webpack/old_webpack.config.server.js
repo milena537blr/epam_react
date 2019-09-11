@@ -8,9 +8,7 @@ module.exports = env => {
     : './src/server/server-dev.js';
 
   return {
-    entry: {
-      server: SERVER_PATH,
-    },
+    entry: './src/serverRenderer.js',
     output: {
       path: path.join (__dirname, 'dist'),
       publicPath: '/',

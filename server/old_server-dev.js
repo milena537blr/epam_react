@@ -3,8 +3,9 @@ import express from "express";
 import webpack from "webpack";
 import webpackDevMiddleware from "webpack-dev-middleware";
 import webpackHotMiddleware from "webpack-hot-middleware";
-import configFunction from "../../webpack.config";
-import favicon from 'serve-favicon';
+import webpackHotServerMiddleware from "webpack-hot-server-middleware";
+import configFunction from "../../webpack/old_webpack.config";
+import favicon from "serve-favicon";
 
 const config = configFunction();
 const app = express(),
@@ -19,7 +20,8 @@ app.use(
 );
 
 app.use(webpackHotMiddleware(compiler));
-app.use(favicon(path.join('assets','public','favicon.ico')));
+app.use(webpackHotServerMiddleware(compiler));
+app.use(favicon(path.join("assets", "public", "favicon.ico")));
 
 app.get("*", (req, res) => {
   res.sendFile(HTML_FILE);
